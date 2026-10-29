@@ -19,3 +19,58 @@
 @media(prefers-reduced-motion:reduce){
   .footer-contact-link{transition:none!important}
 }
+
+/* CONTATO SOCIAL — CARDS V1 | referência: cards escuros com ícones destacados */
+#contato .contact-card{border-radius:26px;background:linear-gradient(145deg,#0b1529 0%,#0b1526 62%,#071021 100%);border-color:rgba(140,172,218,.2);box-shadow:0 30px 90px rgba(0,0,0,.37);padding:clamp(28px,5.5vw,72px)}
+#contato .contact-glow{opacity:.52}
+#contato .contact-social-heading{margin-top:36px;padding-top:30px;border-top:1px solid rgba(179,202,234,.15);font:700 clamp(15px,1.8vw,19px)/1.35 var(--display,system-ui,sans-serif);letter-spacing:.055em;color:#f5f8ff}
+#contato .contact-social-list{list-style:none;margin:25px 0 0;padding:0;display:grid;gap:17px;max-width:760px}
+#contato .contact-social-list>li{min-width:0}
+#contato .contact-social-link{
+  position:relative;box-sizing:border-box;width:100%;min-height:114px;padding:20px 25px;
+  display:grid;grid-template-columns:66px minmax(0,1fr) 26px;gap:21px;align-items:center;
+  border-radius:22px;border:1px solid rgba(175,195,231,.17);
+  background:linear-gradient(137deg,rgba(28,36,55,.93),rgba(17,25,42,.96) 78%,rgba(18,27,46,.96));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.065),0 8px 32px rgba(0,0,0,.12);
+  color:#f7faff;text-decoration:none;text-align:left;cursor:pointer;
+  font-family:var(--body,system-ui,sans-serif);
+  transition:border-color .24s ease,background .24s ease,box-shadow .24s ease,transform .24s ease;
+}
+#contato .contact-social-link:hover{transform:translateY(-3px);border-color:rgba(102,185,253,.52);background:linear-gradient(137deg,rgba(31,49,78,.97),rgba(18,33,58,.98));box-shadow:0 16px 36px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.1)}
+#contato .contact-social-link:focus-visible{outline:3px solid #60ceff;outline-offset:4px}
+#contato .contact-social-icon{width:64px;height:64px;flex:none;display:grid;place-items:center;border-radius:16px}
+#contato .contact-social-icon svg{display:block;width:42px;height:42px}
+#contato .contact-social-icon-linkedin{background:linear-gradient(145deg,#259af4,#0a66c2 70%);color:#fff;box-shadow:0 7px 17px rgba(11,105,194,.27)}
+#contato .contact-social-icon-linkedin svg{width:43px;height:43px}
+#contato .contact-social-icon-github{color:#fff;background:rgba(255,255,255,.035)}
+#contato .contact-social-icon-github svg{width:50px;height:50px}
+#contato .contact-social-icon-portfolio{color:#7cd4ff;background:linear-gradient(135deg,rgba(32,122,199,.2),rgba(6,42,89,.37));border:1px solid rgba(84,180,240,.3)}
+#contato .contact-social-copy{display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:0}
+#contato .contact-social-copy strong{display:block;font:700 clamp(21px,2.5vw,27px)/1.1 var(--display,system-ui,sans-serif);color:#f5f7fc;letter-spacing:-.02em}
+#contato .contact-social-copy>span{font:400 clamp(14px,1.6vw,18px)/1.35 var(--body,system-ui,sans-serif);color:#a6b1c5;overflow-wrap:anywhere}
+#contato .contact-social-arrow{display:block;width:24px;height:24px;justify-self:end;align-self:center;color:#7586a1;transition:color .24s ease,transform .24s ease}
+#contato .contact-social-link:hover .contact-social-arrow{color:#63cdff;transform:translate(2px,-2px)}
+#contato .copy-feedback{margin-top:13px}
+@media(max-width:640px){
+ #contato .contact-card{padding:30px 19px 32px;border-radius:24px}
+ #contato .contact-card h2{font-size:clamp(33px,8vw,46px)}
+ #contato .contact-social-heading{margin-top:27px;padding-top:26px}
+ #contato .contact-social-list{gap:14px;margin-top:22px}
+ #contato .contact-social-link{min-height:100px;grid-template-columns:54px minmax(0,1fr) 22px;gap:15px;padding:18px 16px;border-radius:18px}
+ #contato .contact-social-icon{width:53px;height:53px;border-radius:13px}
+ #contato .contact-social-icon svg{width:35px;height:35px}
+ #contato .contact-social-icon-github svg{width:43px;height:43px}
+ #contato .contact-social-copy strong{font-size:22px}
+ #contato .contact-social-copy>span{font-size:14px}
+ #contato .contact-social-arrow{width:22px;height:22px}
+}
+@media(max-width:370px){
+ #contato .contact-social-link{grid-template-columns:46px minmax(0,1fr) 18px;gap:11px;padding:15px 12px;min-height:90px}
+ #contato .contact-social-icon{width:46px;height:46px}
+ #contato .contact-social-copy strong{font-size:20px}
+ #contato .contact-social-copy>span{font-size:12.5px}
+}
+@media(prefers-reduced-motion:reduce){
+ #contato .contact-social-link,#contato .contact-social-arrow{transition:none!important}
+ #contato .contact-social-link:hover{transform:none!important}
+}
