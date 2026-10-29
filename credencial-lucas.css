@@ -1,0 +1,60 @@
+
+/* Lucas Martinez — credencial interativa v1: não altera a abertura nem outras seções */
+.lm-credential-section{position:relative;overflow:hidden;padding:clamp(68px,9vw,118px) 0;background:radial-gradient(ellipse at 78% 45%,rgba(0,119,255,.15),transparent 48%),linear-gradient(160deg,#050b17,#06162c 58%,#050b17);border-top:1px solid rgba(68,161,255,.12);border-bottom:1px solid rgba(68,161,255,.12)}
+.lm-credential-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:clamp(30px,5vw,90px)}
+.lm-credential-info{max-width:570px;position:relative;z-index:1}
+.lm-credential-eyebrow{display:inline-flex;gap:11px;align-items:center;font:600 12px/1.5 "JetBrains Mono",monospace;letter-spacing:.16em;color:#80cbff;margin-bottom:20px}
+.lm-credential-led{width:8px;height:8px;border-radius:50%;background:#00d9ff;box-shadow:0 0 13px #00bfff}
+.lm-credential-info h2{color:#f5fbff;font:700 clamp(38px,5vw,70px)/1.06 "Chakra Petch",sans-serif;letter-spacing:-.04em;margin:0 0 22px;max-width:680px}
+.lm-credential-info h2 span{color:#2fc5ff}
+.lm-credential-info p{color:#a8bfd2;font:400 clamp(15px,1.35vw,17px)/1.75 "IBM Plex Sans",sans-serif;margin:0 0 15px}
+.lm-credential-info .lm-credential-lead{color:#dae9f7;font-size:clamp(17px,1.5vw,20px)}
+.lm-credential-features{display:flex;flex-wrap:wrap;gap:9px;margin-top:27px}
+.lm-credential-features span{font:600 11px/1.3 "JetBrains Mono",monospace;letter-spacing:.02em;border:1px solid rgba(82,166,232,.26);border-radius:100px;padding:9px 11px;background:#0b1a2c;color:#9ecaff}
+.lm-credential-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:32px}
+.lm-credential-action{appearance:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border:1px solid rgba(103,183,242,.3);background:rgba(10,32,55,.9);border-radius:8px;color:#e5f5ff!important;text-decoration:none;font:600 13px/1.2 "IBM Plex Sans",sans-serif;cursor:pointer;transition:transform .2s ease,background .2s ease,border-color .2s ease}
+.lm-credential-action:hover{transform:translateY(-2px);background:#143250;border-color:#63c8ff}
+.lm-credential-action:focus-visible,.lm-credential-card:focus-visible{outline:3px solid #53d6ff;outline-offset:5px}
+.lm-credential-action-primary{background:#0877d6;border-color:#21b4ff;color:#fff!important}
+.lm-credential-action-primary:hover{background:#0d95f3}
+.lm-credential-scene{height:640px;position:relative;perspective:1300px;min-width:0;isolation:isolate;display:flex;align-items:flex-start;justify-content:center}
+.lm-credential-halo{position:absolute;width:475px;height:475px;left:50%;top:48%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(1,125,241,.26),rgba(0,113,255,.08) 38%,transparent 69%);filter:blur(18px);pointer-events:none}
+.lm-credential-orbit{position:absolute;left:50%;top:52%;width:425px;height:425px;border-radius:50%;border:1px solid rgba(11,158,247,.17);transform:translate(-50%,-50%) rotateX(62deg) rotate(-27deg);pointer-events:none}
+.lm-orbit-two{width:490px;height:490px;border-style:dashed;opacity:.32;transform:translate(-50%,-50%) rotateX(69deg) rotate(35deg)}
+.lm-credential-swing{width:360px;height:624px;position:relative;transform-origin:50% 0;animation:lm-strap-sway 5s ease-in-out infinite alternate;will-change:transform}
+.lm-credential-scene:not(.is-visible) .lm-credential-swing{animation-play-state:paused}
+@keyframes lm-strap-sway{0%{transform:rotate(-2deg) translateY(2px)}50%{transform:rotate(.8deg) translateY(0)}100%{transform:rotate(2.5deg) translateY(3px)}}
+.lm-credential-strap{position:absolute;top:0;left:0;width:360px;height:190px;z-index:2;filter:drop-shadow(0 8px 7px rgba(0,0,0,.42))}
+.lm-credential-card{--lm-rx:0deg;--lm-ry:0deg;position:absolute;top:166px;left:50%;width:306px;height:440px;transform:translateX(-50%) rotateX(var(--lm-rx)) rotateY(var(--lm-ry));transform-style:preserve-3d;cursor:grab;touch-action:pan-y;user-select:none;outline:none}
+.lm-credential-card.is-dragging{cursor:grabbing;touch-action:none}
+.lm-credential-flipper{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .95s cubic-bezier(.19,1,.22,1);transform:rotateY(0deg)}
+.lm-credential-card.is-flipped .lm-credential-flipper{transform:rotateY(180deg)}
+.lm-credential-face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1.5px solid #2e9aff;border-radius:17px;box-shadow:0 0 1px #9ee9ff inset,0 0 22px rgba(0,112,255,.38),0 29px 45px rgba(0,0,0,.6);background:linear-gradient(135deg,#041022,#0b1a34 68%,#06162d);transform:translateZ(.4px)}
+.lm-credential-face:after{content:"";position:absolute;inset:9px;border:1px solid rgba(53,154,255,.4);border-radius:11px;pointer-events:none;z-index:8}
+.lm-credential-face:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 25px,rgba(32,124,245,.08) 26px),repeating-linear-gradient(90deg,transparent,transparent 25px,rgba(32,124,245,.06) 26px);pointer-events:none;z-index:2}
+.lm-credential-front{display:flex;flex-direction:column}
+.lm-credential-topline{display:flex;align-items:center;justify-content:space-between;gap:5px;position:relative;z-index:7;padding:18px 17px;font:600 8px/1.3 "JetBrains Mono",monospace;letter-spacing:.09em;color:#b9e7ff}
+.lm-gh-sign{font-size:20px;color:#2fc5ff}.lm-pixel-pips{color:#086cff;letter-spacing:2px}
+.lm-credential-portrait{position:absolute;top:42px;left:10px;width:calc(100% - 20px);height:70%;object-fit:cover;object-position:center 40%;border-radius:10px 10px 0 0;filter:saturate(1.1) contrast(1.06)}
+.lm-credential-fade{position:absolute;inset:0;z-index:4;background:linear-gradient(180deg,rgba(3,13,27,.4) 0%,transparent 24%,transparent 41%,rgba(3,12,25,.48) 55%,#031026 76%,#031026 100%)}
+.lm-credential-front-text{position:absolute;left:20px;right:20px;bottom:22px;z-index:5;color:#fff}
+.lm-credential-chip{display:inline-flex;align-items:center;gap:8px;margin-bottom:13px;font:600 9px/1.2 "JetBrains Mono",monospace;letter-spacing:.1em;color:#77d9ff}
+.lm-credential-chip span{width:5px;height:5px;border-radius:50%;background:#00d9ff;box-shadow:0 0 10px #00d9ff}
+.lm-credential-front-text strong{display:block;font:700 47px/.86 "Chakra Petch",sans-serif;letter-spacing:-.035em;text-shadow:0 4px 16px rgba(0,0,0,.65)}
+.lm-credential-front-text strong em{font-style:normal;color:#1ec4ff}
+.lm-credential-role{display:block;margin-top:17px;padding-bottom:16px;border-bottom:1px solid #2589dc;font:600 8px/1.4 "JetBrains Mono",monospace;letter-spacing:.09em;color:#c4dcec}
+.lm-credential-symbols{display:flex;justify-content:space-between;gap:2px;margin-top:13px;font:500 9px/1.5 "JetBrains Mono",monospace;color:#69d9ff}
+.lm-credential-back{transform:rotateY(180deg) translateZ(.4px);display:flex;flex-direction:column;align-items:center;padding:22px 20px;color:#eefaff}
+.lm-credential-back-top{width:100%;display:flex;justify-content:space-between;font:600 10px/1.4 "JetBrains Mono",monospace;letter-spacing:.12em;color:#76c7ff}
+.lm-credential-back h3{margin:28px 0 18px;align-self:flex-start;font:700 26px/1.1 "Chakra Petch",sans-serif;letter-spacing:.06em}
+.lm-credential-back h3 span{color:#29cfff}
+.lm-credential-qr-frame{width:195px;height:195px;flex:none;background:#fff;padding:10px;border:2px solid #5bc8ff;border-radius:10px;box-shadow:0 0 22px rgba(0,171,255,.6);position:relative;z-index:4}
+.lm-credential-qr-frame svg{display:block;width:100%;height:100%}
+.lm-credential-qr-caption{font:600 8px/1.5 "JetBrains Mono",monospace;letter-spacing:.06em;color:#8edaff;text-align:center;margin:17px 0 6px}
+.lm-credential-url{font:600 12px/1.4 "IBM Plex Sans",sans-serif;letter-spacing:-.015em;white-space:nowrap;color:#fff}
+.lm-credential-back-bottom{width:100%;display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:15px;border-top:1px solid #1666a6;font:600 9px/1.4 "JetBrains Mono",monospace;color:#69bdf9}
+.lm-credential-scene-note{position:absolute;bottom:1px;left:50%;transform:translateX(-50%);white-space:nowrap;font:500 10px/1 "JetBrains Mono",monospace;letter-spacing:.2em;color:#6b9ab8}
+@media(max-width:940px){.lm-credential-grid{grid-template-columns:1fr;gap:15px}.lm-credential-info{max-width:760px}.lm-credential-scene{height:630px}.lm-credential-info h2{max-width:none}}
+@media(max-width:520px){.lm-credential-section{padding:55px 0 62px}.lm-credential-info h2{font-size:clamp(36px,10vw,50px)}.lm-credential-info p{font-size:15px}.lm-credential-scene{height:590px}.lm-credential-swing{transform:scale(.9);transform-origin:50% 0;animation:lm-strap-sway-mobile 5s ease-in-out infinite alternate}.lm-credential-card{top:166px}.lm-credential-scene-note{bottom:4px;font-size:8px}.lm-credential-orbit{width:310px;height:310px}.lm-orbit-two{width:360px;height:360px}@keyframes lm-strap-sway-mobile{0%{transform:scale(.9) rotate(-2deg)}100%{transform:scale(.9) rotate(2deg)}}}
+@media(max-width:350px){.lm-credential-swing{transform:scale(.78);transform-origin:50% 0;animation:none}.lm-credential-scene{height:525px}}
+@media(prefers-reduced-motion:reduce){.lm-credential-swing,.lm-credential-scene .lm-credential-swing{animation:none!important}.lm-credential-flipper{transition-duration:.01ms}.lm-credential-action{transition:none}}
