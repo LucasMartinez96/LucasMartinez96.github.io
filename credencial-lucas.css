@@ -58,3 +58,34 @@
 @media(max-width:520px){.lm-credential-section{padding:55px 0 62px}.lm-credential-info h2{font-size:clamp(36px,10vw,50px)}.lm-credential-info p{font-size:15px}.lm-credential-scene{height:590px}.lm-credential-swing{transform:scale(.9);transform-origin:50% 0;animation:lm-strap-sway-mobile 5s ease-in-out infinite alternate}.lm-credential-card{top:166px}.lm-credential-scene-note{bottom:4px;font-size:8px}.lm-credential-orbit{width:310px;height:310px}.lm-orbit-two{width:360px;height:360px}@keyframes lm-strap-sway-mobile{0%{transform:scale(.9) rotate(-2deg)}100%{transform:scale(.9) rotate(2deg)}}}
 @media(max-width:350px){.lm-credential-swing{transform:scale(.78);transform-origin:50% 0;animation:none}.lm-credential-scene{height:525px}}
 @media(prefers-reduced-motion:reduce){.lm-credential-swing,.lm-credential-scene .lm-credential-swing{animation:none!important}.lm-credential-flipper{transition-duration:.01ms}.lm-credential-action{transition:none}}
+
+/* PULL-AND-TWIST V2 — física ao puxar e virar, sem botão */
+.lm-credential-section .lm-credential-swing{animation:none!important;will-change:auto}
+.lm-credential-section .lm-credential-strap{top:0;height:640px;width:360px;overflow:visible;pointer-events:none;z-index:2;filter:drop-shadow(0 7px 7px rgba(0,0,0,.55))}
+.lm-credential-section .lm-credential-card{
+  --lm-x:0px;--lm-y:0px;--lm-rz:0deg;--lm-rx:0deg;
+  --lm-spin:0deg;
+  transform:translate3d(calc(-50% + var(--lm-x)),var(--lm-y),0) rotateZ(var(--lm-rz)) rotateX(var(--lm-rx));
+  touch-action:none!important;
+  z-index:1;
+  will-change:transform;
+}
+.lm-credential-section .lm-credential-flipper{transform:rotateY(var(--lm-spin))!important;transition:none!important;will-change:transform}
+.lm-credential-section .lm-credential-card.is-flipped .lm-credential-flipper{transform:rotateY(var(--lm-spin))!important}
+.lm-credential-section .lm-credential-features{margin-bottom:0}
+.lm-credential-section .lm-credential-actions{margin-top:25px}
+.lm-credential-section .lm-credential-qr-frame{box-shadow:0 0 16px rgba(0,171,255,.4)}
+.lm-credential-section .lm-credential-strap .lm-strap-lettering{paint-order:stroke fill;stroke:#102847;stroke-width:.8px}
+@media(max-width:520px){
+  .lm-credential-section .lm-credential-swing{transform:scale(.9)!important;transform-origin:50% 0!important}
+  .lm-credential-section .lm-credential-scene{height:580px}
+  .lm-credential-section .lm-credential-scene-note{bottom:5px}
+}
+@media(max-width:350px){
+  .lm-credential-section .lm-credential-swing{transform:scale(.78)!important}
+  .lm-credential-section .lm-credential-scene{height:520px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lm-credential-section .lm-credential-swing{animation:none!important}
+  .lm-credential-section .lm-credential-flipper{transition:none!important}
+}
