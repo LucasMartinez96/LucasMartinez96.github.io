@@ -551,8 +551,8 @@
       count.textContent = `${index + 1} / ${list.length}`;
       prev.hidden = next.hidden = list.length < 2;
     };
-    $$('.card-media').forEach(btn => btn.addEventListener('click', () => {
-      list = $$('.card-media').filter(b => !b.closest('.card').hidden);
+    $$('button.card-media[data-img]').forEach(btn => btn.addEventListener('click', () => {
+      list = $$('button.card-media[data-img]').filter(b => !b.closest('.card').hidden);
       index = list.indexOf(btn);
       show(index);
       document.documentElement.classList.add('modal-open');
