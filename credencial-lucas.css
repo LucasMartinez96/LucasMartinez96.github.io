@@ -119,3 +119,32 @@
     top:60px;
   }
 }
+
+/* V5 — crachá mais compacto e dinâmica pendular reforçada (fita e cartão escalam juntos) */
+.lm-credential-section .lm-credential-scene-note{display:none!important}
+.lm-credential-section .lm-credential-scene{height:545px}
+.lm-credential-section .lm-credential-swing{
+  transform:scale(.84)!important;
+  transform-origin:50% 0!important;
+  animation:none!important;
+}
+.lm-credential-section .lm-credential-halo{width:380px;height:380px;top:46%}
+.lm-credential-section .lm-credential-orbit{width:350px;height:350px;top:49%}
+.lm-credential-section .lm-orbit-two{width:410px;height:410px}
+@media(max-width:940px){
+  .lm-credential-section .lm-credential-scene{height:530px}
+}
+@media(max-width:520px){
+  .lm-credential-section .lm-credential-scene{height:488px}
+  .lm-credential-section .lm-credential-swing{transform:scale(.76)!important}
+  .lm-credential-section .lm-credential-halo{width:320px;height:320px}
+  .lm-credential-section .lm-credential-orbit{width:300px;height:300px}
+  .lm-credential-section .lm-orbit-two{width:345px;height:345px}
+}
+@media(max-width:350px){
+  .lm-credential-section .lm-credential-scene{height:440px}
+  .lm-credential-section .lm-credential-swing{transform:scale(.68)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .lm-credential-section .lm-credential-swing{animation:none!important}
+}
