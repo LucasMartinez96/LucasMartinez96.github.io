@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="673" viewBox="0 0 1080 673" role="img" aria-labelledby="title desc">
+<title id="title">Prévia do certificado Santander Open Academy — Prompting Responsável</title>
+<desc id="desc">Lucas Martinez concluiu o curso Prompting Responsável: Maximizar a IA no seu negócio em 24 de junho de 2025. 8 horas, 2 módulos e autoavaliação. Conteúdo desenvolvido por Microsoft e Founderz.</desc>
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fbfdff"/></linearGradient>
+  <pattern id="lattice" width="38" height="38" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0H38M0 0V38" stroke="#dce8ef" stroke-width=".8" opacity=".65"/></pattern>
+  <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="white" stop-opacity="0"/><stop offset=".6" stop-color="white" stop-opacity=".2"/><stop offset="1" stop-color="white" stop-opacity=".55"/></linearGradient>
+</defs>
+<rect width="1080" height="673" fill="url(#paper)"/>
+<rect width="1080" height="673" fill="url(#lattice)" opacity=".85"/>
+<rect width="1080" height="673" fill="url(#fade)"/>
+<text x="48" y="112" font-family="Arial,Helvetica,sans-serif" font-weight="bold" font-size="24" fill="#d71920">Santander</text>
+<text x="187" y="112" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#88919a">│ Open Academy</text>
+<text x="448" y="158" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#38424c">Certificado de conclusão para</text>
+<text x="448" y="196" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="24" fill="#111820">Lucas Martinez</text>
+<text x="448" y="284" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26" fill="#14191d">Prompting Responsável: Maximizar a IA no</text>
+<text x="448" y="321" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26" fill="#14191d">seu negócio</text>
+<text x="448" y="374" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#3b454f">Curso concluído em 24 de junho de 2025</text>
+<text x="448" y="417" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#3b454f">8 Horas | 2 Módulos | Autoavaliação</text>
+<text x="448" y="454" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#3b454f">Conteúdo desenvolvido por</text>
+<rect x="452" y="488" width="11" height="11" fill="#f25022"/><rect x="466" y="488" width="11" height="11" fill="#7fba00"/>
+<rect x="452" y="502" width="11" height="11" fill="#00a4ef"/><rect x="466" y="502" width="11" height="11" fill="#ffb900"/>
+<text x="485" y="508" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#57616c">Microsoft</text>
+<text x="585" y="509" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#87909b">|</text>
+<text x="609" y="509" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="24" fill="#4d526e">Founderz</text>
+<text x="48" y="571" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#4f5c66">Número de série: OA-2025-0624001279797</text>
+<text x="50" y="637" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#a1aeb8">PRÉVIA GRÁFICA BASEADA NO CERTIFICADO ENVIADO</text>
+<text x="1018" y="650" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#a4afb8">1/1</text>
+</svg>
