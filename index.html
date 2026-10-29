@@ -48,6 +48,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="experience-v7-original.css?v=7-original-repaired-1">
   <link rel="stylesheet" href="certifications.css">
+  <link rel="stylesheet" href="contact-shortcut.css?v=1">
   
   <script src="script.js" defer></script>
   <script src="experience-v7-original.js?v=7-original-repaired-2" defer></script>
@@ -523,9 +524,20 @@
     </section>
   </main>
 
+  <!-- Atalho fixo para a seção de contato: acessível por toque e teclado. -->
+  <a class="contact-fab" href="#contato" aria-label="Ir para a seção de contato">
+    <span class="contact-fab-dot" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 11.5h9M8 15h5"/></svg>
+    <span>Entrar em contato</span>
+  </a>
+
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand"><span class="logo-mark" aria-hidden="true">LM<span class="logo-dot">.</span></span><span>© <span id="year">2026</span> Lucas Martinez. Desenvolvido com propósito.</span></div>
+      <a class="footer-contact-link" href="#contato" aria-label="Ir para a seção de contato">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v12H8l-4 3V5Z"/><path d="M8 9h8M8 12h6"/></svg>
+        <span>Entrar em contato</span>
+      </a>
       <a href="#topo" class="back-top"><span>Voltar ao topo</span><span aria-hidden="true">↑</span></a>
     </div>
   </footer>
