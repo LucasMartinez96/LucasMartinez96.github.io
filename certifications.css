@@ -1,0 +1,43 @@
+/* Portfolio Lucas Martinez — DataCamp certificate card */
+.certifications{position:relative;overflow:hidden;background:radial-gradient(ellipse at 85% 20%,#102749 0%,#060e1e 48%,#050b16 100%)}
+.certifications .container{position:relative}
+.certifications-header{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:38px}
+.certifications-header h2{font:700 clamp(35px,4.4vw,62px)/1.08 var(--display);letter-spacing:-1.5px;color:var(--ice)}
+.certifications-header h2 span{color:var(--cyan)}
+.certifications-header .cert-subtitle{color:var(--muted);margin-top:16px;max-width:52ch;font:400 15px/1.75 var(--body)}
+.cert-kicker{color:#6bddff;font:500 11px/1.5 var(--mono);letter-spacing:.16em;margin-bottom:16px}
+.cert-kicker::before{content:"";display:inline-block;vertical-align:middle;width:20px;height:1px;background:#6bddff;margin-right:10px}
+.cert-counter{flex:none;display:flex;align-items:center;gap:12px;padding:16px 20px;border:1px solid #28527c;border-radius:5px;color:#b7d4ee;font:500 11px/1.5 var(--mono)}
+.cert-counter strong{font:700 32px/1 var(--display);color:#6bddff}
+.cert-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);overflow:hidden;border:1px solid #315779;border-radius:15px;background:linear-gradient(125deg,#0f2642,#07172d);box-shadow:0 24px 80px rgba(0,0,0,.25)}
+.cert-preview-wrap{position:relative;min-height:375px;display:grid;place-items:center;padding:32px 32px 48px;background:radial-gradient(ellipse,#1a3e67,#081a31 70%)}
+.cert-preview-link{display:block;width:100%;max-width:700px;outline-offset:5px;transform:perspective(1000px) rotateY(-4deg) rotateX(2deg);box-shadow:0 27px 55px rgba(0,0,0,.6);transition:transform .45s ease,box-shadow .45s ease}
+.cert-preview-link:hover,.cert-preview-link:focus-visible{transform:none;box-shadow:0 35px 72px rgba(0,0,0,.65),0 0 25px rgba(57,162,255,.3)}
+.cert-paper{position:relative;aspect-ratio:900/519;display:grid;grid-template-columns:25.5% 74.5%;overflow:hidden;background:#fcfaf2;color:#091c31;font-family:Arial,sans-serif}
+.cert-paper-left{background:#041a2d;display:grid;place-items:center}
+.cert-emblem{position:relative;width:45%;aspect-ratio:1;border:clamp(3px,.7vw,8px) solid #04ea70;border-right:0;border-radius:10px;transform:rotate(-6deg)}
+.cert-emblem::after{content:"";position:absolute;right:-45%;top:24%;width:76%;height:54%;border-bottom:clamp(4px,.7vw,9px) solid #04ea70;transform:rotate(-33deg)}
+.cert-paper-main{padding:5.3% 5% 3.8%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;min-width:0;position:relative}
+.cert-paper-main::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14;background:repeating-conic-gradient(from 0deg at 51% 55%,#aaa 0deg 1deg,transparent 2deg 18deg);mask-image:radial-gradient(ellipse at center,transparent 3%,#000 80%,transparent 100%)}
+.cert-paper-main>*{position:relative;z-index:1}
+.cert-paper-title{font:700 clamp(10px,1.57vw,23px)/1.15 var(--display);letter-spacing:.03em}
+.cert-paper-id{font:500 clamp(4px,.68vw,9px)/1 var(--mono);color:#34455d}
+.cert-paper-overline{font:500 clamp(5px,.92vw,14px)/1.15 var(--body);color:#7653d3;letter-spacing:.12em}
+.cert-paper-name{font:600 clamp(11px,1.86vw,29px)/1.15 var(--display);letter-spacing:-.03em;white-space:nowrap}
+.cert-paper-course{font:700 clamp(13px,2.35vw,36px)/1.2 var(--display)}
+.cert-paper-bottom{width:100%;display:flex;align-items:end;justify-content:space-between;gap:8px}
+.cert-paper-bottom strong{font:700 clamp(9px,1.4vw,22px)/1 var(--display)}
+.cert-paper-bottom small{font:500 clamp(5px,.8vw,11px)/1.3 var(--mono);color:#34455d}
+.cert-preview-label{position:absolute;left:12px;right:12px;bottom:15px;text-align:center;color:#91afce;font:500 10px/1.5 var(--mono)}
+.cert-details{min-width:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(26px,3.4vw,54px)}
+.cert-provider{font:600 11px/1.5 var(--mono);letter-spacing:.14em;color:#6dddff}
+.cert-details h3{margin:18px 0 14px;color:#f0f8ff;font:700 clamp(28px,3vw,46px)/1.1 var(--display);letter-spacing:-.02em}
+.cert-details-desc{font:400 15px/1.7 var(--body);color:#bfd0e1}
+.cert-stats{display:flex;flex-wrap:wrap;gap:9px;margin:23px 0 20px}
+.cert-stats span{border:1px solid #2b5479;background:#0d2946;padding:8px 11px;font:500 11px/1.4 var(--mono);color:#c5e5ff}
+.cert-note{font:400 12px/1.7 var(--body);color:#9ab3c9;border-left:2px solid #428bb6;padding-left:12px;margin-bottom:25px}
+.cert-details .btn{display:inline-flex;align-items:center;gap:9px}
+.cert-details .btn svg{width:16px;height:16px;flex:none}
+@media(max-width:1080px){.cert-row{grid-template-columns:1fr}.cert-preview-wrap{min-height:0}.cert-preview-link{transform:none}.cert-details{padding:32px 38px}.cert-paper-title{font-size:clamp(11px,2.9vw,28px)}.cert-paper-overline{font-size:clamp(8px,1.8vw,17px)}.cert-paper-name{font-size:clamp(14px,3.2vw,32px)}.cert-paper-course{font-size:clamp(15px,3.6vw,39px)}.cert-paper-bottom strong{font-size:clamp(10px,2.2vw,25px)}}
+@media(max-width:640px){.certifications{padding:74px 0}.certifications-header{display:block;margin-bottom:25px}.certifications-header h2{font-size:clamp(34px,9vw,44px)}.certifications-header .cert-subtitle{font-size:14px}.cert-counter{display:inline-flex;margin-top:20px}.cert-preview-wrap{padding:17px 13px 32px}.cert-preview-label{font-size:8px;bottom:8px}.cert-paper-title{font-size:clamp(7px,2vw,14px)}.cert-paper-id{font-size:4px}.cert-paper-overline{font-size:clamp(5px,1.5vw,10px)}.cert-paper-name{font-size:clamp(9px,2.55vw,18px)}.cert-paper-course{font-size:clamp(10px,3vw,20px)}.cert-paper-bottom strong{font-size:clamp(8px,2vw,14px)}.cert-paper-bottom small{font-size:5px}.cert-details{padding:27px 23px}.cert-details h3{font-size:34px}.cert-details-desc{font-size:14px}.cert-details .btn{width:100%;justify-content:center}.cert-stats span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.cert-preview-link{transform:none!important;transition:none!important}}
