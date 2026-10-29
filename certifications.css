@@ -41,3 +41,12 @@
 @media(max-width:1080px){.cert-row{grid-template-columns:1fr}.cert-preview-wrap{min-height:0}.cert-preview-link{transform:none}.cert-details{padding:32px 38px}.cert-paper-title{font-size:clamp(11px,2.9vw,28px)}.cert-paper-overline{font-size:clamp(8px,1.8vw,17px)}.cert-paper-name{font-size:clamp(14px,3.2vw,32px)}.cert-paper-course{font-size:clamp(15px,3.6vw,39px)}.cert-paper-bottom strong{font-size:clamp(10px,2.2vw,25px)}}
 @media(max-width:640px){.certifications{padding:74px 0}.certifications-header{display:block;margin-bottom:25px}.certifications-header h2{font-size:clamp(34px,9vw,44px)}.certifications-header .cert-subtitle{font-size:14px}.cert-counter{display:inline-flex;margin-top:20px}.cert-preview-wrap{padding:17px 13px 32px}.cert-preview-label{font-size:8px;bottom:8px}.cert-paper-title{font-size:clamp(7px,2vw,14px)}.cert-paper-id{font-size:4px}.cert-paper-overline{font-size:clamp(5px,1.5vw,10px)}.cert-paper-name{font-size:clamp(9px,2.55vw,18px)}.cert-paper-course{font-size:clamp(10px,3vw,20px)}.cert-paper-bottom strong{font-size:clamp(8px,2vw,14px)}.cert-paper-bottom small{font-size:5px}.cert-details{padding:27px 23px}.cert-details h3{font-size:34px}.cert-details-desc{font-size:14px}.cert-details .btn{width:100%;justify-content:center}.cert-stats span{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.cert-preview-link{transform:none!important;transition:none!important}}
+
+/* Seis links de navegação sem cortes em notebooks médios. */
+@media(min-width:901px) and (max-width:1140px){
+ .desktop-nav{gap:0}
+ .desktop-nav a{padding:10px 8px;font-size:12px}
+ .header-inner{gap:12px}
+ .logo-word{display:none}
+ .header-github{padding:10px 12px}
+}
