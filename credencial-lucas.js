@@ -41,7 +41,7 @@
             <div class="lm-credential-flipper">
               <div class="lm-credential-face lm-credential-front">
                 <div class="lm-credential-topline"><span class="lm-gh-sign">◉</span><span>DEVELOPER / TECHNOLOGY</span><span class="lm-pixel-pips">▪ ▪ ▪</span></div>
-                <img src="assets/lucas-credencial-retrato.svg" alt="Retrato de Lucas Martinez" class="lm-credential-portrait" loading="lazy"/>
+                <img src="assets/lucas-credencial-retrato.svg?v=4" alt="Retrato de Lucas Martinez" class="lm-credential-portrait" loading="lazy"/>
                 <div class="lm-credential-fade"></div>
                 <div class="lm-credential-front-text">
                   <div class="lm-credential-chip"><span></span> DIGITAL IDENTITY</div>
