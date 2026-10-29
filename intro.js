@@ -54,6 +54,7 @@
   function buildIntro() {
     const el = document.createElement('div');
     el.className = 'lm-intro';
+    el.tabIndex = -1;
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-modal', 'true');
     el.setAttribute('aria-label', 'Animação de abertura: Lucas Martinez, programação em Java');
@@ -63,7 +64,6 @@
       <div class="lm-intro-grid" aria-hidden="true"></div>
       <header class="lm-intro-top">
         <span class="lm-intro-logo">LM<span>.</span> <small>/ CODE EXPERIENCE</small></span>
-        <button class="lm-intro-skip" type="button">PULAR INTRO <span aria-hidden="true">↗</span></button>
       </header>
       <main class="lm-intro-stage">
         <div class="lm-intro-copy">
@@ -138,13 +138,11 @@
     document.body.appendChild(overlay);
     document.body.classList.add('lm-intro-active');
     document.documentElement.classList.add('lm-intro-active');
-    overlay.querySelector('.lm-intro-skip').addEventListener('click', () => closeIntro());
     overlay.addEventListener('keydown', e => {
       if (e.key === 'Escape') { e.preventDefault(); closeIntro(); }
-      // Armadilha de foco: durante a abertura o único controle interativo é Pular.
-      if (e.key === 'Tab') { e.preventDefault(); overlay?.querySelector('.lm-intro-skip')?.focus(); }
+      if (e.key === 'Tab') e.preventDefault();
     });
-    overlay.querySelector('.lm-intro-skip').focus({ preventScroll: true });
+    overlay.focus({ preventScroll: true });
     const codeNode = overlay.querySelector('#lm-intro-code');
     const statusNode = overlay.querySelector('#lm-intro-status');
     const command = overlay.querySelector('#lm-intro-command');
