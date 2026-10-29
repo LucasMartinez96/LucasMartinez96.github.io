@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#070d18">
+<title>Forno &amp; Estoque — Lucas Martinez | Estudo de caso</title>
+<meta name="description" content="Forno & Estoque: gestão de insumos de pizzaria, compras inteligentes, estoque mínimo e máximo e avisos automáticos pelo Telegram. Projeto de Lucas Martinez.">
+<link rel="canonical" href="https://lucasmartinez96.github.io/forno-estoque.html">
+<style>
+:root{color-scheme:dark;--bg:#070d18;--ink:#f3f7ff;--dim:#b9c8df;--orange:#ff9556}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+header{position:sticky;top:0;z-index:5;background:#070d18e8;border-bottom:1px solid #263d58;backdrop-filter:blur(14px)}
+.nav{max-width:1160px;margin:auto;padding:15px 22px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.logo{font-weight:850;font-size:21px;text-decoration:none}.logo span{color:#76e0ff}
+.back{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #365474;border-radius:999px;font-size:13px;text-decoration:none}
+.back:hover,.back:focus-visible{border-color:#7ad6ff;color:#fff}
+main{max-width:1160px;margin:auto;padding:64px 22px 95px}
+.eyebrow{color:var(--orange);letter-spacing:.17em;font:700 12px/1.4 ui-monospace,monospace}
+h1{font-size:clamp(46px,8.2vw,101px);line-height:1.02;margin:15px 0 21px;letter-spacing:-.065em}
+h1 em{font-style:normal;color:var(--orange)}
+.lead{font-size:clamp(17px,2vw,21px);line-height:1.65;color:var(--dim);max-width:820px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none;margin:24px 0 0}
+.tags li{font-size:12px;letter-spacing:.04em;padding:9px 12px;border:1px solid #4e5264;border-radius:50px;color:#f3c1a3}
+.art{margin:45px 0 24px;background:#19110d;border:1px solid #58443a;border-radius:19px;overflow:hidden;box-shadow:0 38px 85px #0008}
+.art img{display:block;width:100%;height:auto}
+figcaption{color:#a7b6cf;font-size:12px;line-height:1.5;margin-top:12px}
+h2{font-size:clamp(27px,3vw,39px);margin:50px 0 19px;letter-spacing:-.035em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#111e30;border:1px solid #2b4161;border-radius:15px;padding:26px}
+.card strong{display:block;color:#ffae7b;font-size:12px;letter-spacing:.1em;margin-bottom:12px}
+.card p{line-height:1.7;color:#d0dced;margin:0;font-size:14px}
+.copy{margin-top:40px;line-height:1.75;color:#c1cfdf;max-width:820px}
+.privacy{margin-top:34px;padding:19px 22px;border-left:3px solid var(--orange);background:#101b2c;font-size:13px;line-height:1.7;color:#bbcadc}
+footer{border-top:1px solid #263d58;padding:30px 22px;text-align:center;color:#91a5c5;font-size:13px}
+footer a{color:#80daff}
+@media(max-width:740px){main{padding:35px 16px 55px}.grid{grid-template-columns:1fr}.nav{padding:12px 16px}.art{margin-top:27px}.card{padding:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head>
+<body>
+<header><nav class="nav" aria-label="Navegação"><a class="logo" href="./#experiencia">LM<span>.</span></a><a class="back" href="./#projeto-forno-estoque">← Voltar ao portfólio</a></nav></header>
+<main>
+<p class="eyebrow">LUCAS MARTINEZ / PROJETO INDEPENDENTE</p>
+<h1>Forno &amp; <em>Estoque.</em></h1>
+<p class="lead">Transformando uma necessidade real em tecnologia. Um sistema de gestão de insumos pensado para uma operação de pizzaria, com controle de saldos, regras de reposição e alertas automáticos pelo Telegram.</p>
+<ul class="tags"><li>React</li><li>TypeScript</li><li>API REST</li><li>Supabase / PostgreSQL</li><li>Telegram Bot</li><li>Render</li></ul>
+<figure class="art"><img src="assets/forno-estoque-apresentacao.jpg" alt="Apresentação de seis telas do Forno & Estoque: catálogo de insumos, controle de estoque, lista de compras, avisos no Telegram e tecnologias" width="1254" height="1254"><figcaption>Apresentação visual fornecida pelo autor: interface, controle de estoque, lista de compras e notificações.</figcaption></figure>
+<h2>Do estoque manual à gestão inteligente</h2>
+<section class="grid" aria-label="Principais soluções">
+<article class="card"><strong>01 · ORGANIZAÇÃO</strong><p>Cadastro de produtos, categorias e fornecedores, com controle das quantidades disponíveis, custos e movimentações.</p></article>
+<article class="card"><strong>02 · COMPRAS INTELIGENTES</strong><p>Configuração de estoque mínimo e máximo. A lista de compras sugere as quantidades necessárias para reposição.</p></article>
+<article class="card"><strong>03 · ALERTAS AUTOMÁTICOS</strong><p>Quando um insumo alcança o estoque mínimo, a integração com Telegram envia os saldos e a quantidade sugerida para compra.</p></article>
+</section>
+<h2>O que desenvolvi</h2>
+<p class="copy">O projeto reúne frontend, API, banco de dados e automações numa ferramenta voltada à rotina de uma pizzaria. A proposta vai além do cadastro de produtos: ajuda a monitorar o que existe no estoque, identificar necessidades de reposição e organizar as próximas compras. O desenvolvimento também envolveu tecnologias de interface, regras de negócio, integração com Telegram, deploy e versionamento.</p>
+<p class="privacy">Este estudo de caso usa somente a apresentação visual e as informações fornecidas pelo autor. O repositório de desenvolvimento é privado; não publico aqui código-fonte, credenciais ou dados internos.</p>
+</main>
+<footer>Desenvolvido por Lucas Martinez · <a href="./#contato">Entrar em contato</a> · <a href="./">Voltar ao portfólio</a></footer>
+</body></html>

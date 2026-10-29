@@ -49,6 +49,7 @@
   <link rel="stylesheet" href="experience-v7-original.css?v=7-original-repaired-1">
   <link rel="stylesheet" href="certifications.css">
   <link rel="stylesheet" href="contact-shortcut.css?v=1">
+  <link rel="stylesheet" href="forno-estoque.css?v=1">
   
   <script src="script.js" defer></script>
   <script src="experience-v7-original.js?v=7-original-repaired-2" defer></script>
@@ -148,16 +149,17 @@
         <div class="section-heading">
           <div>
             <h2 id="projects-title" class="scan" data-reveal>Projetos em <span class="accent">destaque.</span></h2>
-            <p data-reveal>Cinco projetos visuais de software aplicado. Abra os detalhes para conhecer o problema e a solução de cada um.</p>
+            <p data-reveal>Seis projetos de tecnologia aplicada, entre dashboards operacionais e sistemas independentes. Abra os detalhes para conhecer o problema e a solução de cada um.</p>
           </div>
-          <div class="index-badge" data-reveal><span>5</span><small>projetos<br>visuais</small></div>
+          <div class="index-badge" data-reveal><span>6</span><small>projetos<br>visuais</small></div>
         </div>
 
         <div class="filter-row" role="group" aria-label="Filtrar projetos" data-reveal>
-          <button class="filter-chip active" type="button" data-filter="todos" aria-pressed="true">Todos <small>5</small></button>
+          <button class="filter-chip active" type="button" data-filter="todos" aria-pressed="true">Todos <small>6</small></button>
           <button class="filter-chip" type="button" data-filter="dashboards" aria-pressed="false">Dashboards <small>3</small></button>
           <button class="filter-chip" type="button" data-filter="3d" aria-pressed="false">Ambientes 3D <small>2</small></button>
-          <button class="filter-chip" type="button" data-filter="dados" aria-pressed="false">Dados e IA <small>4</small></button>
+          <button class="filter-chip" type="button" data-filter="dados" aria-pressed="false">Dados e IA <small>5</small></button>
+          <button class="filter-chip" type="button" data-filter="sistemas" aria-pressed="false">Sistemas web <small>1</small></button>
         </div>
         <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
 
@@ -268,6 +270,32 @@
                   <div><dt>Abordagem</dt><dd>Exploração de resumos e gráficos, com visualização inteligente dos indicadores.</dd></div>
                   <div><dt>Entrega</dt><dd>Um formato de leitura analítica, em estilo de jornal, para acompanhar a operação.</dd></div>
                                   <div><dt>Detalhe da experiência</dt><dd>Organização de sínteses e gráficos em uma narrativa visual de acompanhamento operacional.</dd></div>
+                </dl></div></div>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Projeto independente: Forno & Estoque — imagens de demonstração, sem código privado -->
+          <article class="card is-featured" id="projeto-forno-estoque" data-tags="sistemas dados" data-reveal="depth">
+            <div class="card-tilt">
+              <a class="card-media" href="forno-estoque.html" aria-label="Conhecer o projeto Forno & Estoque">
+                <img src="assets/forno-estoque-apresentacao.jpg" alt="Apresentação do Forno & Estoque com catálogo de insumos, controle de estoque, lista de compras e alertas por Telegram" loading="lazy" decoding="async" width="1254" height="1254">
+                <span class="zoom-indicator" aria-hidden="true"><span>Conhecer projeto</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M8 6h10v10"/></svg></span>
+              </a>
+              <div class="card-body">
+                <p class="card-cat">Projeto independente · Sistema web</p>
+                <h3>Forno &amp; Estoque <span class="card-sub">Gestão inteligente para pizzaria</span></h3>
+                <p class="card-desc">Sistema para transformar o controle manual de insumos em uma gestão organizada, com estoque mínimo e máximo, lista de compras e avisos automáticos de reposição pelo Telegram.</p>
+                <ul class="tag-list"><li>React</li><li>TypeScript</li><li>Supabase</li><li>Telegram Bot</li></ul>
+                <a class="forno-case-link" href="forno-estoque.html"><span>Explorar estudo de caso</span><span aria-hidden="true">↗</span></a>
+                <button type="button" class="case-toggle" aria-expanded="false" aria-controls="case-forno-estoque"><span>Ver detalhes</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" d="M6 9l6 6 6-6"/></svg></button>
+                <div class="case" id="case-forno-estoque"><div class="case-inner"><dl>
+                  <div><dt>Desafio</dt><dd>Organizar o estoque de uma pizzaria e facilitar a reposição dos insumos antes de faltar produto.</dd></div>
+                  <div><dt>Funcionalidades</dt><dd>Produtos, categorias, fornecedores, custos, movimentações, quantidades mínimas e máximas e histórico de estoque.</dd></div>
+                  <div><dt>Automação</dt><dd>Quando o item atinge o estoque mínimo, um bot do Telegram envia os saldos, os limites e a quantidade sugerida para compra.</dd></div>
+                  <div><dt>Tecnologias</dt><dd>React, TypeScript, API REST, Supabase/PostgreSQL, Telegram Bot, Render e Git/GitHub.</dd></div>
+                  <div><dt>Privacidade</dt><dd>Projeto apresentado por imagens; código-fonte e integrações privadas não são disponibilizados aqui.</dd></div>
                 </dl></div></div>
               </div>
             </div>

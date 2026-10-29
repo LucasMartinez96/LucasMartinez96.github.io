@@ -1,0 +1,13 @@
+/* Destaque Forno & Estoque — separado da paleta corporativa do restante do portfólio. */
+#projeto-forno-estoque .card-cat{color:#ffae79}
+#projeto-forno-estoque .card-tilt{border-color:rgba(240,118,48,.34)}
+#projeto-forno-estoque .card-tilt:hover{box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 34px rgba(235,105,40,.12)}
+#projeto-forno-estoque .card-media{display:block;background:#19100c;cursor:pointer}
+#projeto-forno-estoque .card-media img{object-fit:contain;background:#19100c}
+#projeto-forno-estoque .card-media:focus-visible{outline:3px solid #ffaa77;outline-offset:2px}
+#projeto-forno-estoque .tag-list li{border-color:rgba(240,118,48,.3)}
+#projeto-forno-estoque .forno-case-link{display:inline-flex;align-items:center;gap:10px;margin-top:23px;margin-bottom:6px;padding:10px 15px;border:1px solid rgba(250,141,82,.58);border-radius:9px;color:#ffbf94;text-decoration:none;font:600 13px/1.35 var(--body,system-ui,sans-serif);transition:color .2s,background .2s,border-color .2s}
+#projeto-forno-estoque .forno-case-link:hover{color:#fff;background:rgba(245,119,48,.16);border-color:#ffae79}
+#projeto-forno-estoque .forno-case-link:focus-visible{outline:3px solid #ffc89f;outline-offset:3px}
+#projeto-forno-estoque .forno-case-link span:last-child{font-size:18px}
+@media(prefers-reduced-motion:reduce){#projeto-forno-estoque .forno-case-link{transition:none}}
