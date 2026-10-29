@@ -13,10 +13,9 @@
         <span class="lm-credential-eyebrow"><span class="lm-credential-led"></span> IDENTIDADE DIGITAL // 01</span>
         <h2 id="lm-credential-title">Muito além de um <span>crachá.</span></h2>
         <p class="lm-credential-lead">Uma credencial interativa para quem transforma desafios em soluções de software, automação e inteligência artificial.</p>
-        <p>Segure o crachá e movimente-o. Toque para girar e descubra, no verso, um QR Code que abre meu GitHub.</p>
-        <div class="lm-credential-features"><span>◈ 3D interativo</span><span>↔ Arraste ou toque</span><span>▦ QR real</span></div>
+        <p>Puxe, arraste e solte o crachá. Movimente-o para os lados para virar e descobrir o QR Code do GitHub.</p>
+        <div class="lm-credential-features"><span>◈ Física interativa</span><span>↔ Puxe e gire</span><span>▦ QR real</span></div>
         <div class="lm-credential-actions">
-          <button id="lm-credential-flip" type="button" class="lm-credential-action lm-credential-action-primary" aria-controls="lm-credential-card">Ver verso ↻</button>
           <a href="https://github.com/LucasMartinez96" class="lm-credential-action" target="_blank" rel="noopener noreferrer">Acessar GitHub ↗</a>
         </div>
       </div>
@@ -57,7 +56,7 @@
                 <div class="lm-credential-back-top"><span>LM / PORTFOLIO</span><span>↗</span></div>
                 <h3>LET'S BUILD<br><span>TOGETHER.</span></h3>
                 <div class="lm-credential-qr-frame">
-                  <svg id="lm-credential-qr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" role="img" aria-label="QR Code para github.com/LucasMartinez96" shape-rendering="crispEdges"></svg>
+                  <svg id="lm-credential-qr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" role="img" aria-label="QR Code para github.com/LucasMartinez96" shape-rendering="crispEdges"></svg>
                 </div>
                 <p class="lm-credential-qr-caption">ESCANEIE PARA ACESSAR MEU GITHUB</p>
                 <strong class="lm-credential-url">github.com/LucasMartinez96</strong>
@@ -66,69 +65,160 @@
             </div>
           </div>
         </div>
-        <div class="lm-credential-scene-note" aria-hidden="true">INTERACTIVE ID · FRONT / BACK</div>
+        <div class="lm-credential-scene-note" aria-hidden="true">SEGURE · PUXE · GIRE · SOLTE</div>
       </div>
     </div>`;
   hero.insertAdjacentElement("afterend", sec);
   // Matriz QR veficada por decodificação real: https://github.com/LucasMartinez96
-  const matrix = atob("AAAAAAAAAAAAAAAAAAAAAAAAAP5ss/gEEHpQQC6JNLoBdH5l0Aun6C6AQVspBAP6qq/gAABNAACWuc0AA28YUkAqggc8Aat1YWAFc4XlgFhcZgAByKGv4B0z7coAppfJEANHQXpAI+85ZgAQOZswCiAx+gAAdnxcA/laKkAQUrEfALpCz4gF1/DfgC6cPjoBBKH5IA/pVP0AAAAAAAAAAAAAAAAAAAAAAAAAAA==");
+  const matrix = atob("AAAAAAAAAAAAAAAAAAAAAAAAAAAA/m4iP4BBR6sQQC6LfougF1wgBdALrvba6AQRTXkEA/qqqv4AASYxAABehlptAE51GYcAKeD7e+ADilk6YA92nusAByp+sJABnZcG2AHIJ6atAE7yevgAPhjnFQAmm0x1oBi5hInACqnyzVAFolxW0AIplIeWAQkQgMUA99B5+YAASSTFAD+PH+qAEFskMfALry/fiAXV22aUAug7JX4BBRGGvwD+VQCYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==");
   const qr = sec.querySelector("#lm-credential-qr");
   let path = "";
-  for (let i = 0; i < 1369; i++) {
-    if (matrix.charCodeAt(i >> 3) & (128 >> (i % 8))) path += "M" + (i % 37) + " " + ((i / 37) | 0) + "h1v1h-1z";
+  for (let i = 0; i < 1681; i++) {
+    if (matrix.charCodeAt(i >> 3) & (128 >> (i % 8))) path += "M" + (i % 41) + " " + ((i / 41) | 0) + "h1v1h-1z";
   }
-  qr.innerHTML = '<rect width="37" height="37" fill="#fff"/><path fill="#061329" d="' + path + '"/>';
-  const card = sec.querySelector("#lm-credential-card"), button = sec.querySelector("#lm-credential-flip");
-  const scene = sec.querySelector(".lm-credential-scene");
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let flipped = false, dragging = false, startX = 0, startY = 0;
-  let targetX = 0, targetY = 0, nowX = 0, nowY = 0, frame = 0;
-  function animate() {
-    nowX += (targetX - nowX) * .15;
-    nowY += (targetY - nowY) * .15;
-    card.style.setProperty("--lm-rx", nowX.toFixed(2) + "deg");
-    card.style.setProperty("--lm-ry", nowY.toFixed(2) + "deg");
-    if (Math.abs(nowX - targetX) > .05 || Math.abs(nowY - targetY) > .05) frame = requestAnimationFrame(animate);
-    else frame = 0;
+  qr.innerHTML = '<rect width="41" height="41" fill="#fff"/><path fill="#061329" d="' + path + '"/>';
+
+  (function(){
+  const strap=sec.querySelector(".lm-credential-strap");
+  strap.setAttribute("viewBox","0 0 360 640");
+  strap.innerHTML=`
+    <defs>
+      <linearGradient id="lm-band-material" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#010f22"/>
+        <stop offset=".28" stop-color="#0a72bc"/>
+        <stop offset=".48" stop-color="#133d72"/>
+        <stop offset=".85" stop-color="#041e3b"/>
+        <stop offset="1" stop-color="#031122"/>
+      </linearGradient>
+    </defs>
+    <path id="lm-band-left" stroke="url(#lm-band-material)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path id="lm-band-right" stroke="url(#lm-band-material)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path id="lm-band-left-stitch" stroke="#249ff2" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity=".7"/>
+    <path id="lm-band-right-stitch" stroke="#249ff2" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity=".7"/>
+    <text class="lm-strap-lettering" fill="#def3ff" font-size="12" font-weight="700" font-family="Arial,sans-serif" letter-spacing="1">
+      <textPath href="#lm-band-left" startOffset="8%">LUCAS MARTINEZ · LUCAS MARTINEZ</textPath>
+    </text>
+    <text class="lm-strap-lettering" fill="#def3ff" font-size="12" font-weight="700" font-family="Arial,sans-serif" letter-spacing="1">
+      <textPath href="#lm-band-right" startOffset="8%">LUCAS MARTINEZ · LUCAS MARTINEZ</textPath>
+    </text>
+    <g id="lm-badge-buckle" transform="translate(180,166)">
+      <rect x="-20" y="-17" width="40" height="40" rx="12" fill="#152236" stroke="#8bbfe6" stroke-width="2.5"/>
+      <rect x="-14" y="-12" width="28" height="27" rx="8" fill="#030b19" stroke="#b5d0eb" stroke-width="2"/>
+      <path d="M-9 18H9" fill="none" stroke="#a8cde9" stroke-width="3"/>
+    </g>`;
+  const left=strap.querySelector("#lm-band-left");
+  const right=strap.querySelector("#lm-band-right");
+  const stitchLeft=strap.querySelector("#lm-band-left-stitch");
+  const stitchRight=strap.querySelector("#lm-band-right-stitch");
+  const buckle=strap.querySelector("#lm-badge-buckle");
+  const card=sec.querySelector("#lm-credential-card");
+  const scene=sec.querySelector(".lm-credential-scene");
+  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const state={x:0,y:0,vx:0,vy:0,angle:0,va:0,snap:0,pitch:0,roll:0,dragging:false,visible:true,startX:0,startY:0,baseX:0,baseY:0,baseAngle:0,wantedX:0,wantedY:0,wantedAngle:0,moved:0,pointer:null};
+  let raf=0,lastFrame=0;
+  const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+  function spring(position,velocity,goal,strength,damping,delta){
+    velocity+=((goal-position)*strength-velocity*damping)*delta;
+    position+=velocity*delta;
+    return [position,velocity];
   }
-  const redraw = () => { if (!frame) frame = requestAnimationFrame(animate); };
-  function flip() {
-    flipped = !flipped;
-    card.classList.toggle("is-flipped", flipped);
-    card.setAttribute("aria-pressed", String(flipped));
-    card.setAttribute("aria-label", flipped ? "Girar crachá e mostrar a frente" : "Girar crachá e mostrar o verso");
-    button.textContent = flipped ? "Ver frente ↺" : "Ver verso ↻";
+  function render(time){
+    const s=state,bend=reduced?0:Math.sin(time*.0013)*2.8;
+    const x=s.x,y=s.y,w=x*.22+s.vx*.14+bend;
+    const lx=180+x-10,rx=180+x+10,endY=164+y;
+    const d1="M133 -20 C"+(132+w*.24).toFixed(1)+" 45 "+(156+x*.6+w*.35).toFixed(1)+" "+(endY-40).toFixed(1)+" "+lx.toFixed(1)+" "+endY.toFixed(1);
+    const d2="M227 -20 C"+(225+w*.24).toFixed(1)+" 45 "+(202+x*.6+w*.3).toFixed(1)+" "+(endY-40).toFixed(1)+" "+rx.toFixed(1)+" "+endY.toFixed(1);
+    left.setAttribute("d",d1);right.setAttribute("d",d2);
+    stitchLeft.setAttribute("d",d1);stitchRight.setAttribute("d",d2);
+    buckle.setAttribute("transform","translate("+(180+x).toFixed(1)+","+(164+y).toFixed(1)+") rotate("+(s.roll*.6).toFixed(1)+")");
+    card.style.setProperty("--lm-x",x.toFixed(2)+"px");
+    card.style.setProperty("--lm-y",y.toFixed(2)+"px");
+    card.style.setProperty("--lm-rx",s.pitch.toFixed(2)+"deg");
+    card.style.setProperty("--lm-rz",s.roll.toFixed(2)+"deg");
+    card.style.setProperty("--lm-spin",s.angle.toFixed(2)+"deg");
   }
-  button.addEventListener("click", flip);
-  card.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); flip(); } });
-  card.addEventListener("pointerdown", ev => {
-    if (ev.pointerType !== "touch" && ev.button !== 0) return;
-    dragging = true; startX = ev.clientX; startY = ev.clientY;
-    card.setPointerCapture(ev.pointerId);
-    card.classList.add("is-dragging");
-  });
-  card.addEventListener("pointermove", ev => {
-    if (reduced) return;
-    if (dragging) {
-      targetY = Math.max(-19, Math.min(19, (ev.clientX - startX) * .17));
-      targetX = Math.max(-14, Math.min(14, -(ev.clientY - startY) * .14));
-    } else if (ev.pointerType === "mouse") {
-      const r = card.getBoundingClientRect();
-      targetY = ((ev.clientX - r.left) / r.width - .5) * 17;
-      targetX = -((ev.clientY - r.top) / r.height - .5) * 13;
+  function step(time){
+    raf=0;
+    if(!state.visible||document.hidden){lastFrame=0;return;}
+    const dt=lastFrame?clamp((time-lastFrame)/1000,.001,.033):.016;
+    lastFrame=time;
+    for(let k=0;k<2;k++){
+      const d=dt/2,s=state;
+      const wind=reduced?0:Math.sin(time*.0009)*1.3;
+      const gx=s.dragging?s.wantedX:wind;
+      const gy=s.dragging?s.wantedY:0;
+      const ga=s.dragging?s.wantedAngle:s.snap;
+      [s.x,s.vx]=spring(s.x,s.vx,gx,s.dragging?120:19,s.dragging?19:4.6,d);
+      [s.y,s.vy]=spring(s.y,s.vy,gy,s.dragging?130:25,s.dragging?20:6.1,d);
+      [s.angle,s.va]=spring(s.angle,s.va,ga,s.dragging?100:35,s.dragging?16:8,d);
+      s.pitch+=((s.dragging?clamp(-s.wantedY*.11,-14,14):0)-s.pitch)*Math.min(1,d*15);
+      const desiredRoll=clamp(-s.x*.1-s.vx*.09,-18,18);
+      s.roll+=(desiredRoll-s.roll)*Math.min(1,d*14);
+      const maxX=Math.min(150,Math.max(42,(scene.clientWidth-300)*.5));
+      s.x=clamp(s.x,-maxX-15,maxX+15);
+      s.y=clamp(s.y,-70,140);
     }
-    redraw();
-  });
-  card.addEventListener("pointerup", ev => {
-    if (!dragging) return;
-    dragging = false; card.classList.remove("is-dragging");
-    const dx = ev.clientX - startX, dy = ev.clientY - startY;
-    if (Math.abs(dx) > 50 || (Math.abs(dx) < 8 && Math.abs(dy) < 8)) flip();
-    targetX = targetY = 0; redraw();
-  });
-  card.addEventListener("pointercancel", () => { dragging = false; card.classList.remove("is-dragging"); targetX = targetY = 0; redraw(); });
-  card.addEventListener("pointerleave", () => { if (!dragging) { targetX = targetY = 0; redraw(); } });
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(entries => { scene.classList.toggle("is-visible", entries[0].isIntersecting); }, { threshold: .05 }).observe(scene);
+    render(time);
+    raf=requestAnimationFrame(step);
   }
+  function run(){if(!raf&&state.visible&&!document.hidden){lastFrame=0;raf=requestAnimationFrame(step);}}
+  function label(){
+    const back=Math.abs(Math.round(state.snap/180)%2)===1;
+    card.setAttribute("aria-pressed",String(back));
+    card.setAttribute("aria-label",back?"Girar crachá para ver a frente":"Girar crachá para ver o verso");
+  }
+  function toggle(){
+    state.snap=Math.round(state.snap/180)*180+180;
+    state.wantedAngle=state.snap;
+    label();run();
+  }
+  card.addEventListener("pointerdown",e=>{
+    if(e.pointerType!=="touch"&&e.button!==0)return;
+    e.preventDefault();
+    const s=state;s.dragging=true;s.pointer=e.pointerId;
+    s.startX=e.clientX;s.startY=e.clientY;
+    s.baseX=s.x;s.baseY=s.y;s.baseAngle=s.snap;
+    s.wantedX=s.x;s.wantedY=s.y;s.wantedAngle=s.snap;s.moved=0;
+    card.classList.add("is-dragging");
+    card.setPointerCapture(e.pointerId);
+    run();
+  });
+  card.addEventListener("pointermove",e=>{
+    if(!state.dragging||e.pointerId!==state.pointer)return;
+    const s=state,dx=e.clientX-s.startX,dy=e.clientY-s.startY;
+    s.moved=Math.max(s.moved,Math.hypot(dx,dy));
+    const maxX=Math.min(150,Math.max(42,(scene.clientWidth-300)*.5));
+    s.wantedX=clamp(s.baseX+dx*.92,-maxX,maxX);
+    s.wantedY=clamp(s.baseY+dy*.72,-68,135);
+    s.wantedAngle=s.baseAngle+dx*1.4;
+  });
+  function finish(e,cancelled=false){
+    const s=state;
+    if(!s.dragging||s.pointer!==e.pointerId)return;
+    s.dragging=false;s.pointer=null;
+    card.classList.remove("is-dragging");
+    if(!cancelled&&s.moved<9)toggle();
+    else if(!cancelled){const spin=s.baseAngle+(e.clientX-s.startX)*1.4;s.snap=Math.round(spin/180)*180;}
+    else{s.snap=Math.round(s.angle/180)*180;}
+    label();
+    try{if(card.hasPointerCapture(e.pointerId))card.releasePointerCapture(e.pointerId);}catch(_){}
+    run();
+  }
+  card.addEventListener("pointerup",e=>finish(e));
+  card.addEventListener("pointercancel",e=>finish(e,true));
+  card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}});
+  card.setAttribute("aria-label","Puxe ou toque no crachá para girar e ver o verso");
+  card.setAttribute("aria-description","Arraste lateralmente para girar, solte para ver o balanço e toque para alternar o lado");
+  card.setAttribute("aria-pressed","false");
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(entries=>{
+      state.visible=entries[0].isIntersecting;
+      scene.classList.toggle("is-visible",state.visible);
+      if(state.visible)run();
+      else if(raf){cancelAnimationFrame(raf);raf=0;}
+    },{threshold:.025}).observe(scene);
+  }
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden)run();});
+  render(0);run();
+})();
 })();
