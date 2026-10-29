@@ -63,7 +63,6 @@
             </div>
           </div>
         </div>
-        <div class="lm-credential-scene-note" aria-hidden="true">SEGURE · PUXE · GIRE · SOLTE</div>
       </div>
     </div>`;
   hero.insertAdjacentElement("afterend", sec);
@@ -146,15 +145,17 @@
       const gx=s.dragging?s.wantedX:wind;
       const gy=s.dragging?s.wantedY:0;
       const ga=s.dragging?s.wantedAngle:s.snap;
-      [s.x,s.vx]=spring(s.x,s.vx,gx,s.dragging?120:19,s.dragging?19:4.6,d);
-      [s.y,s.vy]=spring(s.y,s.vy,gy,s.dragging?130:25,s.dragging?20:6.1,d);
-      [s.angle,s.va]=spring(s.angle,s.va,ga,s.dragging?100:35,s.dragging?16:8,d);
+      [s.x,s.vx]=spring(s.x,s.vx,gx,s.dragging?125:24,s.dragging?18:4.0,d);
+      [s.y,s.vy]=spring(s.y,s.vy,gy,s.dragging?150:44,s.dragging?16:3.4,d);
+      [s.angle,s.va]=spring(s.angle,s.va,ga,s.dragging?110:44,s.dragging?14:6.4,d);
       s.pitch+=((s.dragging?clamp(-s.wantedY*.11,-14,14):0)-s.pitch)*Math.min(1,d*15);
       const desiredRoll=clamp(-s.x*.1-s.vx*.09,-18,18);
       s.roll+=(desiredRoll-s.roll)*Math.min(1,d*14);
       const maxX=Math.min(150,Math.max(42,(scene.clientWidth-300)*.5));
       s.x=clamp(s.x,-maxX-15,maxX+15);
-      s.y=clamp(s.y,-70,140);
+      s.y=clamp(s.y,-62,125);
+      if(s.y<=-62&&s.vy<0)s.vy=-s.vy*.2;
+      if(s.y>=125&&s.vy>0)s.vy=-s.vy*.15;
     }
     render(time);
     raf=requestAnimationFrame(step);
@@ -198,6 +199,17 @@
     if(!cancelled&&s.moved<9)toggle();
     else if(!cancelled){const spin=s.baseAngle+(e.clientX-s.startX)*1.4;s.snap=Math.round(spin/180)*180;}
     else{s.snap=Math.round(s.angle/180)*180;}
+    // Impulso de retorno: puxar para baixo armazena energia e lança o crachá para cima.
+    // Limites suaves evitam saltos exagerados ou instabilidade em telas pequenas.
+    if(!cancelled&&s.moved>=9){
+      const dx=e.clientX-s.startX;
+      const dy=e.clientY-s.startY;
+      if(!reduced){
+        s.vy-=clamp(Math.max(0,dy)*1.8,0,300);
+        s.vx+=clamp(dx*.24,-90,90);
+        s.va+=clamp(dx*.6,-150,150);
+      }
+    }
     label();
     try{if(card.hasPointerCapture(e.pointerId))card.releasePointerCapture(e.pointerId);}catch(_){}
     run();
