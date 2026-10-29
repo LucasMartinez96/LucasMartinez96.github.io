@@ -13,8 +13,6 @@
         <span class="lm-credential-eyebrow"><span class="lm-credential-led"></span> IDENTIDADE DIGITAL // 01</span>
         <h2 id="lm-credential-title">Muito além de um <span>crachá.</span></h2>
         <p class="lm-credential-lead">Uma credencial interativa para quem transforma desafios em soluções de software, automação e inteligência artificial.</p>
-        <p>Puxe, arraste e solte o crachá. Movimente-o para os lados para virar e descobrir o QR Code do GitHub.</p>
-        <div class="lm-credential-features"><span>◈ Física interativa</span><span>↔ Puxe e gire</span><span>▦ QR real</span></div>
         <div class="lm-credential-actions">
           <a href="https://github.com/LucasMartinez96" class="lm-credential-action" target="_blank" rel="noopener noreferrer">Acessar GitHub ↗</a>
         </div>
