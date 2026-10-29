@@ -50,3 +50,25 @@
  .logo-word{display:none}
  .header-github{padding:10px 12px}
 }
+
+/* Segunda formação — card Santander Open Academy. */
+.cert-row + .cert-row{margin-top:28px}
+.cert-row--santander{background:linear-gradient(135deg,#11243a,#091a2d 62%,#0b1d32)}
+.cert-santander-image{display:block;width:100%;height:auto;aspect-ratio:1080/673;object-fit:contain;background:#fff}
+.cert-row--santander .cert-preview-wrap{
+  background:radial-gradient(ellipse at 50% 50%,rgba(33,84,145,.22),transparent 68%),linear-gradient(140deg,#0b192a,#091b2f)
+}
+.cert-row--santander .cert-preview-link{overflow:hidden;border:1px solid rgba(123,168,206,.27);border-radius:5px}
+.cert-row--santander .cert-provider{color:#ff8d8d}
+.cert-row--santander .cert-details h3{font-size:clamp(26px,2.6vw,39px);line-height:1.2}
+.cert-row--santander .cert-stats{margin-bottom:18px}
+.cert-row--santander .cert-note{margin-top:0}
+.cert-santander-view{border:1px solid rgba(133,208,255,.4)}
+@media(max-width:1080px){
+ .cert-row + .cert-row{margin-top:20px}
+}
+@media(max-width:640px){
+ .cert-row--santander .cert-details h3{font-size:clamp(24px,7.2vw,33px)}
+ .cert-row--santander .cert-preview-wrap{padding-top:17px}
+ .cert-row--santander .cert-santander-image{aspect-ratio:1080/673}
+}
