@@ -89,3 +89,33 @@
   .lm-credential-section .lm-credential-swing{animation:none!important}
   .lm-credential-section .lm-credential-flipper{transition:none!important}
 }
+
+/* V4 — retrato mais discreto e acabamento visual melhorado */
+.lm-credential-section .lm-credential-portrait{
+  top:60px;
+  left:50%;
+  width:184px;
+  height:178px;
+  transform:translateX(-50%);
+  object-fit:cover;
+  object-position:50% 40%;
+  border-radius:13px;
+  border:1px solid rgba(111,199,255,.62);
+  outline:4px solid rgba(7,34,67,.87);
+  box-shadow:0 0 0 1px rgba(0,190,255,.12),0 10px 26px rgba(0,0,0,.48),0 0 28px rgba(28,134,255,.16);
+  filter:contrast(1.065) saturate(1.075);
+  image-rendering:auto;
+}
+.lm-credential-section .lm-credential-fade{
+  background:linear-gradient(180deg,rgba(3,13,27,.15),transparent 24%,transparent 43%,rgba(3,12,25,.3) 57%,#031026 75%,#031026);
+}
+.lm-credential-section .lm-credential-front-text{
+  bottom:22px;
+}
+@media(max-width:520px){
+  .lm-credential-section .lm-credential-portrait{
+    width:184px;
+    height:178px;
+    top:60px;
+  }
+}
