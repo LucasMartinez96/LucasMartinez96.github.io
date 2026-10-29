@@ -28,6 +28,8 @@ h1 em{font-style:normal;color:var(--orange)}
 .tags li{font-size:12px;letter-spacing:.04em;padding:9px 12px;border:1px solid #4e5264;border-radius:50px;color:#f3c1a3}
 .art{margin:45px 0 24px;background:#19110d;border:1px solid #58443a;border-radius:19px;overflow:hidden;box-shadow:0 38px 85px #0008}
 .art img{display:block;width:100%;height:auto}
+.art-zoom{display:block;cursor:zoom-in}
+.art-zoom:focus-visible{outline:3px solid #84dfff;outline-offset:-4px}
 figcaption{color:#a7b6cf;font-size:12px;line-height:1.5;margin-top:12px}
 h2{font-size:clamp(27px,3vw,39px);margin:50px 0 19px;letter-spacing:-.035em}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -48,7 +50,7 @@ footer a{color:#80daff}
 <h1>Forno &amp; <em>Estoque.</em></h1>
 <p class="lead">Transformando uma necessidade real em tecnologia. Um sistema de gestão de insumos pensado para uma operação de pizzaria, com controle de saldos, regras de reposição e alertas automáticos pelo Telegram.</p>
 <ul class="tags"><li>React</li><li>TypeScript</li><li>API REST</li><li>Supabase / PostgreSQL</li><li>Telegram Bot</li><li>Render</li></ul>
-<figure class="art"><img src="assets/forno-estoque-apresentacao.jpg" alt="Apresentação de seis telas do Forno & Estoque: catálogo de insumos, controle de estoque, lista de compras, avisos no Telegram e tecnologias" width="1254" height="1254"><figcaption>Apresentação visual fornecida pelo autor: interface, controle de estoque, lista de compras e notificações.</figcaption></figure>
+<figure class="art"><a class="art-zoom" href="assets/forno-estoque-hd.webp" target="_blank" rel="noopener noreferrer" aria-label="Abrir apresentação do Forno & Estoque em alta resolução, em uma nova guia"><img src="assets/forno-estoque-hd.webp" alt="Apresentação de seis telas do Forno & Estoque em alta resolução: catálogo de insumos, controle de estoque, lista de compras, alertas por Telegram e tecnologias" width="2508" height="2508" decoding="async"></a><figcaption>Apresentação visual fornecida pelo autor. Toque ou clique na imagem para visualizar em alta resolução (2508 × 2508 px).</figcaption></figure>
 <h2>Do estoque manual à gestão inteligente</h2>
 <section class="grid" aria-label="Principais soluções">
 <article class="card"><strong>01 · ORGANIZAÇÃO</strong><p>Cadastro de produtos, categorias e fornecedores, com controle das quantidades disponíveis, custos e movimentações.</p></article>
