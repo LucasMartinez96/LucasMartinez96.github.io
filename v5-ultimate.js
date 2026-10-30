@@ -1,0 +1,13 @@
+/* V5 ULTIMATE: alternância linguística limitada à área V5; nenhum dado corporativo é coletado. */
+(()=>{'use strict';
+const root=document.querySelector('#perfil-profissional');
+if(!root)return;
+const map={pt:{eyebrow:'NOVA EXPERIÊNCIA / V5',demoLabel:'LABORATÓRIO INTERATIVO',demoTitle:'Veja a tecnologia em ação.',demoText:'Explore uma Control Tower conceitual com indicadores e cenários fictícios. Navegue por processos sem conectar-se a sistemas ou dados empresariais.',demoButton:'Explorar demonstração ↗',note:'100% conceitual · nenhum dado real · sem integrações privadas',profileLabel:'APRESENTAÇÃO PROFISSIONAL',profileTitle:'Uma visão rápida para recrutadores.',profileText:'Conheça projetos, ferramentas e um resumo público da minha atuação. O currículo é imprimível e pode ser salvo como PDF no navegador.',resumeButton:'Abrir resumo / PDF ↗',githubButton:'Ver GitHub ↗',mini1:'WEB / UI',mini2:'AUTOMAÇÃO',mini3:'DADOS / IA'},en:{eyebrow:'NEW EXPERIENCE / V5',demoLabel:'INTERACTIVE LAB',demoTitle:'See technology in action.',demoText:'Explore a concept Control Tower with fictional metrics and scenarios. Try the interface without connecting to any company data or systems.',demoButton:'Launch interactive demo ↗',note:'100% conceptual · no real data · no private integrations',profileLabel:'PROFESSIONAL SUMMARY',profileTitle:'A quick introduction for recruiters.',profileText:'Explore selected projects, tools and my public professional summary. The resume-style page can be printed or saved as a PDF in your browser.',resumeButton:'Open summary / PDF ↗',githubButton:'View GitHub ↗',mini1:'WEB / UI',mini2:'AUTOMATION',mini3:'DATA / AI'}};
+let lang='pt';const button=document.querySelector('#v5-lang');const labels=Array.from(root.querySelectorAll('[data-v5-key]'));
+const render=()=>{labels.forEach(el=>el.textContent=map[lang][el.dataset.v5Key]||'');if(button){button.textContent=lang==='pt'?'PT / EN':'EN / PT';button.setAttribute('aria-label',lang==='pt'?'Mudar idioma desta seção para inglês':'Switch this section to Portuguese');button.setAttribute('aria-pressed',String(lang==='en'));}};
+button?.addEventListener('click',()=>{lang=lang==='pt'?'en':'pt';render();});
+root.querySelectorAll('a[data-v5-action]').forEach(a=>a.addEventListener('click',()=>{
+  try{if(typeof window.va==='function')window.va('event',{name:'v5_action',category:a.dataset.v5Action});}catch(_){}
+}));
+render();
+})();
