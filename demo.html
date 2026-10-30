@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#061124">
+<meta name="robots" content="noindex,follow">
+<title>Control Tower DEMO — Lucas Martinez</title>
+<meta name="description" content="Explore uma demonstração conceitual e interativa de dashboard, com informações inteiramente fictícias.">
+<style>
+:root{color-scheme:dark;--bg:#040d1b;--panel:#091b30;--panel2:#0b233e;--stroke:#1d476b;--fg:#edf8ff;--mute:#a5bfd5;--blue:#65ccff;--teal:#35e0c4;font-family:system-ui,"Segoe UI",Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box}body{background:radial-gradient(circle at 86% 0,#0a3157,var(--bg) 47%);margin:0;color:var(--fg);min-height:100vh}button,a{font:inherit}a{color:var(--blue)}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.wrap{width:min(1300px,calc(100% - 40px));margin:auto}.top{border-bottom:1px solid var(--stroke);background:#061123dd}.nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:22px 0}.brand{color:var(--fg);font-weight:800;text-decoration:none;letter-spacing:.08em}.brand b{color:var(--blue)}.back{color:var(--fg);text-decoration:none;border:1px solid var(--stroke);border-radius:999px;padding:10px 15px}.small{color:var(--mute);font-size:13px}.intro{padding:44px 0 20px}.kicker{color:var(--teal);font-size:12px;letter-spacing:.18em;font-weight:800}.intro h1{font-size:clamp(36px,6vw,66px);letter-spacing:-.045em;margin:7px 0 11px;line-height:1.08}.intro p{color:var(--mute);font-size:16px;max-width:72ch;line-height:1.65}.disclaimer{border:1px solid #2a8b9b;background:#0a2936;border-radius:13px;padding:15px 20px;color:#bcfff3;font-size:14px;font-weight:600;margin:16px 0 22px}.toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding:16px 18px;border:1px solid var(--stroke);border-radius:16px;background:var(--panel)}.tabs,.controls{display:flex;flex-wrap:wrap;gap:8px}.tabs button,.controls button{border:1px solid #285577;background:#08233d;color:#cae4f3;border-radius:12px;padding:11px 17px}.tabs button[aria-selected=true]{background:#14599b;color:white;border-color:#70d9ff}.controls button{background:#18314b}.lang{min-width:68px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:16px 0}.kpi,.chart,.details,.notes{background:linear-gradient(148deg,#102946,#09192e 80%);border:1px solid var(--stroke);border-radius:16px;padding:22px;min-width:0}.kpi span{display:block;color:var(--mute);font-size:13px}.kpi strong{display:block;font-size:clamp(28px,4vw,48px);font-variant-numeric:tabular-nums;letter-spacing:-.04em;margin:8px 0}.kpi i{font-style:normal;color:var(--teal);font-size:12px}.dashboard{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:16px;margin-bottom:28px}.chart h2,.details h2,.notes h2{font-size:18px;margin:0 0 21px}.chart svg{width:100%;height:270px;display:block}.chart .axis{stroke:#28465e}.chart .poly{stroke:#3cbcf8;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}.chart .fill{fill:#1b94ca;opacity:.18}.chart .dot{fill:#7beaff}.chart .chart-label{font-size:13px;fill:#98b7c9}.details ul{list-style:none;padding:0;margin:0}.details li{border-bottom:1px solid #244765;padding:14px 0;display:flex;justify-content:space-between;gap:16px;align-items:center}.details li:last-child{border:0}.pill{display:inline-block;color:#9cf8e4;border:1px solid #2a8a80;background:#123c40;border-radius:999px;padding:5px 9px;font-size:11px;white-space:nowrap}.notes{margin-bottom:30px}.notes p{line-height:1.65;color:var(--mute);margin:4px 0}.foot{border-top:1px solid var(--stroke);color:var(--mute);font-size:13px;padding:25px 0 35px}.foot a{color:var(--blue)}@media(max-width:830px){.dashboard{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.chart svg{height:220px}}@media(max-width:480px){.wrap{width:calc(100% - 24px)}.intro{padding:28px 0 12px}.kpis{gap:9px}.kpi{padding:17px}.kpi strong{font-size:31px}.toolbar{padding:12px}.tabs button{flex:1 1 115px}.controls button{flex:1}.chart,.details,.notes{padding:18px}.details li{font-size:13px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><nav class="wrap nav" aria-label="Navegação principal"><a class="brand" href="./">LM<b>.</b> / LAB</a><a class="back" href="./#projetos" id="back">← Voltar ao portfólio</a></nav></header>
+<main class="wrap">
+ <section class="intro">
+   <div class="kicker" id="eyebrow">EXPERIÊNCIA INTERATIVA / PORTFÓLIO</div>
+   <h1 id="hero-title">Control Tower <span style="color:#5dd5f7">DEMO</span></h1>
+   <p id="hero-sub">Explore um protótipo de indicadores de logística e estoque. Mude a área, alterne o cenário e veja os painéis atualizarem. Não há conexão com sistemas corporativos.</p>
+   <div class="disclaimer" role="note" id="disclaimer">⚠️ 100% SIMULADO — Os nomes, indicadores e valores são fictícios. Nenhum dado da empresa, cliente ou operação real é utilizado.</div>
+ </section>
+ <section class="toolbar" aria-label="Controles do protótipo">
+  <div class="tabs" role="tablist" aria-label="Área operacional">
+   <button type="button" role="tab" id="tab-recebimento" aria-selected="true" aria-controls="dashboard" data-area="recebimento">Recebimento</button>
+   <button type="button" role="tab" id="tab-inventario" aria-selected="false" aria-controls="dashboard" data-area="inventario">Inventário</button>
+   <button type="button" role="tab" id="tab-expedicao" aria-selected="false" aria-controls="dashboard" data-area="expedicao">Expedição</button>
+  </div>
+  <div class="controls"><button type="button" id="scenario">Alterar cenário</button><button type="button" id="reset">Reiniciar</button><button type="button" id="language" class="lang" aria-label="Alterar idioma">EN</button></div>
+ </section>
+ <section id="dashboard" aria-label="Indicadores fictícios" aria-live="polite">
+  <div class="kpis" id="kpis"></div>
+  <div class="dashboard">
+   <article class="chart"><h2 id="chart-title">Evolução demonstrativa</h2>
+    <svg id="line-chart" viewBox="0 0 680 280" role="img" aria-label="Gráfico de evolução fictícia" preserveAspectRatio="none"><g stroke-width="1"><line x1="35" x2="650" y1="60" y2="60" class="axis"/><line x1="35" x2="650" y1="120" y2="120" class="axis"/><line x1="35" x2="650" y1="180" y2="180" class="axis"/><line x1="35" x2="650" y1="240" y2="240" class="axis"/></g><path class="fill" id="chart-fill"/><polyline class="poly" id="chart-line"/><g id="chart-dots"></g><text x="40" y="274" class="chart-label">01</text><text x="245" y="274" class="chart-label">04</text><text x="445" y="274" class="chart-label">07</text><text x="616" y="274" class="chart-label">10</text></svg>
+   </article>
+   <article class="details"><h2 id="status-title">Etapas ilustrativas</h2><ul id="status-list"></ul></article>
+  </div>
+  <article class="notes"><h2 id="insight-title">O que esta demo mostra</h2><p id="insight-text">Uma apresentação de conceitos de dashboard, filtros de área e atualização de componentes na interface.</p></article>
+ </section>
+</main>
+<footer class="foot"><div class="wrap"><span id="footer-text">Projeto conceitual desenvolvido para apresentação profissional. Sem dados ou credenciais reais.</span> · <a href="./" id="footer-link">Portfólio Lucas Martinez</a></div></footer>
+<script>
+(() => {
+ 'use strict';
+ const $ = id => document.getElementById(id);
+ const dataset = {
+  recebimento:{pt:{k:['Agendados','Processados','Em espera','Concluído'],st:['Pátio A','Área de inspeção','Conferência visual','Registro demonstrativo'],detail:'Esta visualização ilustra como organizar fluxo, tempo e situação de recebimentos em um único painel.'},en:{k:['Scheduled','Processed','Waiting','Completed'],st:['Yard A','Inspection zone','Visual checking','Demo registration'],detail:'This view illustrates how to track throughput, time and inbound status in one interface.'},base:[24,18,6,75],series:[32,42,38,58,60,53,78,66,81,89]},
+  inventario:{pt:{k:['Itens fictícios','Contados','Pendentes','Cobertura'],st:['Setor Alfa','Setor Beta','Setor Gama','Revisão visual'],detail:'Exemplo de contagem por área, evolução de cobertura e classificação, usando somente dados artificiais.'},en:{k:['Demo items','Counted','Pending','Coverage'],st:['Alpha area','Beta area','Gamma area','Visual review'],detail:'Sample cycle counts grouped by area, progress and status, using entirely fictional data.'},base:[120,88,32,73],series:[10,17,25,30,46,48,63,71,79,88]},
+  expedicao:{pt:{k:['Separados','Carregados','Em rota','Concluído'],st:['Docas ilustrativas','Preparação','Carregamento','Saída fictícia'],detail:'Painel ilustrativo de expedição e etapas de carregamento, sem clientes ou remessas reais.'},en:{k:['Picked','Loaded','In transit','Completed'],st:['Concept docks','Staging','Loading','Demo departure'],detail:'Conceptual outbound dashboard and loading stages, with no actual customers or shipments.'},base:[34,24,10,71],series:[12,22,43,38,51,64,61,76,84,95]}
+ };
+ const copy={pt:{back:'← Voltar ao portfólio',eyebrow:'EXPERIÊNCIA INTERATIVA / PORTFÓLIO',sub:'Explore um protótipo de indicadores de logística e estoque. Mude a área, alterne o cenário e veja os painéis atualizarem. Não há conexão com sistemas corporativos.',disclaimer:'⚠️ 100% SIMULADO — Os nomes, indicadores e valores são fictícios. Nenhum dado da empresa, cliente ou operação real é utilizado.',tabs:['Recebimento','Inventário','Expedição'],scenario:'Alterar cenário',reset:'Reiniciar',chart:'Evolução demonstrativa',status:'Etapas ilustrativas',insight:'O que esta demo mostra',footer:'Projeto conceitual desenvolvido para apresentação profissional. Sem dados ou credenciais reais.',flink:'Portfólio Lucas Martinez'},en:{back:'← Back to portfolio',eyebrow:'INTERACTIVE EXPERIENCE / PORTFOLIO',sub:'Explore a logistics and inventory concept dashboard. Switch areas and scenarios to see the interface update. No corporate systems are connected.',disclaimer:'⚠️ 100% SIMULATED — All names, indicators and numbers are fictional. No actual company, client or operational information is used.',tabs:['Inbound','Inventory','Outbound'],scenario:'Change scenario',reset:'Reset',chart:'Illustrative trend',status:'Concept stages',insight:'What this demo demonstrates',footer:'Concept project for professional presentation. No real data or credentials.',flink:'Lucas Martinez Portfolio'}};
+ let area='recebimento',scenario=0,lang='pt';
+ function render(){
+   const t=copy[lang],d=dataset[area],v=d[lang],factor=scenario===0?1:(scenario===1?.72:1.18);
+   document.documentElement.lang=lang==='pt'?'pt-BR':'en';
+   $('back').textContent=t.back;$('eyebrow').textContent=t.eyebrow;$('hero-sub').textContent=t.sub;$('disclaimer').textContent=t.disclaimer;
+   $('scenario').textContent=t.scenario;$('reset').textContent=t.reset;$('language').textContent=lang==='pt'?'EN':'PT';
+   $('chart-title').textContent=t.chart;$('status-title').textContent=t.status;$('insight-title').textContent=t.insight;$('insight-text').textContent=v.detail;$('footer-text').textContent=t.footer;$('footer-link').textContent=t.flink;
+   document.querySelectorAll('[data-area]').forEach((el,i)=>{el.textContent=t.tabs[i];el.setAttribute('aria-selected',String(el.dataset.area===area));});
+   $('kpis').replaceChildren();v.k.forEach((key,i)=>{const box=document.createElement('div');box.className='kpi';const a=document.createElement('span');a.textContent=key;const strong=document.createElement('strong');strong.textContent=Math.round(d.base[i]*factor)+(i===3?'%':'');const foot=document.createElement('i');foot.textContent=lang==='pt'?'DADO FICTÍCIO':'FICTIONAL DATA';box.append(a,strong,foot);$('kpis').append(box);});
+   $('status-list').replaceChildren();v.st.forEach((txt,i)=>{const li=document.createElement('li'),label=document.createElement('span'),tag=document.createElement('span');label.textContent=txt;tag.textContent=(Math.round((i+1)*7*factor))+' / '+(lang==='pt'?'demo':'sample');tag.className='pill';li.append(label,tag);$('status-list').append(li);});
+   const nums=d.series.map(n=>Math.min(98,Math.round(n*factor))),pts=nums.map((v,i)=>(43+i*65)+','+(246-v*2.1));$('chart-line').setAttribute('points',pts.join(' '));$('chart-fill').setAttribute('d','M '+pts.join(' L ')+' L 628,246 L 43,246 Z');$('chart-dots').replaceChildren();nums.forEach((v,i)=>{const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',String(43+i*65));dot.setAttribute('cy',String(246-v*2.1));dot.setAttribute('r','5');dot.setAttribute('class','dot');$('chart-dots').append(dot);});
+ }
+ document.querySelectorAll('[data-area]').forEach(b=>b.addEventListener('click',()=>{area=b.dataset.area;render();}));
+ $('scenario').addEventListener('click',()=>{scenario=(scenario+1)%3;render();});
+ $('reset').addEventListener('click',()=>{scenario=0;area='recebimento';render();});
+ $('language').addEventListener('click',()=>{lang=lang==='pt'?'en':'pt';render();});
+ render();
+})();
+</script>
+</body>
+</html>
