@@ -4,7 +4,7 @@
 .v5-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:22px}
 .v5-label{font:700 12px/1.5 var(--mono,ui-monospace,monospace);letter-spacing:.16em;color:#66dcff}
 .v5-lang{border:1px solid #3a729b;border-radius:100px;background:#092540;color:#eaf7ff;padding:9px 14px;font-size:12px;font-weight:800;letter-spacing:.1em;cursor:pointer}
-.v5-cards{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:19px}
+.v5-cards{display:grid;grid-template-columns:minmax(0,1fr);max-width:970px;margin-inline:auto;gap:19px}
 .v5-pane{position:relative;overflow:hidden;border:1px solid rgba(94,166,226,.39);border-radius:24px;background:linear-gradient(137deg,#0d2a49,#07172d 75%);padding:clamp(24px,4vw,40px);box-shadow:0 24px 55px rgba(2,9,25,.2)}
 .v5-pane::before{content:"";position:absolute;width:280px;height:280px;right:-140px;top:-150px;border-radius:100%;background:radial-gradient(circle,rgba(40,188,241,.25),transparent 68%);pointer-events:none}
 .v5-pane small{color:#81dafa;font:700 11px var(--mono,monospace);letter-spacing:.14em}
