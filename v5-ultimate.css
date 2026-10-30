@@ -47,3 +47,12 @@
 .v5-academic-school{color:#94d9f6!important;font-size:16px!important;font-weight:650;margin:0 0 12px!important}
 .v5-academic-copy>p:last-child{color:#b7c9dd;line-height:1.7;max-width:62ch}
 @media(max-width:650px){.v5-academic-card{grid-template-columns:1fr}.v5-academic-marker{min-height:108px;flex-direction:row}.v5-gas-ui{padding:19px}.v5-gas-visual{min-height:260px}.v5-gas-stats span{font-size:9px}}
+
+/* V5 — capturas reais do projeto Gás & Condomínio; fallback até envio dos JPGs */
+.v5-gas-shot[hidden], .v5-gas-visual[hidden]{display:none!important}
+.v5-gas-shot{overflow:hidden;position:relative}
+.v5-gas-shot img{width:100%;height:100%;object-fit:cover}
+.v5-gas-primary{height:auto;aspect-ratio:16/9}
+.v5-gas-secondary{max-width:350px;width:100%;height:auto;aspect-ratio:16/9;margin:16px 0 5px;border:1px solid rgba(116,190,229,.34);border-radius:10px}
+.v5-gas-shot-note{color:#91acc0!important;font-size:12px!important;line-height:1.5!important;margin:7px 0 18px!important}
+@media(max-width:600px){.v5-gas-secondary{max-width:none}}
