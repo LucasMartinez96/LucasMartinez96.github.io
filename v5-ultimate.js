@@ -1,6 +1,19 @@
 /* V5 ULTIMATE: apresentação profissional PT/EN, sem coleta de dados corporativos. */
 (()=>{
   'use strict';
+  /* Exibir somente imagens enviadas ao GitHub; manter arte conceitual até então. */
+  document.querySelectorAll('button.v5-gas-shot').forEach(button=>{
+    const asset=button.querySelector('img');
+    if(!asset)return;
+    const activated=()=>{
+      button.hidden=false;
+      if(button.classList.contains('v5-gas-primary')){
+        document.querySelector('#projeto-gas-condominio .v5-gas-visual')?.setAttribute('hidden','');
+      }
+    };
+    if(asset.complete && asset.naturalWidth>0)activated();
+    else asset.addEventListener('load',activated,{once:true});
+  });
   const root=document.querySelector('#perfil-profissional');
   if(!root)return;
   const labels={
