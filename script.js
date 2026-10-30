@@ -544,7 +544,7 @@
       index = (i + list.length) % list.length;
       const btn = list[index];
       const path = btn.dataset.img || '';
-      if (!/^assets\/sese-hub-[\w-]+\.jpg$/.test(path)) return;
+      if (!/^assets\/projeto-(control-tower|inventario|patio|ocupacao|analise)\.svg$/.test(path)) return;
       img.src = btn.querySelector('img')?.currentSrc || path;
       img.alt = btn.dataset.alt || 'Imagem do projeto';
       title.textContent = btn.dataset.title || 'Projeto';
