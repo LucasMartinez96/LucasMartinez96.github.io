@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#050b17">
   <meta name="color-scheme" content="dark">
   <title>Lucas Martinez — Desenvolvimento, Automação e IA</title>
-  <meta name="description" content="Portfólio de Lucas Martinez: desenvolvimento de software, automação, inteligência artificial, dashboards e experiências visuais em 3D.">
+  <meta name="description" content="Portfólio de Lucas Martinez: desenvolvimento de software, automação, inteligência artificial, dashboards e demonstrações conceituais interativas.">
   <meta name="author" content="Lucas Martinez">
   <link rel="canonical" href="https://lucas-martinez-portfolio.vercel.app/">
 
@@ -14,7 +14,7 @@
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Lucas Martinez">
   <meta property="og:title" content="Lucas Martinez | Desenvolvimento, Automação e IA">
-  <meta property="og:description" content="Projetos e soluções digitais que aproximam tecnologia de desafios reais. Portfólio visual com código operacional privado.">
+  <meta property="og:description" content="Portfólio de desenvolvimento, automação e IA. Projetos visuais e demonstrações conceituais com dados fictícios.">
   <meta property="og:url" content="https://lucas-martinez-portfolio.vercel.app/">
   <meta property="og:image" content="https://lucas-martinez-portfolio.vercel.app/assets/lucas-martinez-pixel.png">
   <meta property="og:image:width" content="2172">
@@ -53,9 +53,11 @@
   
   <link rel="stylesheet" href="credencial-lucas.css?v=5">
   <link rel="stylesheet" href="v4-elite.css?v=1">
+  <link rel="stylesheet" href="v5-ultimate.css?v=1">
   <script src="credencial-lucas.js?v=5" defer></script>
   <script src="script.js" defer></script>
   <script src="experience-v7-original.js?v=7-original-repaired-2" defer></script>
+  <script src="v5-ultimate.js?v=1" defer></script>
   <!-- V4 ELITE: scripts de métricas carregados apenas no domínio da Vercel.
        Requer habilitar Web Analytics e Speed Insights no painel do projeto. -->
   <script>
@@ -161,6 +163,35 @@
       </div>
     </section>
 
+    <!-- V5: projetos conceituais, sem exposição de marca ou dados da empresa. -->
+    <section class="v5-showcase" id="perfil-profissional" aria-labelledby="v5-title">
+      <div class="container">
+        <div class="v5-head">
+          <span class="v5-label" data-v5-key="eyebrow">NOVA EXPERIÊNCIA / V5</span>
+          <button class="v5-lang" type="button" id="v5-lang" aria-pressed="false">PT / EN</button>
+        </div>
+        <div class="v5-cards">
+          <article class="v5-pane">
+            <small data-v5-key="demoLabel">LABORATÓRIO INTERATIVO</small>
+            <h2 id="v5-title" data-v5-key="demoTitle">Veja a tecnologia em ação.</h2>
+            <p data-v5-key="demoText">Explore uma Control Tower conceitual com indicadores e cenários fictícios. Navegue por processos sem conectar-se a sistemas ou dados empresariais.</p>
+            <div class="v5-mini" aria-hidden="true"><span data-v5-key="mini1">WEB / UI</span><span data-v5-key="mini2">AUTOMAÇÃO</span><span data-v5-key="mini3">DADOS / IA</span></div>
+            <div class="v5-actions"><a class="v5-cta" href="demo.html" data-v5-action="interactive_demo" data-v5-key="demoButton">Explorar demonstração ↗</a></div>
+            <p class="v5-note" data-v5-key="note">100% conceitual · nenhum dado real · sem integrações privadas</p>
+          </article>
+          <article class="v5-pane">
+            <small data-v5-key="profileLabel">APRESENTAÇÃO PROFISSIONAL</small>
+            <h2 data-v5-key="profileTitle">Uma visão rápida para recrutadores.</h2>
+            <p data-v5-key="profileText">Conheça projetos, ferramentas e um resumo público da minha atuação. O currículo é imprimível e pode ser salvo como PDF no navegador.</p>
+            <div class="v5-actions">
+              <a class="v5-cta" href="curriculo.html" data-v5-action="resume" data-v5-key="resumeButton">Abrir resumo / PDF ↗</a>
+              <a class="v5-cta alt" href="https://github.com/LucasMartinez96" target="_blank" rel="noopener noreferrer" data-v5-action="github" data-v5-key="githubButton">Ver GitHub ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ PROJETOS ============ -->
     <section class="section projects" id="projetos" aria-labelledby="projects-title">
       <div class="container">
@@ -185,8 +216,8 @@
 
           <article class="card is-featured" id="projeto-control-tower" data-tags="dashboards dados" data-reveal="depth">
             <div class="card-tilt">
-              <button type="button" class="card-media" data-img="assets/sese-hub-control-tower.jpg" data-alt="Apresentação da interface Control Tower, com dados operacionais protegidos" data-title="Control Tower — Visão Executiva" aria-label="Ampliar imagem da Control Tower">
-                <img src="assets/sese-hub-control-tower.jpg" alt="Apresentação da interface Control Tower, com dados operacionais protegidos" loading="lazy" decoding="async" width="1600" height="900">
+              <button type="button" class="card-media" data-img="assets/projeto-control-tower.svg" data-alt="Ilustração conceitual de Control Tower com indicadores fictícios" data-title="Control Tower — Visão Executiva" aria-label="Ampliar imagem da Control Tower">
+                <img src="assets/projeto-control-tower.svg" alt="Ilustração conceitual de Control Tower com indicadores fictícios" loading="lazy" decoding="async" width="1600" height="900">
                 <span class="zoom-indicator" aria-hidden="true"><span>Ampliar</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span>
               </button>
               <div class="card-body">
@@ -207,8 +238,8 @@
 
           <article class="card" id="projeto-inventario-ciclico" data-tags="dashboards dados" data-reveal="depth">
             <div class="card-tilt">
-              <button type="button" class="card-media" data-img="assets/sese-hub-inventario-ciclico.jpg" data-alt="Tela de inventário cíclico com dados internos ocultados" data-title="Inventário Cíclico" aria-label="Ampliar imagem do Inventário Cíclico">
-                <img src="assets/sese-hub-inventario-ciclico.jpg" alt="Tela de inventário cíclico com dados internos ocultados" loading="lazy" decoding="async" width="1600" height="900">
+              <button type="button" class="card-media" data-img="assets/projeto-inventario.svg" data-alt="Ilustração conceitual de inventário cíclico com dados fictícios" data-title="Inventário Cíclico" aria-label="Ampliar imagem do Inventário Cíclico">
+                <img src="assets/projeto-inventario.svg" alt="Ilustração conceitual de inventário cíclico com dados fictícios" loading="lazy" decoding="async" width="1600" height="900">
                 <span class="zoom-indicator" aria-hidden="true"><span>Ampliar</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span>
               </button>
               <div class="card-body">
@@ -229,8 +260,8 @@
 
           <article class="card" id="projeto-patio-3d" data-tags="3d" data-reveal="depth">
             <div class="card-tilt">
-              <button type="button" class="card-media" data-img="assets/sese-hub-patio-3d.jpg" data-alt="Ambiente tridimensional de pátio, caminhões e docas com identificadores substituídos" data-title="Pátio e Expedição 3D" aria-label="Ampliar imagem do Pátio e Expedição 3D">
-                <img src="assets/sese-hub-patio-3d.jpg" alt="Ambiente tridimensional de pátio, caminhões e docas com identificadores substituídos" loading="lazy" decoding="async" width="1600" height="900">
+              <button type="button" class="card-media" data-img="assets/projeto-patio.svg" data-alt="Ilustração conceitual de pátio e caminhões, sem dados reais" data-title="Pátio e Expedição 3D" aria-label="Ampliar imagem do Pátio e Expedição 3D">
+                <img src="assets/projeto-patio.svg" alt="Ilustração conceitual de pátio e caminhões, sem dados reais" loading="lazy" decoding="async" width="1600" height="900">
                 <span class="zoom-indicator" aria-hidden="true"><span>Ampliar</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span>
               </button>
               <div class="card-body">
@@ -251,8 +282,8 @@
 
           <article class="card" id="projeto-ocupacao-3d" data-tags="3d dados" data-reveal="depth">
             <div class="card-tilt">
-              <button type="button" class="card-media" data-img="assets/sese-hub-ocupacao-3d.jpg" data-alt="Visão isométrica de estanterias com posições e dados internos ocultados" data-title="Ocupação de Estoque 3D" aria-label="Ampliar imagem da Ocupação de Estoque 3D">
-                <img src="assets/sese-hub-ocupacao-3d.jpg" alt="Visão isométrica de estanterias com posições e dados internos ocultados" loading="lazy" decoding="async" width="1600" height="900">
+              <button type="button" class="card-media" data-img="assets/projeto-ocupacao.svg" data-alt="Ilustração conceitual de estoque 3D, sem posições reais" data-title="Ocupação de Estoque 3D" aria-label="Ampliar imagem da Ocupação de Estoque 3D">
+                <img src="assets/projeto-ocupacao.svg" alt="Ilustração conceitual de estoque 3D, sem posições reais" loading="lazy" decoding="async" width="1600" height="900">
                 <span class="zoom-indicator" aria-hidden="true"><span>Ampliar</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span>
               </button>
               <div class="card-body">
@@ -273,8 +304,8 @@
 
           <article class="card" id="projeto-jornal-ia" data-tags="dashboards dados" data-reveal="depth">
             <div class="card-tilt">
-              <button type="button" class="card-media" data-img="assets/sese-hub-jornal-ia.jpg" data-alt="Interface de jornal analítico com gráficos de acompanhamento e dados ocultados" data-title="Jornal IA — Análise Operacional" aria-label="Ampliar imagem do Jornal IA">
-                <img src="assets/sese-hub-jornal-ia.jpg" alt="Interface de jornal analítico com gráficos de acompanhamento e dados ocultados" loading="lazy" decoding="async" width="1600" height="900">
+              <button type="button" class="card-media" data-img="assets/projeto-analise.svg" data-alt="Ilustração conceitual de jornal analítico com dados fictícios" data-title="Jornal IA — Análise Operacional" aria-label="Ampliar imagem do Jornal IA">
+                <img src="assets/projeto-analise.svg" alt="Ilustração conceitual de jornal analítico com dados fictícios" loading="lazy" decoding="async" width="1600" height="900">
                 <span class="zoom-indicator" aria-hidden="true"><span>Ampliar</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span>
               </button>
               <div class="card-body">
@@ -325,7 +356,7 @@
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
           <div>
             <strong>Portfólio visual e proteção de dados</strong>
-            <p>As prévias são capturas tratadas com conteúdo operacional ocultado. Não representam dados atualizados da operação. Não disponibilizo publicamente código-fonte dos sistemas, integrações, bases ou credenciais. A exposição de materiais de terceiros depende de autorização.</p>
+            <p>As imagens de processos nesta galeria são representações conceituais produzidas com dados fictícios, sem capturas de ambientes operacionais reais. Não disponibilizo códigos privados, bases, integrações, credenciais ou informações empresariais.</p>
           </div>
         </div>
       </div>
@@ -655,7 +686,7 @@
         <img id="modal-img" alt="">
         <button type="button" class="modal-nav" id="modal-next" aria-label="Próximo projeto">›</button>
       </div>
-      <div class="modal-foot">Captura real tratada · Conteúdo operacional ocultado</div>
+      <div class="modal-foot">Ilustração conceitual · Dados fictícios</div>
     </div>
   </dialog>
 
