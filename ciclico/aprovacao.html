@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>CicloEstoque | Consulta da Capa</title><style>
+:root{color-scheme:dark;font-family:Inter,system-ui,Arial,sans-serif}*{box-sizing:border-box}body{background:#111923;color:#e9f0fa;margin:0;padding:24px 14px}.shell{max-width:680px;margin:24px auto}.brand{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:#8bc8ef}h1{font-size:28px;margin:8px 0 10px}.sub{color:#a0b1c3;line-height:1.5}.card{background:#1c2938;border:1px solid #39506a;border-radius:16px;padding:22px;margin:16px 0}.badge{border-radius:20px;border:1px solid #6086a4;padding:7px 12px;font-size:13px;color:#c3e5ff;display:inline-block;margin:10px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{border-bottom:1px solid #30445a;padding-bottom:8px;min-width:0}.field small{display:block;color:#9fb1c3;margin-bottom:4px}.field b{overflow-wrap:anywhere}a.button{display:inline-block;border-radius:10px;background:#1e8fd0;color:white;padding:13px 18px;text-decoration:none;font-weight:700}a.button:focus-visible{outline:3px solid white}@media(max-width:480px){.grid{grid-template-columns:1fr}} </style></head><body>
+<main class="shell"><div class="brand">SESÉ · CicloEstoque</div><h1>Consulta de Inventário Cíclico</h1><p class="sub">Informações vinculadas ao QR Code da capa impressa. O documento digitalizado pode ser anexado posteriormente, sem alterar este QR.</p><div class="card" id="content" role="status" aria-live="polite">Consultando registro...</div><p class="sub">Acesso concedido a quem possui o QR Code. Não compartilhe a imagem da capa fora das pessoas autorizadas.</p></main>
+<script>
+(async function(){
+const host=document.getElementById('content');const token=new URL(location.href).searchParams.get('token');
+const txt=(tag,value,parent)=>{const el=document.createElement(tag);el.textContent=String(value??'—');parent.appendChild(el);return el;};
+const fields={codinv:'Cód. inventário',numero_inventario:'Nº inventário',item:'Material',descricao:'Descrição',data:'Data de referência',local:'Local',qtd_sistema:'Quantidade sistema',qtd_fisica:'Quantidade física',divergencia:'Divergência',status_contagem:'Status da contagem',responsavel:'Responsável'};
+const names={aguardando_assinatura:'Aguardando assinatura',aguardando_pdf:'Aguardando PDF',em_analise:'Em análise',aprovado:'Aprovado',reprovado:'Reprovado'};
+if(!token||!/^[A-Za-z0-9_-]{40,128}$/.test(token)){host.textContent='QR Code inválido.';return;}
+try{
+const res=await fetch('https://hxbazevpqsoywkwfxdxn.supabase.co/functions/v1/ciclico-approval-v31?token='+encodeURIComponent(token),{cache:'no-store',referrerPolicy:'no-referrer'});
+const data=await res.json();if(!res.ok)throw new Error(data.error||'Registro não localizado.');
+host.replaceChildren();txt('h2','Inventário '+data.codinv,host);const badge=txt('span','Documento: '+(names[data.status]||data.status),host);badge.className='badge';
+const grid=document.createElement('div');grid.className='grid';host.appendChild(grid);
+const s=data.snapshot||{};for(const [key,label] of Object.entries(fields)){const value=key==='codinv'?data.codinv:s[key];if(value===undefined||value===null||value==='')continue;const box=document.createElement('div');box.className='field';txt('small',label,box);txt('b',value,box);grid.appendChild(box)}
+const footer=document.createElement('p');footer.className='sub';footer.textContent=data.has_document?'O PDF assinado está vinculado a este inventário.':'O PDF assinado ainda não foi anexado.';host.appendChild(footer);
+if(data.pdf_url){const a=document.createElement('a');a.className='button';a.href=data.pdf_url;a.target='_blank';a.rel='noopener noreferrer';a.referrerPolicy='no-referrer';a.textContent='Abrir PDF assinado';host.appendChild(a);}
+}catch(err){host.replaceChildren();txt('h2','Não foi possível abrir a consulta',host);txt('p',err.message||'Tente novamente.',host);}
+})();
+</script></body></html>
