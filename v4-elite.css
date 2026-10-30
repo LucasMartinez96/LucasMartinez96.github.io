@@ -1,0 +1,70 @@
+/* V4 ELITE — acabamento progressivo, sem substituir o layout original.
+   Não interfere na física do crachá nem nos scripts 3D. */
+.section-heading h2,
+.projects .card-body h3,
+.hero .hero-statement {
+  text-wrap: balance;
+}
+.projects-grid > .card .card-media {
+  isolation: isolate;
+}
+.projects-grid > .card .card-media::before {
+  position: absolute;
+  z-index: 2;
+  top: clamp(11px, 1.8vw, 19px);
+  left: clamp(11px, 1.8vw, 19px);
+  display: inline-block;
+  padding: 7px 11px;
+  border: 1px solid rgba(124, 206, 255, .38);
+  border-radius: 999px;
+  background: rgba(4, 14, 30, .82);
+  box-shadow: 0 5px 22px rgba(0, 0, 0, .24);
+  color: #d9f5ff;
+  font: 600 11px/1.2 var(--mono, ui-monospace, monospace);
+  letter-spacing: .09em;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+.projects-grid > .card:nth-child(1) .card-media::before { content: '01 / 06'; }
+.projects-grid > .card:nth-child(2) .card-media::before { content: '02 / 06'; }
+.projects-grid > .card:nth-child(3) .card-media::before { content: '03 / 06'; }
+.projects-grid > .card:nth-child(4) .card-media::before { content: '04 / 06'; }
+.projects-grid > .card:nth-child(5) .card-media::before { content: '05 / 06'; }
+.projects-grid > .card:nth-child(6) .card-media::before { content: '06 / 06'; }
+.projects .card-body .card-desc {
+  overflow-wrap: break-word;
+}
+.projects .card-media:focus-visible,
+.projects .case-toggle:focus-visible,
+.projects .forno-case-link:focus-visible,
+.filter-row .filter-chip:focus-visible {
+  outline: 3px solid #78dfff;
+  outline-offset: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .projects-grid .card-media::before {
+    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .projects-grid .card-tilt:hover .card-media::before,
+  .projects-grid .card-tilt:focus-within .card-media::before {
+    border-color: rgba(134, 224, 255, .85);
+    background: rgba(11, 38, 68, .96);
+    box-shadow: 0 0 25px rgba(56, 150, 255, .2);
+  }
+}
+@media (max-width: 600px) {
+  .projects-grid > .card .card-media::before {
+    font-size: 10px;
+    padding: 6px 9px;
+    backdrop-filter: none;
+  }
+  .projects .card-body h3 { overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-grid .card-media::before { transition: none !important; }
+  .projects .card-media img,
+  .projects .card-tilt,
+  .projects .card-body {
+    transition-duration: .01ms !important;
+  }
+}
