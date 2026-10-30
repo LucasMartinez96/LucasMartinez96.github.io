@@ -7,7 +7,7 @@ let lang='pt';const button=document.querySelector('#v5-lang');const labels=Array
 const render=()=>{labels.forEach(el=>el.textContent=map[lang][el.dataset.v5Key]||'');if(button){button.textContent=lang==='pt'?'PT / EN':'EN / PT';button.setAttribute('aria-label',lang==='pt'?'Mudar idioma desta seção para inglês':'Switch this section to Portuguese');button.setAttribute('aria-pressed',String(lang==='en'));}};
 button?.addEventListener('click',()=>{lang=lang==='pt'?'en':'pt';render();});
 root.querySelectorAll('a[data-v5-action]').forEach(a=>a.addEventListener('click',()=>{
-  try{if(typeof window.va==='function')window.va('event',{name:'v5_action',category:a.dataset.v5Action});}catch(_){}
+  try{if(typeof window.va==='function')window.va('event','v5_action',{action:a.dataset.v5Action});}catch(_){}
 }));
 render();
 })();
