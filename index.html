@@ -88,7 +88,7 @@
         <a href="#projetos">Projetos</a>
         <a href="#sobre">Sobre</a>
         <a href="#tecnologias">Tecnologias</a>
-        <a href="#certificados">Certificados</a>
+        <a href="#formacao">Formação</a><a href="#certificados">Certificados</a>
         <a href="#processo">Processo</a>
         <a href="#contato">Contato</a>
       </nav>
@@ -101,7 +101,7 @@
       </div>
     </div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menu para celular" hidden>
-      <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#tecnologias">Tecnologias</a><a href="#certificados">Certificados</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
+      <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#tecnologias">Tecnologias</a><a href="#formacao">Formação</a><a href="#certificados">Certificados</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
     </nav>
   </header>
 
@@ -190,17 +190,17 @@
         <div class="section-heading">
           <div>
             <h2 id="projects-title" class="scan" data-reveal>Projetos em <span class="accent">destaque.</span></h2>
-            <p data-reveal>Seis projetos de tecnologia aplicada, entre dashboards operacionais e sistemas independentes. Abra os detalhes para conhecer o problema e a solução de cada um.</p>
+            <p data-reveal>Sete projetos de tecnologia aplicada, entre dashboards operacionais e sistemas independentes. Abra os detalhes para conhecer o problema e a solução de cada um.</p>
           </div>
-          <div class="index-badge" data-reveal><span>6</span><small>projetos<br>visuais</small></div>
+          <div class="index-badge" data-reveal><span>7</span><small>projetos<br>visuais</small></div>
         </div>
 
         <div class="filter-row" role="group" aria-label="Filtrar projetos" data-reveal>
-          <button class="filter-chip active" type="button" data-filter="todos" aria-pressed="true">Todos <small>6</small></button>
+          <button class="filter-chip active" type="button" data-filter="todos" aria-pressed="true">Todos <small>7</small></button>
           <button class="filter-chip" type="button" data-filter="dashboards" aria-pressed="false">Dashboards <small>3</small></button>
           <button class="filter-chip" type="button" data-filter="3d" aria-pressed="false">Ambientes 3D <small>2</small></button>
           <button class="filter-chip" type="button" data-filter="dados" aria-pressed="false">Dados e IA <small>5</small></button>
-          <button class="filter-chip" type="button" data-filter="sistemas" aria-pressed="false">Sistemas web <small>1</small></button>
+          <button class="filter-chip" type="button" data-filter="sistemas" aria-pressed="false">Sistemas web <small>2</small></button>
         </div>
         <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
 
@@ -208,7 +208,7 @@
 
           <article class="card is-featured" id="projeto-control-tower" data-tags="dashboards dados" data-reveal="depth">
             <div class="card-tilt">
-              <button type="button" class="card-media" data-img="assets/projeto-control-tower.jpg" data-alt="Captura original do painel Control Tower com informações operacionais desfocadas" data-title="Control Tower — Visão Executiva" aria-label="Ampliar imagem da Control Tower">
+              <button type="button" class="card-media" data-img="assets/projeto-control-tower.jpg" data-alt="Captura real do painel Control Tower com indicadores visíveis e identidade empresarial ocultada" data-title="Control Tower — Visão Executiva" aria-label="Ampliar imagem da Control Tower">
                 <img src="assets/projeto-control-tower.jpg" alt="Captura original do painel Control Tower com informações operacionais desfocadas" loading="lazy" decoding="async" width="1600" height="900">
                 <span class="zoom-indicator" aria-hidden="true"><span>Ampliar</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span>
               </button>
@@ -230,7 +230,7 @@
 
           <article class="card" id="projeto-inventario-ciclico" data-tags="dashboards dados" data-reveal="depth">
             <div class="card-tilt">
-              <button type="button" class="card-media" data-img="assets/projeto-inventario.jpg" data-alt="Captura original do painel de inventário cíclico com detalhes protegidos" data-title="Inventário Cíclico" aria-label="Ampliar imagem do Inventário Cíclico">
+              <button type="button" class="card-media" data-img="assets/projeto-inventario.jpg" data-alt="Captura do painel de inventário cíclico, identidade empresarial ocultada" data-title="Inventário Cíclico" aria-label="Ampliar imagem do Inventário Cíclico">
                 <img src="assets/projeto-inventario.jpg" alt="Captura original do painel de inventário cíclico com detalhes protegidos" loading="lazy" decoding="async" width="1600" height="900">
                 <span class="zoom-indicator" aria-hidden="true"><span>Ampliar</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span>
               </button>
@@ -342,13 +342,42 @@
             </div>
           </article>
 
+          <!-- Projeto independente com repositório privado: sem dados de condomínios ou telas operacionais -->
+          <article class="card" id="projeto-gas-condominio" data-tags="sistemas dados" data-reveal="depth">
+            <div class="card-tilt">
+              <div class="card-media v5-gas-visual" role="img" aria-label="Ilustração criada para o portfólio do sistema Gás e Condomínio, com cartões e gráficos genéricos, sem dados reais">
+                <div class="v5-gas-ui" aria-hidden="true">
+                  <div class="v5-gas-top"><span class="v5-gas-logo">G / C</span><span class="v5-gas-indicator">VISÃO CONCEITUAL</span></div>
+                  <div class="v5-gas-heading">Gás &amp; Condomínio</div>
+                  <div class="v5-gas-sub">Gestão de água e gás</div>
+                  <div class="v5-gas-stats"><span>CONTAS</span><span>LEITURAS</span><span>FECHAMENTOS</span></div>
+                  <div class="v5-gas-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="v5-gas-rule">DASHBOARD · AUTOMAÇÃO · AUDITORIA</div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-cat">Projeto independente · Gestão condominial</p>
+                <h3>Gás &amp; Condomínio <span class="card-sub">Gestão de fechamentos de água e gás</span></h3>
+                <p class="card-desc">Sistema para organizar leituras, contas das concessionárias e fechamentos mensais, com cálculos, pendências, relatórios e rastreabilidade.</p>
+                <ul class="tag-list"><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Automação</li></ul>
+                <button type="button" class="case-toggle" aria-expanded="false" aria-controls="case-gas-condominio"><span>Ver detalhes</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" d="M6 9l6 6 6-6"/></svg></button>
+                <div class="case" id="case-gas-condominio"><div class="case-inner"><dl>
+                  <div><dt>Desafio</dt><dd>Centralizar o controle de contas, leituras, competências e fechamentos de consumo de água e gás.</dd></div>
+                  <div><dt>Funcionalidades</dt><dd>Organização de contas, cálculo de consumo, sinalização de pendências e divergências, histórico e relatórios.</dd></div>
+                  <div><dt>Automação e arquitetura</dt><dd>Aplicação Node.js e Express com PostgreSQL/Supabase, integrações e processos programados.</dd></div>
+                  <div><dt>Privacidade</dt><dd>Ilustração conceitual sem dados reais. Repositório e documentos de condomínios permanecem privados.</dd></div>
+                </dl></div></div>
+              </div>
+            </div>
+          </article>
+
         </div>
 
         <div class="privacy-note" data-reveal>
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
           <div>
             <strong>Portfólio visual e proteção de dados</strong>
-            <p>As imagens da galeria preservam as capturas originais dos projetos. Alguns detalhes já estavam desfocados nas próprias capturas; os arquivos originais aqui utilizados não exibem identificação legível da empresa. Não disponibilizo códigos privados, bases, integrações ou credenciais.</p>
+            <p>As capturas dos projetos operacionais foram preparadas para ocultar a identificação da empresa, preservando outros elementos visuais. A imagem de Gás &amp; Condomínio é uma ilustração conceitual, sem dados reais. Códigos privados, bases de dados, integrações e credenciais não são divulgados.</p>
           </div>
         </div>
       </div>
@@ -374,6 +403,21 @@
           </div>
           <figcaption>Identidade visual em pixel art. Brasil, 2026.</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <!-- ============ FORMAÇÃO ACADÊMICA ============ -->
+    <section class="section v5-academic" id="formacao" aria-labelledby="formacao-title">
+      <div class="container">
+        <div class="v5-academic-card" data-reveal>
+          <div class="v5-academic-marker"><span>2026</span><span>EM CURSO</span></div>
+          <div class="v5-academic-copy">
+            <p class="v5-academic-eyebrow">FORMAÇÃO ACADÊMICA / GRADUAÇÃO</p>
+            <h2 id="formacao-title">Análise e <span class="accent">Desenvolvimento de Sistemas.</span></h2>
+            <p class="v5-academic-school">Anhanguera · Início em fevereiro de 2026</p>
+            <p>Graduação em andamento, conectando os estudos de lógica, desenvolvimento e tecnologia à criação de projetos práticos.</p>
+          </div>
+        </div>
       </div>
     </section>
 
