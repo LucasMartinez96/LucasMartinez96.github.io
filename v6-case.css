@@ -1,0 +1,66 @@
+/* V6 PREMIUM — sistema visual isolado das páginas de estudo de caso.
+   Mantém homepage, crachá e estilos da V5 intactos. */
+:root{color-scheme:dark;--bg:#060d19;--panel:#0c1b30;--panel2:#101f36;--line:rgba(104,156,203,.28);--text:#edf6ff;--muted:#b6c6da;--accent:#69cbff;--accent2:#54ebd4;--max:1190px;font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 82% 9%,#112f52 0%,transparent 37%),var(--bg);color:var(--text);min-height:100vh}
+body[data-case="forno"]{--accent:#ffa878;--accent2:#ffd39b}
+body[data-case="gas"]{--accent:#83e0d5;--accent2:#76bcff}
+a{color:inherit}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+.skip{position:absolute;top:-100px;left:20px;padding:12px;background:white;color:#07121b;z-index:100}
+.skip:focus{top:12px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(5,14,29,.92);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.top-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:17px 0}
+.logo{font:800 22px/1 "Chakra Petch",system-ui,sans-serif;letter-spacing:.02em;text-decoration:none}.logo b{color:var(--accent)}
+.top-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.top-links a,.chip-link{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);text-decoration:none;color:#dceafa;border-radius:999px;padding:9px 14px;font-size:13px}
+.top-links a:hover,.chip-link:hover{background:#133552;border-color:var(--accent)}
+.hero{padding:clamp(45px,8vw,115px) 0 45px}
+.kicker,.overline{font:750 11px/1.5 ui-monospace,monospace;letter-spacing:.17em;color:var(--accent)}
+.hero h1{font:800 clamp(45px,8vw,104px)/.98 "Chakra Petch",system-ui,sans-serif;letter-spacing:-.06em;margin:16px 0 21px;max-width:1000px;text-wrap:balance}
+.hero h1 em{color:var(--accent);font-style:normal}
+.lede{font-size:clamp(17px,2vw,22px);color:var(--muted);max-width:850px;line-height:1.66;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:27px}.meta span{font-size:12px;letter-spacing:.04em;color:#c7e5f5;background:#102840;border:1px solid #2d5476;padding:9px 14px;border-radius:999px}
+.hero-rule{width:100%;height:1px;margin:48px 0 0;background:linear-gradient(90deg,var(--accent),transparent)}
+.visual{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.visual-main{overflow:hidden;position:relative;border:1px solid var(--line);border-radius:22px;background:#0d1930;box-shadow:0 32px 90px #0008}
+.visual-main button,.gallery button{border:0;background:none;padding:0;display:block;position:relative;width:100%;cursor:zoom-in;overflow:hidden;text-align:left;color:var(--text)}
+.visual-main img{width:100%;max-height:670px;object-fit:contain;display:block;margin:auto}
+.visual-main .photo-label,.gallery .photo-label{position:absolute;bottom:13px;left:15px;max-width:calc(100% - 30px);background:rgba(5,18,33,.88);border:1px solid rgba(168,228,244,.35);padding:10px 13px;border-radius:9px;font-size:12px;letter-spacing:.03em;backdrop-filter:blur(8px)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:13px}
+.gallery-item{background:#0f2137;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0}
+.gallery img{display:block;width:100%;height:220px;object-fit:cover;transition:transform .28s ease}
+.gallery button:hover img{transform:scale(1.04)}
+.gallery-caption{padding:13px 15px 17px}
+.gallery-caption h3{font-size:14px;margin:0 0 5px}.gallery-caption p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+.caption{margin:15px 0;color:#a7bed4;font-size:12px;line-height:1.7}
+.section{padding:65px 0 10px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:22px}
+.section h2{font:750 clamp(28px,4vw,47px)/1.16 "Chakra Petch",system-ui,sans-serif;letter-spacing:-.038em;margin:9px 0 0}
+.section-intro{max-width:760px;color:var(--muted);line-height:1.77;font-size:16px;margin:0 0 22px}
+.content-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:15px}
+.panel{border:1px solid var(--line);background:linear-gradient(140deg,#112843,#0b182c 90%);border-radius:17px;padding:clamp(22px,3vw,35px);min-width:0}
+.panel h3{font-size:20px;margin:0 0 14px;letter-spacing:-.02em}.panel p,.panel li{font-size:15px;color:#c4d3e4;line-height:1.73}
+.panel p:last-child{margin-bottom:0}.panel ul{padding-left:18px;margin:12px 0 0}.panel li+li{margin-top:10px}.panel strong{color:#f4faff}
+.workflow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;list-style:none;padding:0;margin:0}
+.workflow li{background:linear-gradient(135deg,#0c233a,#0b182d);border:1px solid var(--line);border-radius:14px;padding:22px;min-width:0}
+.workflow .step{color:var(--accent);font:800 13px ui-monospace,monospace}.workflow strong{display:block;font-size:15px;margin:13px 0 6px}.workflow p{color:var(--muted);line-height:1.65;font-size:13px;margin:0}
+.technology{display:flex;flex-wrap:wrap;gap:8px}.technology span{background:#10283d;border:1px solid #315678;border-radius:9px;font-size:13px;padding:9px 13px;color:#cfeeff}
+.architecture{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:center}
+.architecture div{border:1px solid var(--line);background:#10273e;border-radius:14px;min-width:0;padding:22px}.architecture b{color:var(--accent);font:700 11px/1.4 ui-monospace,monospace;letter-spacing:.1em;display:block;margin-bottom:12px}.architecture strong{display:block;font-size:17px;line-height:1.3}.architecture p{color:var(--muted);font-size:13px;line-height:1.65;margin:10px 0 0}
+.note{border-left:3px solid var(--accent);background:#0b2137;padding:18px 23px;margin:34px 0 0;color:#c3d5e9;font-size:13px;line-height:1.8;border-radius:0 12px 12px 0}
+.next{border-top:1px solid var(--line);margin-top:80px;padding:30px 0 60px;display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.next a{border:1px solid #355879;padding:13px 18px;border-radius:10px;text-decoration:none;color:#d4efff;font-size:14px}
+.next a:hover{background:#102e4c;border-color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:25px 0 40px;color:#97acc3;font-size:13px}
+.lightbox{border:1px solid #3d6989;background:#06101e;color:var(--text);width:min(1280px,96vw);max-width:96vw;max-height:96vh;padding:0;border-radius:14px}
+.lightbox::backdrop{background:rgba(0,5,14,.89);backdrop-filter:blur(6px)}
+.lightbox-head{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:18px}
+.lightbox-head span{font-size:14px;font-weight:700}.lightbox-head button{border:1px solid #416480;border-radius:9px;padding:7px 12px;color:white;background:#153149}
+.lightbox-stage{padding:12px;display:flex;justify-content:center;align-items:center;min-height:100px}
+.lightbox-stage img{display:block;max-width:100%;max-height:calc(96vh - 125px);width:auto;height:auto;object-fit:contain}
+.lightbox-footer{padding:0 20px 16px;display:flex;gap:10px;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
+.lightbox-footer button{color:white;background:#173952;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+@media(max-width:850px){.content-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr}.workflow{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.container{width:calc(100% - 28px)}.hero{padding-top:50px}.hero h1{font-size:clamp(41px,12vw,62px)}.top-links{gap:6px}.top-links a{padding:8px 10px;font-size:12px}.workflow,.gallery{grid-template-columns:1fr}.gallery img{height:auto;max-height:280px;object-fit:contain}.section{padding-top:42px}.next{margin-top:53px}.visual-main .photo-label{position:static;border-radius:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}.gallery button:hover img{transform:none}}
