@@ -18,20 +18,20 @@
   if(!root)return;
   const labels={
     pt:{
-      eyebrow:'PORTFÓLIO / V5',
+      eyebrow:'APRESENTAÇÃO PROFISSIONAL',
       profileLabel:'APRESENTAÇÃO PROFISSIONAL',
       profileTitle:'Uma visão rápida para recrutadores.',
       profileText:'Conheça meus projetos, ferramentas e um resumo público da minha atuação. O currículo é imprimível e pode ser salvo como PDF no navegador.',
-      resumeButton:'Abrir resumo / PDF ↗',
-      githubButton:'Ver GitHub ↗'
+      resumeButton:'Abrir resumo / PDF',
+      githubButton:'Ver GitHub'
     },
     en:{
-      eyebrow:'PORTFOLIO / V5',
+      eyebrow:'PROFESSIONAL SUMMARY',
       profileLabel:'PROFESSIONAL SUMMARY',
       profileTitle:'A quick introduction for recruiters.',
       profileText:'Explore my selected projects, tools and public professional summary. The resume-style page can be printed or saved as a PDF in your browser.',
-      resumeButton:'Open summary / PDF ↗',
-      githubButton:'View GitHub ↗'
+      resumeButton:'Open summary / PDF',
+      githubButton:'View GitHub'
     }
   };
   let language='pt';

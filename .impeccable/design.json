@@ -1,0 +1,499 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T23:45:22.117835Z",
+  "title": "Design System: Lucas Martinez — Beyond the Interface",
+  "extensions": {
+    "colorMeta": {
+      "electric-blue": {
+        "role": "primary",
+        "displayName": "Electric Blue",
+        "tonalRamp": [
+          "oklch(0.150 0.1844 262.59)",
+          "oklch(0.264 0.1844 262.59)",
+          "oklch(0.379 0.1844 262.59)",
+          "oklch(0.493 0.1844 262.59)",
+          "oklch(0.607 0.1844 262.59)",
+          "oklch(0.721 0.1844 262.59)",
+          "oklch(0.836 0.1844 262.59)",
+          "oklch(0.950 0.1844 262.59)"
+        ]
+      },
+      "cyan": {
+        "role": "primary",
+        "displayName": "Cyan",
+        "tonalRamp": [
+          "oklch(0.150 0.0730 220.71)",
+          "oklch(0.264 0.0730 220.71)",
+          "oklch(0.379 0.0730 220.71)",
+          "oklch(0.493 0.0730 220.71)",
+          "oklch(0.607 0.0730 220.71)",
+          "oklch(0.721 0.0730 220.71)",
+          "oklch(0.836 0.0730 220.71)",
+          "oklch(0.950 0.0730 220.71)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "tonalRamp": [
+          "oklch(0.150 0.0191 261.16)",
+          "oklch(0.264 0.0191 261.16)",
+          "oklch(0.379 0.0191 261.16)",
+          "oklch(0.493 0.0191 261.16)",
+          "oklch(0.607 0.0191 261.16)",
+          "oklch(0.721 0.0191 261.16)",
+          "oklch(0.836 0.0191 261.16)",
+          "oklch(0.950 0.0191 261.16)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0097 252.81)",
+          "oklch(0.264 0.0097 252.81)",
+          "oklch(0.379 0.0097 252.81)",
+          "oklch(0.493 0.0097 252.81)",
+          "oklch(0.607 0.0097 252.81)",
+          "oklch(0.721 0.0097 252.81)",
+          "oklch(0.836 0.0097 252.81)",
+          "oklch(0.950 0.0097 252.81)"
+        ]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Body",
+        "tonalRamp": [
+          "oklch(0.150 0.0249 259.82)",
+          "oklch(0.264 0.0249 259.82)",
+          "oklch(0.379 0.0249 259.82)",
+          "oklch(0.493 0.0249 259.82)",
+          "oklch(0.607 0.0249 259.82)",
+          "oklch(0.721 0.0249 259.82)",
+          "oklch(0.836 0.0249 259.82)",
+          "oklch(0.950 0.0249 259.82)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(0.150 0.0369 258.87)",
+          "oklch(0.264 0.0369 258.87)",
+          "oklch(0.379 0.0369 258.87)",
+          "oklch(0.493 0.0369 258.87)",
+          "oklch(0.607 0.0369 258.87)",
+          "oklch(0.721 0.0369 258.87)",
+          "oklch(0.836 0.0369 258.87)",
+          "oklch(0.950 0.0369 258.87)"
+        ]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised",
+        "tonalRamp": [
+          "oklch(0.150 0.0335 260.21)",
+          "oklch(0.264 0.0335 260.21)",
+          "oklch(0.379 0.0335 260.21)",
+          "oklch(0.493 0.0335 260.21)",
+          "oklch(0.607 0.0335 260.21)",
+          "oklch(0.721 0.0335 260.21)",
+          "oklch(0.836 0.0335 260.21)",
+          "oklch(0.950 0.0335 260.21)"
+        ]
+      },
+      "boundary": {
+        "role": "neutral",
+        "displayName": "Boundary",
+        "tonalRamp": [
+          "oklch(0.150 0.0335 260.89)",
+          "oklch(0.264 0.0335 260.89)",
+          "oklch(0.379 0.0335 260.89)",
+          "oklch(0.493 0.0335 260.89)",
+          "oklch(0.607 0.0335 260.89)",
+          "oklch(0.721 0.0335 260.89)",
+          "oklch(0.836 0.0335 260.89)",
+          "oklch(0.950 0.0335 260.89)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus",
+        "tonalRamp": [
+          "oklch(0.150 0.0737 225.12)",
+          "oklch(0.264 0.0737 225.12)",
+          "oklch(0.379 0.0737 225.12)",
+          "oklch(0.493 0.0737 225.12)",
+          "oklch(0.607 0.0737 225.12)",
+          "oklch(0.721 0.0737 225.12)",
+          "oklch(0.836 0.0737 225.12)",
+          "oklch(0.950 0.0737 225.12)"
+        ]
+      },
+      "chip-selected": {
+        "role": "neutral",
+        "displayName": "Chip Selected",
+        "tonalRamp": [
+          "oklch(0.150 0.0330 261.03)",
+          "oklch(0.264 0.0330 261.03)",
+          "oklch(0.379 0.0330 261.03)",
+          "oklch(0.493 0.0330 261.03)",
+          "oklch(0.607 0.0330 261.03)",
+          "oklch(0.721 0.0330 261.03)",
+          "oklch(0.836 0.0330 261.03)",
+          "oklch(0.950 0.0330 261.03)"
+        ]
+      },
+      "action-ink": {
+        "role": "neutral",
+        "displayName": "Action Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0397 262.72)",
+          "oklch(0.264 0.0397 262.72)",
+          "oklch(0.379 0.0397 262.72)",
+          "oklch(0.493 0.0397 262.72)",
+          "oklch(0.607 0.0397 262.72)",
+          "oklch(0.721 0.0397 262.72)",
+          "oklch(0.836 0.0397 262.72)",
+          "oklch(0.950 0.0397 262.72)"
+        ]
+      },
+      "summary-action": {
+        "role": "neutral",
+        "displayName": "Summary Action",
+        "tonalRamp": [
+          "oklch(0.150 0.0844 257.16)",
+          "oklch(0.264 0.0844 257.16)",
+          "oklch(0.379 0.0844 257.16)",
+          "oklch(0.493 0.0844 257.16)",
+          "oklch(0.607 0.0844 257.16)",
+          "oklch(0.721 0.0844 257.16)",
+          "oklch(0.836 0.0844 257.16)",
+          "oklch(0.950 0.0844 257.16)"
+        ]
+      },
+      "case-ground": {
+        "role": "neutral",
+        "displayName": "Case Ground",
+        "tonalRamp": [
+          "oklch(0.150 0.0213 260.66)",
+          "oklch(0.264 0.0213 260.66)",
+          "oklch(0.379 0.0213 260.66)",
+          "oklch(0.493 0.0213 260.66)",
+          "oklch(0.607 0.0213 260.66)",
+          "oklch(0.721 0.0213 260.66)",
+          "oklch(0.836 0.0213 260.66)",
+          "oklch(0.950 0.0213 260.66)"
+        ]
+      },
+      "case-ink": {
+        "role": "neutral",
+        "displayName": "Case Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0114 252.09)",
+          "oklch(0.264 0.0114 252.09)",
+          "oklch(0.379 0.0114 252.09)",
+          "oklch(0.493 0.0114 252.09)",
+          "oklch(0.607 0.0114 252.09)",
+          "oklch(0.721 0.0114 252.09)",
+          "oklch(0.836 0.0114 252.09)",
+          "oklch(0.950 0.0114 252.09)"
+        ]
+      },
+      "case-muted": {
+        "role": "neutral",
+        "displayName": "Case Muted",
+        "tonalRamp": [
+          "oklch(0.150 0.0370 257.40)",
+          "oklch(0.264 0.0370 257.40)",
+          "oklch(0.379 0.0370 257.40)",
+          "oklch(0.493 0.0370 257.40)",
+          "oklch(0.607 0.0370 257.40)",
+          "oklch(0.721 0.0370 257.40)",
+          "oklch(0.836 0.0370 257.40)",
+          "oklch(0.950 0.0370 257.40)"
+        ]
+      },
+      "control-accent": {
+        "role": "secondary",
+        "displayName": "Control Accent",
+        "tonalRamp": [
+          "oklch(0.150 0.1186 258.82)",
+          "oklch(0.264 0.1186 258.82)",
+          "oklch(0.379 0.1186 258.82)",
+          "oklch(0.493 0.1186 258.82)",
+          "oklch(0.607 0.1186 258.82)",
+          "oklch(0.721 0.1186 258.82)",
+          "oklch(0.836 0.1186 258.82)",
+          "oklch(0.950 0.1186 258.82)"
+        ]
+      },
+      "gas-accent": {
+        "role": "secondary",
+        "displayName": "Gas Accent",
+        "tonalRamp": [
+          "oklch(0.150 0.0802 182.78)",
+          "oklch(0.264 0.0802 182.78)",
+          "oklch(0.379 0.0802 182.78)",
+          "oklch(0.493 0.0802 182.78)",
+          "oklch(0.607 0.0802 182.78)",
+          "oklch(0.721 0.0802 182.78)",
+          "oklch(0.836 0.0802 182.78)",
+          "oklch(0.950 0.0802 182.78)"
+        ]
+      },
+      "forno-accent": {
+        "role": "secondary",
+        "displayName": "Forno Accent",
+        "tonalRamp": [
+          "oklch(0.150 0.0883 53.38)",
+          "oklch(0.264 0.0883 53.38)",
+          "oklch(0.379 0.0883 53.38)",
+          "oklch(0.493 0.0883 53.38)",
+          "oklch(0.607 0.0883 53.38)",
+          "oklch(0.721 0.0883 53.38)",
+          "oklch(0.836 0.0883 53.38)",
+          "oklch(0.950 0.0883 53.38)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Monumental two-line name."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Homepage section titles."
+      },
+      "project-title": {
+        "displayName": "Project Title",
+        "purpose": "Project names in gallery spreads and cards."
+      },
+      "case-display": {
+        "displayName": "Case Display",
+        "purpose": "Project-specific case-study title."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base reading text."
+      },
+      "hero-body": {
+        "displayName": "Hero Body",
+        "purpose": "Homepage introduction."
+      },
+      "project-body": {
+        "displayName": "Project Body",
+        "purpose": "Project descriptions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Functional supporting category metadata."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Primary and outline actions."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Terminal narrative screen."
+      }
+    },
+    "shadows": [
+      {
+        "name": "project-media",
+        "value": "0 24px 54px #0004",
+        "purpose": "Large original evidence image."
+      },
+      {
+        "name": "practice-terminal",
+        "value": "0 24px 60px #0004",
+        "purpose": "Terminal separation."
+      },
+      {
+        "name": "case-hero",
+        "value": "0 30px 80px #0005",
+        "purpose": "Principal case screenshot."
+      },
+      {
+        "name": "media-hover-boundary",
+        "value": "inset 0 0 0 1px #9cceff",
+        "purpose": "Image interaction state."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-v7",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "V7 spatial transitions."
+      },
+      {
+        "name": "opening-completion",
+        "value": "1550ms",
+        "purpose": "Maximum opening-control duration."
+      },
+      {
+        "name": "mesh-assembly",
+        "value": "1450ms",
+        "purpose": "Full Canvas assembly; 950ms in economy mode."
+      },
+      {
+        "name": "name-entry",
+        "value": "1100ms",
+        "purpose": "Clipped name introduction."
+      },
+      {
+        "name": "editorial-reveal",
+        "value": "900ms",
+        "purpose": "One-shot content entry."
+      },
+      {
+        "name": "homepage-route-entry",
+        "value": "400ms",
+        "purpose": "Progressive native route transition."
+      },
+      {
+        "name": "case-route-entry",
+        "value": "450ms",
+        "purpose": "Progressive native case arrival."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "case-mobile",
+        "value": "560px"
+      },
+      {
+        "name": "home-mobile",
+        "value": "760px"
+      },
+      {
+        "name": "case-tablet",
+        "value": "850px"
+      },
+      {
+        "name": "home-navigation",
+        "value": "1100px"
+      },
+      {
+        "name": "wide-display",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pale primary action with the implemented inline SVG arrow.",
+      "html": "<a class=\"ds-primary\" href=\"#projetos\">Explorar projetos<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M12 4v16m-6-6 6 6 6-6\"/></svg></a>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-height:54px;padding:14px 22px;border:0;border-radius:4px;background:var(--wow-ink,#eff4fa);color:#081123;font:600 14px/1.2 var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);text-decoration:none;transition:translate .35s var(--wow-ease,cubic-bezier(.16,1,.3,1)),background .25s;}.ds-primary:hover{background:#c3dcff;transform:translateY(-2px)}.ds-primary:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}.ds-primary:active{transform:translateY(0) scale(.98);scale:.98}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none;translate:none}}"
+    },
+    {
+      "name": "Certificate outline action",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Retained outline variant used to open certificate evidence.",
+      "html": "<a class=\"ds-outline\" href=\"#certificados\">Ver certificado<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a>",
+      "css": ".ds-outline{display:inline-flex;align-items:center;gap:14px;min-height:50px;padding:14px 22px;border:1px solid #3a6590;border-radius:8px;background:rgba(10,24,42,.6);color:#dcecff;font:600 14px/1.2 var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);text-decoration:none;transition:transform .2s,background .2s,border-color .2s}.ds-outline:hover{background:#14294a;border-color:var(--cyan,#9adcf2);transform:translateY(-2px)}.ds-outline:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}.ds-outline:active{transform:translateY(0) scale(.98);scale:.98}"
+    },
+    {
+      "name": "Summary action",
+      "kind": "button",
+      "refersTo": "button-summary",
+      "description": "Compact professional-summary action.",
+      "html": "<a class=\"ds-summary\" href=\"#perfil-profissional\">Abrir resumo / PDF<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a>",
+      "css": ".ds-summary{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:44px;padding:11px 18px;border:1px solid #4e6f9c;border-radius:3px;background:#183762;color:#fff;font:700 14px var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);text-decoration:none;transition:filter .2s,transform .2s}.ds-summary:hover{filter:brightness(1.15);transform:translateY(-2px)}.ds-summary:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}.ds-summary:active{scale:.98}"
+    },
+    {
+      "name": "Summary alternative",
+      "kind": "button",
+      "refersTo": "button-summary-ghost",
+      "description": "Compact professional-summary action.",
+      "html": "<a class=\"ds-summary-ghost\" href=\"#perfil-profissional\">Ver GitHub<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a>",
+      "css": ".ds-summary-ghost{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:44px;padding:11px 18px;border:1px solid #35729a;border-radius:3px;background:transparent;color:#dceeff;font:700 14px var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);text-decoration:none;transition:filter .2s,transform .2s}.ds-summary-ghost:hover{filter:brightness(1.15);transform:translateY(-2px)}.ds-summary-ghost:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}.ds-summary-ghost:active{scale:.98}"
+    },
+    {
+      "name": "Hero text link",
+      "kind": "button",
+      "refersTo": "link-text",
+      "description": "Open text action with a quiet rule and cyan SVG.",
+      "html": "<a class=\"ds-text-link\" href=\"#contato\">Ver GitHub<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a>",
+      "css": ".ds-text-link{display:inline-flex;align-items:center;gap:25px;font-size:14px;font-family:var(--body, 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);padding:12px 0;border-bottom:1px solid #6b7a91;color:#c0cada;text-decoration:none}.ds-text-link svg{color:var(--wow-cyan,#9adcf2)}.ds-text-link:hover{cursor:pointer}.ds-text-link:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}"
+    },
+    {
+      "name": "Project filter",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "Native project selection, including the existing selected state.",
+      "html": "<button class=\"ds-filter\" type=\"button\" aria-pressed=\"true\">Todos <small>7</small></button> <button class=\"ds-filter\" type=\"button\" aria-pressed=\"false\">Dashboards <small>3</small></button>",
+      "css": ".ds-filter{background:transparent;border:1px solid #344156;color:#a9bdd8;border-radius:2px;min-height:44px;padding:10px 15px;font:600 12px var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);cursor:pointer;transition:color .2s,background .2s,border-color .2s,transform .2s}.ds-filter[aria-pressed=true]{background:#dce9ff;color:#0d182b;border-color:#dce9ff}.ds-filter small{margin-left:6px;color:inherit;opacity:.8;font:500 12px var(--mono,'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace);}.ds-filter:hover{color:#fff;border-color:#5b93ff}.ds-filter[aria-pressed=true]:hover{color:#0d182b;border-color:#dce9ff}.ds-filter:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}.ds-filter:active{transform:scale(.96);scale:.98}"
+    },
+    {
+      "name": "Project card body",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "The unboxed content half of an existing spread; original evidence image stays in the site.",
+      "html": "<article class=\"ds-card\"><h3>Control Tower <span>Visão Executiva</span></h3><p>Uma única leitura para visualizar indicadores, acompanhamento de processos e sínteses operacionais.</p><p class=\"ds-category\">Sistemas visuais</p><ul class=\"ds-tags\"><li>Dashboard</li><li>Visualização</li><li>IA</li></ul><a class=\"ds-case-link\" href=\"control-tower.html\">Estudo de caso completo<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 18 18 6M6 6h12v12\"/></svg></a></article>",
+      "css": ".ds-card{padding:24px 0 0;background:transparent;color:#aec0d9;font-family:var(--body, 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);}.ds-card h3{margin:0;font:700 clamp(26px,3.1vw,43px)/1.1 var(--display,'Space Grotesk', 'Chakra Petch', sans-serif);letter-spacing:-.035em;color:var(--wow-ink,#eff4fa)}.ds-card h3 span{display:block;font:400 15px/1.5 var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);letter-spacing:0;color:#adc1dd;margin-top:9px}.ds-card p{font-size:14px;line-height:1.75;max-width:59ch;margin:20px 0}.ds-card .ds-category{color:#8eaaca;font:400 11px var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);letter-spacing:.035em;margin:18px 0 0;text-transform:uppercase}.ds-tags{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0;padding:0;list-style:none}.ds-tags li{color:#b2c9e9;padding:0 9px 0 0;font:500 11px/1.3 var(--mono,'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace);}.ds-tags li+li{border-left:1px solid #3c4c64;padding-left:10px}.ds-case-link{display:flex;justify-content:space-between;align-items:center;padding:17px 0;border-block:1px solid #3c4b62;color:#d8e8ff;font:700 13px/1.3 var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);text-decoration:none}.ds-case-link:hover{color:white;background:#102039}.ds-case-link:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}"
+    },
+    {
+      "name": "Desktop navigation",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Compact section links and the existing current-location underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Menu principal\"><a href=\"#projetos\" aria-current=\"location\">Projetos</a><a href=\"#sobre\">Sobre</a><a href=\"#contato\">Contato</a></nav>",
+      "css": ".ds-nav{display:flex;gap:6px;background:var(--wow-ground,#060a12)}.ds-nav a{position:relative;padding:10px;font:500 13px var(--body,'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);color:var(--muted,#9db0c9);text-decoration:none;transition:color .2s}.ds-nav a::after{content:\"\";position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:var(--cyan,#9adcf2);transform:scaleX(0);transform-origin:left;transition:transform .3s}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--ice,#eff4fa)}.ds-nav a[aria-current]::after{transform:scaleX(1)}.ds-nav a:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}"
+    },
+    {
+      "name": "Practice terminal",
+      "kind": "custom",
+      "refersTo": "practice-terminal",
+      "description": "Existing mono narrative screen and pressed tab treatment.",
+      "html": "<div class=\"ds-terminal\"><div class=\"ds-term-bar\">lucas@portfolio</div><pre class=\"ds-term-screen\"><span>lucas@portfolio:~$</span> explorar projetos</pre><div class=\"ds-term-tabs\"><button type=\"button\" aria-pressed=\"true\">Projetos</button><button type=\"button\" aria-pressed=\"false\">Sobre</button></div></div>",
+      "css": ".ds-terminal{background:#0b1423;border:1px solid #354862;border-radius:6px;box-shadow:0 24px 60px #0004;overflow:hidden}.ds-term-bar{background:#111f34;padding:12px 16px;border-bottom:1px solid var(--line,rgba(88,150,255,.2));font:400 12px/1 var(--mono,'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace);color:#8196b2}.ds-term-screen{margin:0;padding:20px 20px 8px;min-height:215px;color:#d3e5ff;font:400 14px/1.75 var(--mono,'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace);white-space:pre-wrap}.ds-term-screen span{color:var(--cyan,#9adcf2)}.ds-term-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 16px}.ds-term-tabs button{min-height:36px;padding:6px 14px;font:500 12.5px/1 var(--mono,'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace);color:#a9c3df;background:rgba(14,32,58,.7);border:1px solid #27486c;border-radius:6px;cursor:pointer;transition:color .2s,background .2s,border-color .2s}.ds-term-tabs button:hover{color:#fff;border-color:var(--cyan,#9adcf2)}.ds-term-tabs button[aria-pressed=true]{color:#031018;background:var(--cyan,#9adcf2);border-color:var(--cyan,#9adcf2);font-weight:600}.ds-term-tabs button:focus-visible{outline:2px solid #a5e5ff;outline-offset:5px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "BEYOND THE INTERFACE",
+    "overview": "BEYOND THE INTERFACE is cinematic futurism expressed through a navy-black ground, electric blue and pale cyan light, monumental typography, and dimensional identity. Spacious editorial composition gives original project images priority. The atmosphere is premium and minimal, while headings and interactive material carry the dramatic weight.\n\nThe signature is an original six-beam LM mesh with beveled faces, camera perspective and directional shading, projected through Canvas 2D without a WebGL or package dependency. A flat CSS LM remains the honest fallback. Motion is a finite enhancement: content is visible immediately, native scrolling remains intact, and reduced-motion preferences and the session pause control govern new choreography.",
+    "keyCharacteristics": [
+      "Monumental name and self-hosted Space Grotesk display typography.",
+      "Dark editorial surfaces with blue and cyan material light.",
+      "Original protected screenshots displayed without cropping important evidence.",
+      "Finite, interruptible depth and native navigation.",
+      "The original credential retains its code, assets, photo, cord physics and GitHub QR."
+    ],
+    "rules": [
+      {
+        "name": "The Material Light Rule",
+        "body": "Use blue and cyan for identity, interaction and spatial light; keep reading surfaces quiet and dark. Project-specific case accents stay local to their studies.",
+        "section": "colors"
+      },
+      {
+        "name": "The Content First Rule",
+        "body": "Titles lead. Verified categories and providers follow as supporting metadata; they do not become decorative headings above the title.",
+        "section": "typography"
+      },
+      {
+        "name": "The Finite Depth Rule",
+        "body": "Depth supports identity and evidence. New animation ends or sleeps at rest, and a flat, readable composition remains available without motion.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the BEYOND THE INTERFACE identity and the navy, electric blue, cyan and white palette.",
+      "Do keep project images, verified case facts and existing privacy protections intact.",
+      "Do use inline SVG arrows and keep functional metadata legible at the implemented 11px floor.",
+      "Do retain native scrolling, keyboard access, immediately visible content and reduced-motion behavior.",
+      "Do preserve the original credential as an isolated interactive identity asset."
+    ],
+    "donts": [
+      "Don't replace protected screenshots or fabricate project results, statistics or integrations.",
+      "Don't add a mandatory loader, fullscreen intro gate or scroll hijacking.",
+      "Don't promote inherited tiny metadata, decorative kickers or glyph icons into the reusable system.",
+      "Don't add new ambient effects merely to fill whitespace or use the flat fallback to imply a real 3D render."
+    ]
+  }
+}
