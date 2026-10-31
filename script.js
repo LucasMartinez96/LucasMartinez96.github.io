@@ -539,24 +539,31 @@
     const closeBtn = $('#modal-close');
     if (!modal || !img || typeof modal.showModal !== 'function') return;
 
+    // Restrito às imagens públicas do portfólio, incluindo as quatro capturas do Gás & Condomínio.
+    const isAllowedImage = path => /^assets\/(?:projeto-(?:control-tower|inventario|patio|ocupacao|analise|gas-dashboard|gas-operacoes)|gas-(?:contas-concessionaria|alertas-evolucao))\.jpg$/.test(path);
     let list = [], index = 0;
     const show = i => {
+      if (!list.length) return;
       index = (i + list.length) % list.length;
       const btn = list[index];
       const path = btn.dataset.img || '';
-      if (!/^assets\/projeto-(control-tower|inventario|patio|ocupacao|analise)\.jpg$/.test(path)) return;
-      img.src = btn.querySelector('img')?.currentSrc || path;
+      if (!isAllowedImage(path)) return;
+      img.src = path;
       img.alt = btn.dataset.alt || 'Imagem do projeto';
       title.textContent = btn.dataset.title || 'Projeto';
       count.textContent = `${index + 1} / ${list.length}`;
       prev.hidden = next.hidden = list.length < 2;
     };
-    $$('button.card-media[data-img]').forEach(btn => btn.addEventListener('click', () => {
-      list = $$('button.card-media[data-img]').filter(b => !b.closest('.card').hidden);
+    $('button.card-media[data-img]').forEach(btn => btn.addEventListener('click', () => {
+      if (btn.hidden || !isAllowedImage(btn.dataset.img || '')) return;
+      list = $('button.card-media[data-img]').filter(b =>
+        !b.hidden && !b.closest('.card')?.hidden && isAllowedImage(b.dataset.img || '')
+      );
       index = list.indexOf(btn);
+      if (index < 0 || !list.length) return;
       show(index);
       document.documentElement.classList.add('modal-open');
-      modal.showModal();
+      if (!modal.open) modal.showModal();
     }));
     const dismiss = () => { if (modal.open) modal.close(); };
     closeBtn.addEventListener('click', dismiss);
