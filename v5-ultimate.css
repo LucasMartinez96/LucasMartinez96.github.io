@@ -1,0 +1,66 @@
+/* V5 ULTIMATE — camada progressiva; preserva o layout e a física existentes. */
+.v5-showcase{padding:clamp(42px,7vw,98px) 0 48px;position:relative;isolation:isolate}
+.v5-showcase::before{content:"";position:absolute;inset:7% 0 0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 85% 12%,rgba(35,109,235,.18),transparent 47%)}
+.v5-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:22px}
+.v5-label{font:700 12px/1.5 var(--mono,ui-monospace,monospace);letter-spacing:.16em;color:#66dcff}
+.v5-lang{border:1px solid #3a729b;border-radius:100px;background:#092540;color:#eaf7ff;padding:9px 14px;font-size:12px;font-weight:800;letter-spacing:.1em;cursor:pointer}
+.v5-cards{display:grid;grid-template-columns:minmax(0,1fr);max-width:970px;margin-inline:auto;gap:19px}
+.v5-pane{position:relative;overflow:hidden;border:1px solid rgba(94,166,226,.39);border-radius:24px;background:linear-gradient(137deg,#0d2a49,#07172d 75%);padding:clamp(24px,4vw,40px);box-shadow:0 24px 55px rgba(2,9,25,.2)}
+.v5-pane::before{content:"";position:absolute;width:280px;height:280px;right:-140px;top:-150px;border-radius:100%;background:radial-gradient(circle,rgba(40,188,241,.25),transparent 68%);pointer-events:none}
+.v5-pane small{color:#81dafa;font:700 11px var(--mono,monospace);letter-spacing:.14em}
+.v5-pane h2{margin:13px 0;font:700 clamp(27px,3.4vw,42px)/1.13 var(--display,system-ui,sans-serif);letter-spacing:-.035em;color:#f0fbff}
+.v5-pane p{color:#b4cada;font-size:15px;line-height:1.73;max-width:54ch;margin:0 0 24px}
+.v5-actions{display:flex;flex-wrap:wrap;gap:12px}
+.v5-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 18px;border-radius:10px;background:#2d75ee;color:white;border:1px solid #5eacff;text-decoration:none;font-weight:700;font-size:14px;transition:filter .2s,transform .2s}
+.v5-cta.alt{background:rgba(29,74,114,.37);border-color:#35729a;color:#dceeff}
+.v5-cta:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.v5-cta:focus-visible,.v5-lang:focus-visible{outline:3px solid #7cdbff;outline-offset:4px}
+.v5-note{margin-top:13px!important;color:#88b2cb!important;font-size:12px!important}
+.v5-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 22px}
+.v5-mini span{background:#103653;border:1px solid #2a5b7d;border-radius:10px;padding:11px 8px;text-align:center;font:700 12px/1.4 var(--mono,monospace);color:#a8eaff}
+@media(max-width:800px){.v5-cards{grid-template-columns:1fr}.v5-pane{padding:27px}.v5-showcase{padding:48px 0 25px}}
+@media(max-width:450px){.v5-actions{flex-direction:column}.v5-cta{width:100%}.v5-mini span{font-size:10px;padding:10px 4px}.v5-pane h2{font-size:30px}}
+@media(prefers-reduced-motion:reduce){.v5-cta{transition:none}.v5-cta:hover{transform:none}}
+
+/* V5: identidade visual neutra do projeto privado Gás & Condomínio. */
+.v5-gas-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:300px;cursor:default;background:radial-gradient(circle at 22% 10%,rgba(28,170,220,.28),transparent 42%),linear-gradient(130deg,#061827 10%,#103650 50%,#041422 100%)}
+.v5-gas-visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(84,185,226,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(84,185,226,.09) 1px,transparent 1px);background-size:34px 34px;pointer-events:none}
+.v5-gas-ui{width:min(88%,520px);position:relative;background:linear-gradient(135deg,rgba(13,46,71,.92),rgba(4,19,35,.96));border:1px solid rgba(93,218,248,.38);border-radius:18px;padding:26px;box-shadow:0 22px 70px #001321aa}
+.v5-gas-top{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#b8ecff;font:700 11px/1.4 var(--mono,monospace);letter-spacing:.09em}
+.v5-gas-logo{border:1px solid rgba(129,216,243,.4);border-radius:8px;padding:6px 10px;color:#7decf5}
+.v5-gas-indicator{color:#6ab6ce;font-size:10px}
+.v5-gas-heading{font:800 clamp(25px,3.4vw,39px)/1.2 var(--display,system-ui);color:#f2fbff;margin-top:25px}
+.v5-gas-sub{font:500 14px/1.5 var(--body,system-ui);color:#b4d2e4;margin-top:5px}
+.v5-gas-stats{display:flex;justify-content:space-between;gap:8px;margin-top:24px}
+.v5-gas-stats span{border:1px solid #315674;background:#0f3453;border-radius:8px;color:#b5d9f1;flex:1;text-align:center;padding:12px 5px;font:700 10px/1.35 var(--mono,monospace)}
+.v5-gas-bars{display:flex;align-items:end;gap:8px;margin:24px 0 12px;height:55px}
+.v5-gas-bars i{height:40%;flex:1;background:linear-gradient(0deg,#1867b0,#3de0dd);border-radius:3px 3px 0 0}
+.v5-gas-bars i:nth-child(2),.v5-gas-bars i:nth-child(5){height:73%}.v5-gas-bars i:nth-child(3),.v5-gas-bars i:nth-child(7){height:90%}.v5-gas-bars i:nth-child(4){height:56%}.v5-gas-bars i:nth-child(6){height:65%}
+.v5-gas-rule{font:600 10px/1.5 var(--mono,monospace);color:#78bdd4;letter-spacing:.1em}
+.v5-academic{padding:clamp(45px,7vw,88px) 0}
+.v5-academic-card{display:grid;grid-template-columns:minmax(170px,.32fr) minmax(0,1fr);gap:clamp(20px,4vw,50px);align-items:center;border:1px solid rgba(91,160,215,.35);border-radius:22px;padding:clamp(26px,4vw,52px);background:linear-gradient(132deg,rgba(13,47,77,.87),rgba(6,20,40,.97))}
+.v5-academic-marker{min-height:150px;border-radius:15px;border:1px solid rgba(90,206,236,.32);background:#0c2c4d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#d6f3ff}
+.v5-academic-marker span:first-child{font:750 clamp(32px,4.3vw,55px)/1 var(--display,system-ui);letter-spacing:-.04em}
+.v5-academic-marker span:last-child{color:#5de3c9;font:700 11px/1 var(--mono,monospace);letter-spacing:.15em}
+.v5-academic-eyebrow{font:700 11px/1.4 var(--mono,monospace);letter-spacing:.16em;color:#67daff}
+.v5-academic-copy h2{font:750 clamp(26px,3.2vw,43px)/1.18 var(--display,system-ui);color:#eaf6ff;letter-spacing:-.03em;margin:10px 0 14px}
+.v5-academic-school{color:#94d9f6!important;font-size:16px!important;font-weight:650;margin:0 0 12px!important}
+.v5-academic-copy>p:last-child{color:#b7c9dd;line-height:1.7;max-width:62ch}
+@media(max-width:650px){.v5-academic-card{grid-template-columns:1fr}.v5-academic-marker{min-height:108px;flex-direction:row}.v5-gas-ui{padding:19px}.v5-gas-visual{min-height:260px}.v5-gas-stats span{font-size:9px}}
+
+/* V5 — capturas reais do projeto Gás & Condomínio; fallback até envio dos JPGs */
+.v5-gas-shot[hidden], .v5-gas-visual[hidden]{display:none!important}
+.v5-gas-shot{overflow:hidden;position:relative}
+.v5-gas-shot img{width:100%;height:100%;object-fit:cover}
+.v5-gas-primary{height:auto;aspect-ratio:16/9}
+.v5-gas-secondary{max-width:350px;width:100%;height:auto;aspect-ratio:16/9;margin:16px 0 5px;border:1px solid rgba(116,190,229,.34);border-radius:10px}
+.v5-gas-shot-note{color:#91acc0!important;font-size:12px!important;line-height:1.5!important;margin:7px 0 18px!important}
+@media(max-width:600px){.v5-gas-secondary{max-width:none}}
+
+/* V5: galeria compacta do Gás & Condomínio com duas capturas complementares. */
+.v5-gas-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start;margin:18px 0 10px}
+.v5-gas-gallery .v5-gas-shot{margin:0;max-width:none;width:100%;height:auto;aspect-ratio:16/9;border:1px solid rgba(116,190,229,.34);border-radius:9px}
+.v5-gas-gallery .v5-gas-shot img{width:100%;height:100%;object-fit:cover;display:block}
+.v5-gas-gallery .v5-gas-shot:focus-visible{outline:3px solid #85ddff;outline-offset:3px}
+@media(max-width:700px){.v5-gas-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.v5-gas-gallery{gap:7px}}
