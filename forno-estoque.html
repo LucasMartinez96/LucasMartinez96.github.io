@@ -1,87 +1,76 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#070d18">
-<title>Forno &amp; Estoque — Lucas Martinez | Estudo de caso</title>
-<meta name="description" content="Forno & Estoque: gestão de insumos de pizzaria, compras inteligentes, estoque mínimo e máximo e avisos automáticos pelo Telegram. Projeto de Lucas Martinez.">
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark"><meta name="theme-color" content="#060d19">
+<title>Forno &amp; Estoque — Estudo de caso | Lucas Martinez</title><meta name="description" content="Ferramenta para organizar os insumos de uma pizzaria, acompanhar saldos e custos, sugerir reposição e enviar alertas automáticos pelo Telegram quando produtos atingem o estoque mínimo.">
 <link rel="canonical" href="https://lucas-martinez-portfolio.vercel.app/forno-estoque.html">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Forno &amp; Estoque — Estudo de caso | Lucas Martinez">
-<meta property="og:description" content="Conheça o projeto de gestão de estoque e automação para pizzaria, com reposição inteligente e alertas pelo Telegram.">
-<meta property="og:url" content="https://lucas-martinez-portfolio.vercel.app/forno-estoque.html">
-<meta property="og:image" content="https://lucas-martinez-portfolio.vercel.app/assets/forno-estoque-hd.webp">
-<meta name="twitter:card" content="summary_large_image">
-
-<style>
-:root{color-scheme:dark;--bg:#070d18;--ink:#f3f7ff;--dim:#b9c8df;--orange:#ff9556}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-a{color:inherit}
-header{position:sticky;top:0;z-index:5;background:#070d18e8;border-bottom:1px solid #263d58;backdrop-filter:blur(14px)}
-.nav{max-width:1160px;margin:auto;padding:15px 22px;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.logo{font-weight:850;font-size:21px;text-decoration:none}.logo span{color:#76e0ff}
-.back{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #365474;border-radius:999px;font-size:13px;text-decoration:none}
-.back:hover,.back:focus-visible{border-color:#7ad6ff;color:#fff}
-main{max-width:1160px;margin:auto;padding:64px 22px 95px}
-.eyebrow{color:var(--orange);letter-spacing:.17em;font:700 12px/1.4 ui-monospace,monospace}
-h1{font-size:clamp(46px,8.2vw,101px);line-height:1.02;margin:15px 0 21px;letter-spacing:-.065em}
-h1 em{font-style:normal;color:var(--orange)}
-.lead{font-size:clamp(17px,2vw,21px);line-height:1.65;color:var(--dim);max-width:820px}
-.tags{display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none;margin:24px 0 0}
-.tags li{font-size:12px;letter-spacing:.04em;padding:9px 12px;border:1px solid #4e5264;border-radius:50px;color:#f3c1a3}
-.art{margin:45px 0 24px;background:#19110d;border:1px solid #58443a;border-radius:19px;overflow:hidden;box-shadow:0 38px 85px #0008}
-.art img{display:block;width:100%;height:auto}
-.art-zoom{display:block;cursor:zoom-in}
-.art-zoom:focus-visible{outline:3px solid #84dfff;outline-offset:-4px}
-figcaption{color:#a7b6cf;font-size:12px;line-height:1.5;margin-top:12px}
-h2{font-size:clamp(27px,3vw,39px);margin:50px 0 19px;letter-spacing:-.035em}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:#111e30;border:1px solid #2b4161;border-radius:15px;padding:26px}
-.card strong{display:block;color:#ffae7b;font-size:12px;letter-spacing:.1em;margin-bottom:12px}
-.card p{line-height:1.7;color:#d0dced;margin:0;font-size:14px}
-.copy{margin-top:40px;line-height:1.75;color:#c1cfdf;max-width:820px}
-.privacy{margin-top:34px;padding:19px 22px;border-left:3px solid var(--orange);background:#101b2c;font-size:13px;line-height:1.7;color:#bbcadc}
-footer{border-top:1px solid #263d58;padding:30px 22px;text-align:center;color:#91a5c5;font-size:13px}
-footer a{color:#80daff}
-@media(max-width:740px){main{padding:35px 16px 55px}.grid{grid-template-columns:1fr}.nav{padding:12px 16px}.art{margin-top:27px}.card{padding:20px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>  <!-- V4 ELITE: scripts de métricas carregados apenas no domínio da Vercel.
-       Requer habilitar Web Analytics e Speed Insights no painel do projeto. -->
+<meta property="og:type" content="article"><meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Forno &amp; Estoque — Estudo de caso | Lucas Martinez"><meta property="og:description" content="Ferramenta para organizar os insumos de uma pizzaria, acompanhar saldos e custos, sugerir reposição e enviar alertas automáticos pelo Telegram quando produtos atingem o estoque mínimo.">
+<meta property="og:url" content="https://lucas-martinez-portfolio.vercel.app/forno-estoque.html"><meta property="og:image" content="https://lucas-martinez-portfolio.vercel.app/assets/forno-estoque-hd.webp">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://lucas-martinez-portfolio.vercel.app/assets/forno-estoque-hd.webp">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v6-case.css?v=1"><script src="v6-case.js?v=1" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Forno & Estoque — Estudo de caso","author":{"@type":"Person","name":"Lucas Martinez","url":"https://lucas-martinez-portfolio.vercel.app/"},"url":"https://lucas-martinez-portfolio.vercel.app/forno-estoque.html","image":"https://lucas-martinez-portfolio.vercel.app/assets/forno-estoque-hd.webp","description":"Ferramenta para organizar os insumos de uma pizzaria, acompanhar saldos e custos, sugerir reposição e enviar alertas automáticos pelo Telegram quando produtos atingem o estoque mínimo.","inLanguage":"pt-BR"}</script>
   <script>
-    (function () {
-      if (!location.hostname.endsWith('.vercel.app')) return;
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-      ['/_vercel/insights/script.js', '/_vercel/speed-insights/script.js'].forEach(function (src) {
-        var tag = document.createElement('script');
-        tag.src = src;
-        tag.defer = true;
-        document.head.appendChild(tag);
-      });
-    })();
+  (function(){if(!location.hostname.endsWith('.vercel.app'))return;
+    window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
+    ['/ _vercel/insights/script.js'.replace(' ',''),'/_vercel/speed-insights/script.js'].forEach(function(path){var s=document.createElement('script');s.src=path;s.defer=true;document.head.appendChild(s)});
+  })();
   </script>
 </head>
-<body>
-<header><nav class="nav" aria-label="Navegação"><a class="logo" href="./#experiencia">LM<span>.</span></a><a class="back" href="./#projeto-forno-estoque">← Voltar ao portfólio</a></nav></header>
-<main>
-<p class="eyebrow">LUCAS MARTINEZ / PROJETO INDEPENDENTE</p>
-<h1>Forno &amp; <em>Estoque.</em></h1>
-<p class="lead">Transformando uma necessidade real em tecnologia. Um sistema de gestão de insumos pensado para uma operação de pizzaria, com controle de saldos, regras de reposição e alertas automáticos pelo Telegram.</p>
-<ul class="tags"><li>React</li><li>TypeScript</li><li>API REST</li><li>Supabase / PostgreSQL</li><li>Telegram Bot</li><li>Render</li></ul>
-<figure class="art"><a class="art-zoom" href="assets/forno-estoque-hd.webp" target="_blank" rel="noopener noreferrer" aria-label="Abrir apresentação do Forno & Estoque em alta resolução, em uma nova guia"><img src="assets/forno-estoque-hd.webp" alt="Apresentação de seis telas do Forno & Estoque em alta resolução: catálogo de insumos, controle de estoque, lista de compras, alertas por Telegram e tecnologias" width="2508" height="2508" decoding="async"></a><figcaption>Apresentação visual fornecida pelo autor. Toque ou clique na imagem para visualizar em alta resolução (2508 × 2508 px).</figcaption></figure>
-<h2>Do estoque manual à gestão inteligente</h2>
-<section class="grid" aria-label="Principais soluções">
-<article class="card"><strong>01 · ORGANIZAÇÃO</strong><p>Cadastro de produtos, categorias e fornecedores, com controle das quantidades disponíveis, custos e movimentações.</p></article>
-<article class="card"><strong>02 · COMPRAS INTELIGENTES</strong><p>Configuração de estoque mínimo e máximo. A lista de compras sugere as quantidades necessárias para reposição.</p></article>
-<article class="card"><strong>03 · ALERTAS AUTOMÁTICOS</strong><p>Quando um insumo alcança o estoque mínimo, a integração com Telegram envia os saldos e a quantidade sugerida para compra.</p></article>
+<body data-case="forno">
+<a class="skip" href="#conteudo">Pular para conteúdo</a>
+<header class="topbar"><div class="container top-inner">
+<a class="logo" href="./#inicio" aria-label="Portfólio de Lucas Martinez">LM<b>.</b> / CASE STUDIES</a>
+<nav class="top-links" aria-label="Navegação"><a href="./#projetos">← Projetos</a><a href="./#contato">Contato ↗</a></nav>
+</div></header>
+<main class="container" id="conteudo">
+<section class="hero" aria-labelledby="case-title">
+<p class="kicker">03 / SISTEMA WEB &amp; AUTOMAÇÃO</p><h1 id="case-title">Forno &amp; Estoque<br><em>gestão de insumos.</em></h1>
+<p class="lede">Ferramenta para organizar os insumos de uma pizzaria, acompanhar saldos e custos, sugerir reposição e enviar alertas automáticos pelo Telegram quando produtos atingem o estoque mínimo.</p>
+<div class="meta"><span>React</span><span>TypeScript</span><span>API REST</span><span>Supabase</span><span>PostgreSQL</span><span>Telegram Bot</span><span>Render</span></div>
+<div class="hero-rule" aria-hidden="true"></div>
 </section>
-<h2>O que desenvolvi</h2>
-<p class="copy">O projeto reúne frontend, API, banco de dados e automações numa ferramenta voltada à rotina de uma pizzaria. A proposta vai além do cadastro de produtos: ajuda a monitorar o que existe no estoque, identificar necessidades de reposição e organizar as próximas compras. O desenvolvimento também envolveu tecnologias de interface, regras de negócio, integração com Telegram, deploy e versionamento.</p>
-<p class="privacy">Este estudo de caso usa somente a apresentação visual e as informações fornecidas pelo autor. O repositório de desenvolvimento é privado; não publico aqui código-fonte, credenciais ou dados internos.</p>
+<section aria-label="Imagens originais do projeto">
+<div class="visual"><figure class="visual-main"><button type="button" data-photo="assets/forno-estoque-hd.webp" data-title="Visão do sistema" data-alt="Apresentação visual original do Forno &amp; Estoque, com múltiplas telas do projeto" aria-label="Ampliar: Visão do sistema"><img src="assets/forno-estoque-hd.webp" width="2508" height="2508" decoding="async" fetchpriority="high" alt="Apresentação visual original do Forno &amp; Estoque, com múltiplas telas do projeto"><span class="photo-label">01 / 01 · Visão do sistema · Ampliar</span></button></figure></div>
+
+<p class="caption">Capturas originais do projeto · Amplie para visualizar · Imagens apresentadas com os cuidados de privacidade indicados neste estudo.</p>
+</section>
+<section class="section" aria-labelledby="desafio"><div class="section-head"><div><p class="overline">01 / CONTEXTO</p><h2 id="desafio">O problema e a solução.</h2></div></div>
+<div class="content-grid"><article class="panel"><h3>Desafio</h3><p>Como reduzir o trabalho manual de verificação de itens e orientar a reposição do estoque de forma organizada?</p></article><article class="panel"><h3>Abordagem</h3><p>O sistema combina cadastro de produtos, categorias e fornecedores com movimentações, limites mínimo e máximo, custos e uma lista de compras baseada na necessidade de reposição. Um fluxo automatizado avisa sobre itens no limite.</p></article></div>
+</section>
+<section class="section" aria-labelledby="funcionalidades"><div class="section-head"><div><p class="overline">02 / FUNCIONALIDADES</p><h2 id="funcionalidades">O que o projeto apresenta.</h2></div></div>
+<p class="section-intro">O problema não era somente cadastrar produtos: era acompanhar consumo, perceber o momento de recomprar e transformar movimentações diárias em decisões simples para abastecimento.</p><div class="content-grid"><article class="panel"><h3>Cadastros e movimentações</h3><p>Produtos, fornecedores, categorias, quantidades disponíveis, custos e movimentações de estoque.</p></article>
+<article class="panel"><h3>Regras de reposição</h3><p>Parâmetros mínimo e máximo e sugestões da quantidade necessária para comprar.</p></article>
+<article class="panel"><h3>Lista de compras</h3><p>Visualização dos insumos que precisam de abastecimento, com quantidades sugeridas.</p></article>
+<article class="panel"><h3>Alertas Telegram</h3><p>Notificações quando um produto atinge o mínimo, informando saldo e sugestão de reposição.</p></article></div>
+</section>
+<section class="section" aria-labelledby="processo"><div class="section-head"><div><p class="overline">03 / FLUXO</p><h2 id="processo">Da necessidade à interface.</h2></div></div>
+<ol class="workflow"><li><span class="step">01</span><strong>Cadastrar insumos</strong><p>Organizar os produtos, fornecedores e parâmetros de quantidade.</p></li>
+<li><span class="step">02</span><strong>Registrar movimentos</strong><p>Acompanhar as mudanças de saldo na rotina de estoque.</p></li>
+<li><span class="step">03</span><strong>Calcular necessidade</strong><p>Comparar o saldo com os limites para sugerir compras.</p></li>
+<li><span class="step">04</span><strong>Alertar e planejar</strong><p>Enviar avisos e usar a lista de compras para abastecimento.</p></li></ol>
+</section>
+<section class="section" aria-labelledby="arquitetura"><div class="section-head"><div><p class="overline">04 / TECNOLOGIA</p><h2 id="arquitetura">Organização técnica.</h2></div></div>
+<p class="section-intro">Visão de alto nível para apresentar as responsabilidades das camadas, sem expor código privado, credenciais ou integrações internas.</p>
+<div class="architecture"><div><b>FRONTEND</b><strong>React / TypeScript</strong><p>Interface de acompanhamento e cadastro dos insumos.</p></div>
+<div><b>BACKEND</b><strong>API REST</strong><p>Organização das operações, regras de negócio e integração.</p></div>
+<div><b>DADOS E AVISOS</b><strong>PostgreSQL / Telegram</strong><p>Persistência de informações e notificações automáticas de reposição.</p></div></div></section>
+<section class="section" aria-labelledby="decisoes"><div class="section-head"><div><p class="overline">05 / DECISÕES</p><h2 id="decisoes">Critérios de desenvolvimento.</h2></div></div>
+<article class="panel"><ul><li>Separar parâmetros de mínimo e máximo do saldo atual.</li>
+<li>Dar visibilidade à quantidade sugerida, e não apenas marcar um item como baixo.</li>
+<li>Usar alertas automáticos para comunicar necessidades sem depender da abertura constante do painel.</li></ul></article>
+<p class="note"><strong>Privacidade e escopo:</strong> Projeto independente. Imagens e descrições representam funcionalidades apresentadas pelo autor. O repositório de desenvolvimento permanece privado; código-fonte, chaves, números internos e credenciais não são disponibilizados. Não há alegação de redução percentual de perdas sem medição documentada.</p>
+</section>
+<nav class="next" aria-label="Outros estudos de caso"><a href="./#projetos">← Voltar à galeria</a><a href="control-tower.html">Conhecer Control Tower ↗</a>
+<a href="gas-condominio.html">Conhecer Gás &amp; Condomínio ↗</a></nav>
 </main>
-<footer>Desenvolvido por Lucas Martinez · <a href="./#contato">Entrar em contato</a> · <a href="./">Voltar ao portfólio</a></footer>
+<footer><div class="container">Lucas Martinez · Desenvolvimento, automação e visualização de dados · <a href="./#contato">Contato</a></div></footer>
+<dialog class="lightbox" id="case-lightbox" aria-label="Imagem ampliada" aria-labelledby="lightbox-title">
+<div class="lightbox-head"><span id="lightbox-title">Imagem do projeto</span><button type="button" id="lightbox-close" aria-label="Fechar imagem">Fechar ×</button></div>
+<div class="lightbox-stage"><img id="lightbox-photo" alt=""></div>
+<div class="lightbox-footer"><button type="button" id="lightbox-prev" aria-label="Imagem anterior">← Anterior</button><span id="lightbox-position"></span><button type="button" id="lightbox-next" aria-label="Próxima imagem">Próxima →</button></div>
+</dialog>
 </body></html>
