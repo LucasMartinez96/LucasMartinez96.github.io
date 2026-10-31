@@ -554,9 +554,9 @@
       count.textContent = `${index + 1} / ${list.length}`;
       prev.hidden = next.hidden = list.length < 2;
     };
-    $('button.card-media[data-img]').forEach(btn => btn.addEventListener('click', () => {
+    $$('button.card-media[data-img]').forEach(btn => btn.addEventListener('click', () => {
       if (btn.hidden || !isAllowedImage(btn.dataset.img || '')) return;
-      list = $('button.card-media[data-img]').filter(b =>
+      list = $$('button.card-media[data-img]').filter(b =>
         !b.hidden && !b.closest('.card')?.hidden && isAllowedImage(b.dataset.img || '')
       );
       index = list.indexOf(btn);
