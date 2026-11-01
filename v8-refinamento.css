@@ -1,0 +1,52 @@
+/* V8 REFINAMENTO PREMIUM — camada incremental; V6 de produção permanece intacta. */
+:root {
+  --v8-ink: #eaf4ff;
+  --v8-secondary: #adc5dd;
+  --v8-accent: #86dcff;
+}
+.v8-recruiter-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 1.15rem;
+  color: var(--v8-secondary);
+  font: 600 .87rem/1.5 var(--body, system-ui, sans-serif);
+  text-underline-offset: .28em;
+  text-decoration-color: rgba(134, 220, 255, .48);
+  transition: color .18s ease, text-decoration-color .18s ease;
+}
+.v8-recruiter-link:hover,
+.v8-recruiter-link:focus-visible {
+  color: var(--v8-ink);
+  text-decoration-color: var(--v8-accent);
+}
+.v8-recruiter-link:focus-visible {
+  outline: 2px solid var(--v8-accent);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+.projects .section-heading p {
+  max-width: 65ch;
+}
+.projects .card.is-featured:focus-within {
+  outline: 2px solid rgba(134, 220, 255, .62);
+  outline-offset: 3px;
+}
+.v5-showcase .v5-lang {
+  min-height: 44px;
+  padding-inline: 16px;
+  font-family: var(--body, system-ui, sans-serif);
+  letter-spacing: .02em;
+}
+@media (max-width: 640px) {
+  .v8-recruiter-link {
+    font-size: .9rem;
+    min-height: 44px;
+  }
+  .projects .section-heading p {
+    max-width: 38ch;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v8-recruiter-link { transition: none; }
+}
