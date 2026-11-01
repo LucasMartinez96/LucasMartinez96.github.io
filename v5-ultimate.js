@@ -18,7 +18,7 @@
   if(!root)return;
   const labels={
     pt:{
-      eyebrow:'PORTFÓLIO / V5',
+      eyebrow:'RESUMO PROFISSIONAL',
       profileLabel:'APRESENTAÇÃO PROFISSIONAL',
       profileTitle:'Uma visão rápida para recrutadores.',
       profileText:'Conheça meus projetos, ferramentas e um resumo público da minha atuação. O currículo é imprimível e pode ser salvo como PDF no navegador.',
@@ -26,7 +26,7 @@
       githubButton:'Ver GitHub ↗'
     },
     en:{
-      eyebrow:'PORTFOLIO / V5',
+      eyebrow:'PROFESSIONAL SUMMARY',
       profileLabel:'PROFESSIONAL SUMMARY',
       profileTitle:'A quick introduction for recruiters.',
       profileText:'Explore my selected projects, tools and public professional summary. The resume-style page can be printed or saved as a PDF in your browser.',
@@ -40,8 +40,8 @@
   function render(){
     fields.forEach(field=>{const text=labels[language][field.dataset.v5Key];if(text)field.textContent=text;});
     if(control){
-      control.textContent=language==='pt'?'PT / EN':'EN / PT';
-      control.setAttribute('aria-label',language==='pt'?'Mudar idioma desta seção para inglês':'Switch this section to Portuguese');
+      control.textContent=language==='pt'?'Traduzir resumo: EN':'Translate summary: PT';
+      control.setAttribute('aria-label',language==='pt'?'Traduzir somente a seção de resumo profissional para inglês':'Translate only the professional summary section to Portuguese');
       control.setAttribute('aria-pressed',String(language==='en'));
     }
   }
