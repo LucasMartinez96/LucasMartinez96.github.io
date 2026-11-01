@@ -167,6 +167,7 @@ const $=s=>shadow.querySelector(s);
 try{
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobile=Math.min(innerWidth,innerHeight)<700||matchMedia('(pointer:coarse)').matches;
+const modestDevice=mobile && ((navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||8)<=4);
 const runway=$('#runway');
 if(RM)runway.style.height='420vh';else if(mobile)runway.style.height='780vh';
 const renderer=new THREE.WebGLRenderer({canvas:$('#gl'),antialias:!mobile,powerPreference:'high-performance'});
@@ -248,7 +249,7 @@ ctx.strokeStyle=g;ctx.lineWidth=26;ctx.beginPath();ctx.moveTo(132,50);ctx.lineTo
 ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(92,84);ctx.lineTo(54,128);ctx.lineTo(92,172);ctx.moveTo(420,84);ctx.lineTo(458,128);ctx.lineTo(420,172);ctx.stroke()}
 const lc=cv(512,256),lx=lc.getContext('2d');logo(lx,null);
 const id=lx.getImageData(0,0,512,256).data,pts=[];for(let y=0;y<256;y+=2)for(let xx=0;xx<512;xx+=2)if(id[(y*512+xx)*4+3]>128)pts.push(xx,y);
-const NP=mobile?3600:8000,pA=new Float32Array(NP*3),pB=new Float32Array(NP*3),pR=new Float32Array(NP*4);
+const NP=modestDevice?1800:mobile?3200:8000,pA=new Float32Array(NP*3),pB=new Float32Array(NP*3),pR=new Float32Array(NP*4);
 for(let i=0;i<NP;i++){const a=R()*6.283,r=2.2+Math.pow(R(),.6)*7.5,k=(R()*(pts.length/2)|0)*2;
 pA.set([Math.cos(a)*r,Math.sin(a)*r,-R()*46-1],i*3);pB.set([(pts[k]-256)/512*9+(R()-.5)*.05,-(pts[k+1]-128)/512*9+(R()-.5)*.05,-32+(R()-.5)*.5],i*3);pR.set([R(),R(),R(),R()],i*4)}
 const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pA,3));pg.setAttribute('aB',new THREE.BufferAttribute(pB,3));pg.setAttribute('aR',new THREE.BufferAttribute(pR,4));
@@ -270,7 +271,7 @@ const KD=[[0,6.4],[.18,6.3],[.32,3.4],[.41,.9],[.46,-.8],[.58,-13],[.74,-23],[.9
 const nameEl=$('#name'),L=[...'LUCAS MARTINEZ'].map(ch=>{const s=document.createElement('span');if(ch===' '){s.className='sp';s.innerHTML='&nbsp;'}else s.textContent=ch;nameEl.appendChild(s);return s});
 const CAPS=[[0,'Boot: o código ganha vida'],[.2,'Compilando'],[.42,'Atravessando a tela'],[.6,'Construindo o universo'],[.8,'Identidade LM'],[.94,'Portfólio']];
 let baseFov=46,ls2=1,capI=-1;
-function resize(){const w=innerWidth,h=innerHeight;renderer.setPixelRatio(Math.min(devicePixelRatio||1,mobile?1.5:2));renderer.setSize(w,h,false);cam.aspect=w/h;baseFov=w/h<1?62:46;cam.fov=baseFov;cam.updateProjectionMatrix();
+function resize(){const w=innerWidth,h=innerHeight;renderer.setPixelRatio(Math.min(devicePixelRatio||1,modestDevice?1.15:mobile?1.5:2));renderer.setSize(w,h,false);cam.aspect=w/h;baseFov=w/h<1?62:46;cam.fov=baseFov;cam.updateProjectionMatrix();
 PM.uniforms.uSc.value=renderer.domElement.height/(2*Math.tan(baseFov*Math.PI/360));ls2=clamp(2*8*Math.tan(baseFov*Math.PI/360)*cam.aspect/10.5,.28,1);PM.uniforms.uLS.value=ls2;logoG.scale.setScalar(ls2)}
 addEventListener('resize',resize);resize();
 
@@ -279,7 +280,10 @@ const prog=()=>getProgress();
 const glEl=$('#gl'),flash=$('#flash'),veil=$('#veil'),tag=$('#tag'),cap=$('#cap'),hint=$('#hint'),barI=$('#bar i');
 let sp=prog(),last=performance.now(),T=0,typed=0,lastKey=-1;
 
-function frame(now){requestAnimationFrame(frame);
+let frameQueued=false;
+function stageVisible(){if(document.hidden||!host.isConnected)return false;const rect=host.getBoundingClientRect();return rect.top<innerHeight&&rect.bottom>0;}
+function schedule3D(){if(frameQueued||!stageVisible())return;frameQueued=true;requestAnimationFrame(frame);}
+function frame(now){frameQueued=false;if(!stageVisible())return;
 const dt=Math.min(.05,(now-last)/1000);last=now;const tp=prog();
 sp=RM?tp:sp+(tp-sp)*(1-Math.exp(-dt*7));if(Math.abs(tp-sp)<1e-4)sp=tp;
 const p=sp;barI.style.height=(p*100)+'%';
@@ -316,8 +320,13 @@ L.forEach((s,i)=>{const v=clamp(r*1.8-i*.07);s.style.opacity=v;s.style.transform
 nameEl.style.letterSpacing=mix(.5,.12,r)+'em';tag.style.opacity=seg(p,.9,.94)*(1-seg(p,.955,.985));
 flash.style.opacity=.9*bump(p,.44,.025);veil.style.opacity=seg(p,.95,.995);hint.style.opacity=1-seg(p,.01,.05);
 let ci=0;CAPS.forEach((c,i)=>{if(p>=c[0])ci=i});if(ci!==capI){capI=ci;cap.textContent=CAPS[ci][1]}
-renderer.render(scene,cam)}
-requestAnimationFrame(frame);
+renderer.render(scene,cam);
+schedule3D();}
+addEventListener('scroll',schedule3D,{passive:true});
+addEventListener('resize',schedule3D,{passive:true});
+addEventListener('pageshow',schedule3D);
+document.addEventListener('visibilitychange',schedule3D);
+schedule3D();
 }catch(e){host.classList.add('nogl');console.error('Abertura V5:',e)}
 })();
 
