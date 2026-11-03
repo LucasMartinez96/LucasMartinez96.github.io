@@ -56,6 +56,7 @@
   <link rel="stylesheet" href="v5-ultimate.css?v=1">
   <link rel="stylesheet" href="v6-index.css?v=1">
   <link rel="stylesheet" href="avatar-portfolio.css?v=1">
+  <link rel="stylesheet" href="hero-avatar-v4.css?v=4">
   <script src="avatar-portfolio-loader.js?v=3" defer></script>
   <script src="credencial-lucas.js?v=5" defer></script>
   <script src="script.js" defer></script>
@@ -119,6 +120,7 @@
 
       <div class="container hero-inner">
         <div class="hero-main">
+          <p class="hero-avatar-eyebrow"><span class="hero-avatar-eyebrow-line"></span> PORTFÓLIO / EXPERIÊNCIA COM EMOÇÕES</p>
           <h1 id="hero-title" class="hero-name">
             <span class="name-text">Lucas Martinez</span>
             <canvas id="name-canvas" aria-hidden="true"></canvas>
@@ -131,6 +133,24 @@
           </div>
         </div>
 
+        <div class="hero-avatar-portrait" aria-label="Avatar expressivo de Lucas Martinez">
+          <span class="hero-avatar-background-word" aria-hidden="true">LUCAS</span>
+          <span class="hero-avatar-halo" aria-hidden="true"></span>
+          <div class="hero-avatar-stage">
+            <canvas id="portfolio-avatar-canvas" class="avatar-portfolio-canvas"
+              role="button" tabindex="0" aria-label="Avatar expressivo: acompanhe os movimentos dos olhos. Passe o cursor ou o dedo sobre o rosto para interagir. Enter faz sorrir e Shift com Enter mostra corações.">
+              Avatar interativo de Lucas Martinez.
+            </canvas>
+          </div>
+          <div class="hero-avatar-status" aria-hidden="true">
+            <span class="hero-avatar-status-dot"></span>
+            <span id="avatar-live-label">OLHAR CURIOSO</span>
+          </div>
+          <p class="hero-avatar-instruction">Ele pisca, observa e reage. Experimente mover o cursor.</p>
+        </div>
+      </div>
+
+      <details class="container hero-terminal-toggle"><summary>Explorar terminal interativo <span aria-hidden="true">↗</span></summary>
         <div class="terminal" id="terminal">
           <div class="term-bar">
             <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -153,7 +173,7 @@
             <button type="button" aria-pressed="false" data-cmd="lucas --area data" data-title="Data" data-desc="Dashboards e visualização de dados para acompanhar indicadores.">data</button>
           </div>
         </div>
-      </div>
+      </details>
 
       <div class="container hero-strip">
         <ul class="areas" aria-label="Áreas de atuação">
@@ -421,24 +441,10 @@
           <a class="inline-link" href="#tecnologias"><span>Conheça minhas tecnologias</span><span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <!-- Avatar Experience V1: preserva crachá, identidade pixel e demais seções. -->
-      <div class="container avatar-feature" aria-labelledby="avatar-feature-title" data-reveal>
-        <div class="avatar-feature-copy">
-          <p class="avatar-feature-label">Experiência interativa / JavaScript puro</p>
-          <h3 id="avatar-feature-title">Um avatar que reage a você.</h3>
-          <p>Nem toda experiência precisa de um botão. Este avatar acompanha os movimentos, pisca espontaneamente e muda de expressão conforme a interação.</p>
-          <p>Um experimento de animação em Canvas, estados e eventos de ponteiro, desenvolvido sem bibliotecas.</p>
-          <a class="inline-link" href="avatar-experience.html" aria-label="Experimentar o avatar interativo em página completa"><span>Explorar o avatar em tela cheia</span><span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="avatar-feature-visual">
-          <div class="avatar-feature-stage">
-            <canvas id="portfolio-avatar-canvas" class="avatar-portfolio-canvas" role="button" tabindex="0"
-              aria-label="Avatar interativo: mova o cursor ou deslize o dedo sobre o rosto. Enter faz sorrir; Shift e Enter mostra corações.">
-              Avatar interativo de Lucas Martinez.
-            </canvas>
-          </div>
-          <p class="avatar-feature-hint">Experimente mover o cursor devagar sobre o rosto ou deslizar o dedo.</p>
-        </div>
+      <div class="container avatar-feature-about">
+        <p>O avatar da abertura é um experimento de animação em Canvas e JavaScript puro, com 14 expressões e reações ao movimento.
+          <a href="avatar-experience.html">Experimente a versão em tela completa <span aria-hidden="true">↗</span></a>
+        </p>
       </div>
       <div class="container">
         <figure class="identity" data-reveal>
