@@ -1,0 +1,131 @@
+/* V4 · Avatar Emotions Hero — inspirado na composição da referência,
+ * sem copiar a identidade de outro portfólio. Mantém a cor e a tipografia do Lucas.
+ */
+.hero .hero-inner{
+  grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+  gap:clamp(8px,2.5vw,42px);
+  align-items:center;
+  min-height:clamp(480px,65vh,650px);
+}
+.hero .hero-main{position:relative;z-index:3;}
+.hero .hero-avatar-eyebrow{
+  display:flex;align-items:center;gap:12px;
+  color:#8fc8ff;font:500 11px/1.4 "JetBrains Mono",monospace;
+  letter-spacing:.16em;margin:0 0 28px;
+}
+.hero-avatar-eyebrow-line{display:inline-block;width:30px;height:1px;background:#6bbdfa;flex:none;}
+.hero .hero-name{margin-bottom:25px;}
+.hero .hero-name .name-text{
+  font-size:clamp(58px,8vw,112px);line-height:.96;letter-spacing:-.05em;
+  text-wrap:balance;
+}
+.hero .hero-statement{max-width:16ch;font-size:clamp(23px,2.7vw,34px);}
+.hero .hero-lede{max-width:50ch;line-height:1.65;}
+.hero .hero-avatar-portrait{
+  position:relative;isolation:isolate;display:flex;align-items:center;
+  justify-content:center;min-width:0;width:100%;height:clamp(410px,43vw,550px);
+  opacity:0;animation:avatar-hero-arrive 1s .3s both cubic-bezier(.19,1,.22,1);
+}
+.hero-avatar-background-word{
+  position:absolute;z-index:0;left:-8%;top:10%;width:120%;
+  text-align:center;white-space:nowrap;pointer-events:none;
+  font:700 clamp(108px,13.8vw,220px)/.9 "Chakra Petch",sans-serif;
+  letter-spacing:-.075em;color:rgba(122,183,255,.075);
+  text-shadow:0 1px 45px rgba(42,109,255,.08);
+}
+.hero-avatar-halo{
+  position:absolute;z-index:0;inset:4% -2% 10%;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 45%,rgba(32,90,204,.20),rgba(28,66,150,.075) 50%,transparent 72%);
+}
+.hero .hero-avatar-stage{
+  position:relative;z-index:1;flex:none;
+  width:min(100%,520px);height:min(100%,520px);
+  background:transparent;
+  touch-action:pan-y;
+  overflow:visible;
+  filter:drop-shadow(0 27px 28px rgba(0,3,18,.28));
+}
+.hero .hero-avatar-stage .avatar-portfolio-canvas{
+  display:block;width:100%;height:100%;background:transparent;
+  border:0;outline-offset:-4px;cursor:default;
+  user-select:none;-webkit-user-select:none;
+}
+.hero .hero-avatar-stage .avatar-portfolio-canvas:focus-visible{
+  outline:2px solid #a6d7ff;border-radius:24px;
+}
+.hero-avatar-status{
+  position:absolute;z-index:2;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:8px 14px;max-width:calc(100% - 20px);
+  border:1px solid rgba(129,186,248,.25);border-radius:100px;
+  color:#c7ddfa;background:rgba(8,24,50,.73);
+  backdrop-filter:blur(12px);white-space:nowrap;
+  font:500 10px/1.2 "JetBrains Mono",monospace;letter-spacing:.11em;
+}
+.hero-avatar-status-dot{
+  flex:none;width:7px;height:7px;border-radius:50%;
+  background:#6edac9;box-shadow:0 0 11px rgba(90,224,206,.62);
+}
+.hero-avatar-instruction{
+  position:absolute;z-index:2;bottom:-15px;left:50%;transform:translateX(-50%);
+  margin:0;text-align:center;width:max-content;max-width:95%;
+  color:#8fa6c8;font:400 11px/1.5 "IBM Plex Sans",sans-serif;
+}
+.hero .hero-terminal-toggle{margin:12px auto 0;padding:0;}
+.hero .hero-terminal-toggle summary{
+  width:max-content;max-width:100%;list-style:none;cursor:pointer;
+  color:#a9cafa;padding:12px 0;
+  font:500 12px/1.4 "JetBrains Mono",monospace;
+  border-bottom:1px solid rgba(130,180,250,.23);
+}
+.hero .hero-terminal-toggle summary::-webkit-details-marker{display:none;}
+.hero .hero-terminal-toggle summary span{display:inline-block;margin-left:8px;}
+.hero .hero-terminal-toggle .terminal{max-width:690px;margin:18px 0 10px;}
+.hero .hero-strip{margin-top:26px;}
+.avatar-feature-about{
+  border-left:2px solid rgba(110,183,245,.40);
+  margin-top:30px;margin-bottom:20px;
+  padding:7px 0 7px 19px;
+}
+.avatar-feature-about p{margin:0;color:#9fb6d4;max-width:85ch;font-size:14px;line-height:1.65;}
+.avatar-feature-about a{display:inline;color:#93caff;text-underline-offset:4px;}
+@keyframes avatar-hero-arrive{
+  from{opacity:0;transform:translate3d(0,24px,0) scale(.96);}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1);}
+}
+@media(max-width:900px){
+  .hero .hero-inner{grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:4px;}
+  .hero .hero-name .name-text{font-size:clamp(52px,7.4vw,86px);}
+  .hero .hero-avatar-portrait{height:clamp(350px,49vw,460px);}
+  .hero .hero-avatar-stage{height:min(100%,440px);}
+  .hero-avatar-status{bottom:15px;}
+}
+@media(max-width:760px){
+  .hero{padding-top:40px;}
+  .hero .hero-inner{
+    grid-template-columns:1fr;gap:0;min-height:0;align-items:start;
+  }
+  .hero .hero-main{text-align:center;}
+  .hero .hero-avatar-eyebrow{justify-content:center;letter-spacing:.085em;margin:0 0 18px;}
+  .hero .hero-name .name-text{font-size:clamp(44px,12vw,74px);line-height:1.02;}
+  .hero .hero-statement{max-width:none;font-size:clamp(21px,5vw,27px);}
+  .hero .hero-lede{margin:14px auto 0;font-size:15px;line-height:1.6;}
+  .hero .hero-buttons{justify-content:center;margin-top:20px;}
+  .hero .hero-avatar-portrait{height:clamp(335px,87vw,440px);max-width:480px;margin:10px auto 0;}
+  .hero .hero-avatar-stage{width:min(100%,430px);height:min(100%,430px);}
+  .hero-avatar-background-word{top:18%;left:0;width:100%;font-size:clamp(90px,26vw,165px);}
+  .hero-avatar-status{bottom:29px;}
+  .hero-avatar-instruction{bottom:0;font-size:10px;}
+  .hero .hero-terminal-toggle{margin-top:6px;}
+  .hero .hero-strip{margin-top:17px;}
+}
+@media(max-width:400px){
+  .hero .hero-avatar-portrait{height:320px;}
+  .hero-avatar-status{bottom:28px;}
+  .hero .hero-avatar-eyebrow{font-size:9px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-avatar-portrait{opacity:1;animation:none;transform:none;}
+  .hero .hero-avatar-halo{animation:none;}
+}
