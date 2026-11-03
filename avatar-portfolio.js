@@ -693,12 +693,15 @@ const avatar=new AvatarInterativo(canvas,{
     const el=document.getElementById('avatar-live-label');
     if (!el) return;
     const captions={
-      grin:'SORRISO ATIVADO',hearts:'REAGINDO AO CARINHO',
-      angry:'VOCÊ ME SURPREENDEU',up:'OLHANDO PARA CIMA',
-      down:'OLHANDO PARA BAIXO',left:'OLHANDO AO REDOR',
-      right:'OLHANDO AO REDOR',rest:'OLHAR CURIOSO'
+      grin:'SORRINDO',hearts:'REAGINDO AO CARINHO',
+      angry:'VOCÊ ME SURPREENDEU',closed:'PISCANDO',half:'PISCANDO',
+      up:'OLHANDO PARA CIMA',down:'OLHANDO PARA BAIXO',
+      left:'OLHANDO AO REDOR',right:'OLHANDO AO REDOR',
+      upleft:'OBSERVANDO O AMBIENTE',upright:'OBSERVANDO O AMBIENTE',
+      downleft:'OBSERVANDO O AMBIENTE',downright:'OBSERVANDO O AMBIENTE',
+      rest:'OLHAR CURIOSO'
     };
-    el.textContent=captions[pose]||'OBSERVANDO O MOVIMENTO';
+    el.textContent=captions[pose]||'OBSERVANDO O AMBIENTE';
   }
 });
 avatar.carregar().then(()=>{
