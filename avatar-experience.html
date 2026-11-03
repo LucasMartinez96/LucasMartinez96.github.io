@@ -85,12 +85,13 @@ class AvatarInterativo {
       entradaDuracao: 1200, entradaIntervalo: 0,
       fixoApos: 2000, limiarParado: .008, saidaRetorno: 1000,
       amostraMin: 16, amostraMax: 160, ruidoMovimento: .002,
-      idleApos: 4000, idleIntervalo: [1100,2300],
-      piscadaIntervalo: [2200,5200], piscadaFixaIntervalo: [4200,7000],
-      piscadaDuracoes: [60,90,60], piscadaFixaDuracoes: [120,170,120],
+      idleApos: 4000, idleIntervalo: [1650,3250],
+      piscadaIntervalo: [2300,5900], piscadaFixaIntervalo: [4400,7700],
+      piscadaDuracoes: [65,100,65], piscadaFixaDuracoes: [105,155,105],
 
-      respiracao: .01, respiracaoPeriodo: 4800,
-      parallax: 6, inclinacao: 3, suavizacao: 110, crossfade: 80,
+      // Movimento natural: cabeça flutua de leve; sem deformar rosto/olhos.
+      respiracao: .008, respiracaoPeriodo: 5100,
+      parallax: 8, inclinacao: 3.4, suavizacao: 180, crossfade: 145,
       toqueMax: 280, toqueMovMax: .04, duploToqueIntervalo: 320,
       cliqueDuracao: 1200, duploCliqueDuracao: 1800,
       onPose: null
@@ -116,6 +117,10 @@ class AvatarInterativo {
     this.reduzir = this._media.matches;
     this._ponteiro = null; this._dentro = false; this._pressionado = null;
     this._parallaxX = 0; this._parallaxY = 0;
+    this._velocidadeX = 0; this._velocidadeY = 0;
+    this._olharX = 0; this._olharY = 0; this._olharPose = 'rest';
+    this._olharCandidato = null; this._olharCandidatoDesde = 0;
+    this._visivel = true; this._duplaPiscada = false; this._segundaPiscada = false;
     this._saidaEm = null; this._sorrisoAte = 0; this._carinhoAte = 0; this._bravoAte = 0;
     this._manual = null; this._ultimaEntrada = -Infinity;
     this._ignorarCliqueAte = 0; this._ultimoToque = null;
@@ -123,6 +128,7 @@ class AvatarInterativo {
     this._piscarInicio = null;
     const agora = performance.now();
     this.ultimoInput = agora; this._quietoDesde = agora; this._ultimoQuadro = agora;
+    this._olharTempo = agora;
     this._proximaPiscada = agora + rand(...this.piscadaIntervalo);
     this._proximoIdle = agora + this.idleApos;
     this._limparGesto();
@@ -200,6 +206,32 @@ class AvatarInterativo {
     if (Math.hypot(dx,dy) < r.width * this.zonaMorta) return 'rest';
     const ang = (Math.atan2(dy,dx) + Math.PI * 2) % (Math.PI * 2);
     return SETORES[Math.round(ang / (Math.PI / 4)) % 8];
+  }
+
+  // O ponteiro indica o destino; a pose só muda após um pequeno tempo
+  // de estabilização. Assim não há tremulação na fronteira dos 8 setores.
+  _direcaoNatural(x,y,agora) {
+    const r=this._rect;
+    if (!r?.width) return this.dir;
+    const cx=r.left+r.width*this.centroX, cy=r.top+r.height*this.centroY;
+    const dt=limitar(agora-this._olharTempo,0,64);
+    this._olharTempo=agora;
+    const fator=1-Math.exp(-dt/165);
+    this._olharX+=(x-cx-this._olharX)*fator;
+    this._olharY+=(y-cy-this._olharY)*fator;
+    const candidata=this._direcaoPara(cx+this._olharX,cy+this._olharY);
+    if (candidata===this._olharPose) {
+      this._olharCandidato=null;
+      return this._olharPose;
+    }
+    if (candidata!==this._olharCandidato) {
+      this._olharCandidato=candidata;
+      this._olharCandidatoDesde=agora;
+    } else if (agora-this._olharCandidatoDesde>=95) {
+      this._olharPose=candidata;
+      this._olharCandidato=null;
+    }
+    return this._olharPose;
   }
 
   _noRosto(x,y) {
@@ -327,7 +359,12 @@ class AvatarInterativo {
     const ocioso = !this._dentro && agora-this.ultimoInput >= this.idleApos;
     if (ocioso && !this.reduzir && !this.emocao) {
       if (agora>=this._proximoIdle) {
-        this.dir=Math.random()<.3 ? 'rest' : SETORES[Math.floor(Math.random()*8)];
+        // Curiosidade natural: pequenas olhadas com pausas em repouso.
+        const chance=Math.random();
+        const destinos=chance<.36 ? ['rest'] :
+          chance<.78 ? ['left','right','up','upleft','upright'] :
+          ['downleft','downright','down'];
+        this.dir=destinos[Math.floor(Math.random()*destinos.length)];
         this._proximoIdle=agora+rand(...this.idleIntervalo);
       }
     } else if (this._repousoGesto || foraVenceu || !this._ponteiro || (ocioso && this.reduzir)) {
@@ -335,7 +372,7 @@ class AvatarInterativo {
     } else if (this.fixo) {
       this.dir=this._direcaoFixa;
     } else {
-      this.dir=this._direcaoPara(this._ponteiro.x,this._ponteiro.y);
+      this.dir=this._direcaoNatural(this._ponteiro.x,this._ponteiro.y,agora);
     }
     this._piscar(agora);
   }
@@ -344,19 +381,29 @@ class AvatarInterativo {
     const intervalo = this.fixo ? this.piscadaFixaIntervalo : this.piscadaIntervalo;
     if (this.emocao) {
       this.piscada=null; this._piscarInicio=null;
+      this._duplaPiscada=false; this._segundaPiscada=false;
       if (this._proximaPiscada<=agora) this._proximaPiscada=agora+rand(...intervalo);
       return;
     }
     if (this._piscarInicio===null && agora>=this._proximaPiscada) {
       this._piscarInicio=agora;
-      this._piscarTempos=this.fixo ? this.piscadaFixaDuracoes : this.piscadaDuracoes;
+      const fator=this._segundaPiscada ? rand(.73,.95) : rand(.82,1.2);
+      this._piscarTempos=(this.fixo ? this.piscadaFixaDuracoes : this.piscadaDuracoes)
+        .map(d=>Math.round(d*fator));
+      if (!this._segundaPiscada) this._duplaPiscada=Math.random()<.11;
     }
     if (this._piscarInicio===null) { this.piscada=null; return; }
     const t=agora-this._piscarInicio, [a,b,c]=this._piscarTempos;
     this.piscada=t<a ? 'half' : t<a+b ? 'closed' : t<a+b+c ? 'half' : null;
     if (t>=a+b+c) {
       this._piscarInicio=null;
-      this._proximaPiscada=agora+rand(...intervalo);
+      if (this._duplaPiscada && !this._segundaPiscada) {
+        this._duplaPiscada=false; this._segundaPiscada=true;
+        this._proximaPiscada=agora+rand(115,200);
+      } else {
+        this._segundaPiscada=false;
+        this._proximaPiscada=agora+rand(...intervalo);
+      }
     }
   }
 
@@ -414,6 +461,20 @@ class AvatarInterativo {
     });
     this._escutar(window,'resize',()=>this._medir(),passivo);
     this._escutar(window,'scroll',()=>this._medir(),{passive:true,capture:true});
+    // O avatar não precisa ocupar a GPU fora da área visível.
+    if (typeof IntersectionObserver!=='undefined') {
+      const visibilidade=new IntersectionObserver(entradas=>{
+        const visivel=entradas.some(entrada=>entrada.isIntersecting);
+        if (visivel===this._visivel) return;
+        this._visivel=visivel;
+        if (visivel) {
+          this._ultimoQuadro=performance.now();
+          this._iniciar();
+        } else this._parar();
+      },{threshold:.02});
+      visibilidade.observe(this.canvas);
+      this._limpezas.push(()=>visibilidade.disconnect());
+    }
     if (typeof ResizeObserver!=='undefined') {
       this._observador=new ResizeObserver(()=>this._medir());
       this._observador.observe(this.canvas);
@@ -471,6 +532,11 @@ class AvatarInterativo {
     this._ancoraQuieta=null; this._repousoGesto=false; this.fixo=false;
     this._ultimoToque=null; this._piscarInicio=null;
     this.emocao=this.piscada=null; this.dir='rest';
+    this._olharX=this._olharY=0; this._olharPose='rest';
+    this._olharCandidato=null; this._olharTempo=agora;
+    this._velocidadeX=this._velocidadeY=0;
+    this._parallaxX=this._parallaxY=0;
+    this._duplaPiscada=this._segundaPiscada=false;
     this.ultimoInput=this._quietoDesde=this._ultimoQuadro=agora;
     this._proximaPiscada=agora+rand(...this.piscadaIntervalo);
     this._proximoIdle=agora+this.idleApos;
@@ -478,7 +544,7 @@ class AvatarInterativo {
   }
 
   _iniciar() {
-    if (this._raf===null && this._pronto && !this.destruido && !document.hidden) this._raf=requestAnimationFrame(this._quadro);
+    if (this._raf===null && this._pronto && this._visivel && !this.destruido && !document.hidden) this._raf=requestAnimationFrame(this._quadro);
   }
   _parar() {
     if (this._raf!==null) cancelAnimationFrame(this._raf);
@@ -571,17 +637,30 @@ class AvatarInterativo {
     const r=this._rect;
     const rastrear=this._ponteiro && !this._repousoGesto &&
       (this._saidaEm===null || agora-this._saidaEm<this.saidaRetorno) && agora-this.ultimoInput<this.idleApos;
-    const x=rastrear ? limitar((this._ponteiro.x-r.left-r.width*this.centroX)/(r.width*.5),-1,1) : 0;
-    const y=rastrear ? limitar((this._ponteiro.y-r.top-r.height*this.centroY)/(r.height*.5),-1,1) : 0;
-    const dt=limitar(agora-this._ultimoQuadro,0,64);
-    const fator=this.suavizacao>0 ? 1-Math.exp(-dt/this.suavizacao) : 1;
-    this._parallaxX+=(x-this._parallaxX)*fator;
-    this._parallaxY+=(y-this._parallaxY)*fator;
-    const px=this._parallaxX,py=this._parallaxY;
-    const onda=Math.sin(agora/Math.max(1,this.respiracaoPeriodo)*Math.PI*2);
+    // Alvos continuam vinculados ao dedo/cursor. Em repouso, só uma
+    // micro-oscilação lenta movimenta a cabeça inteira (sem física facial).
+    const t=agora*.001;
+    const oscilacaoX=Math.sin(t*.81)*.054+Math.sin(t*.39+1.4)*.035;
+    const oscilacaoY=Math.sin(t*.67+1)*.044+Math.sin(t*.31)*.023;
+    const x=rastrear ? limitar((this._ponteiro.x-r.left-r.width*this.centroX)/(r.width*.5),-1,1) : oscilacaoX;
+    const y=rastrear ? limitar((this._ponteiro.y-r.top-r.height*this.centroY)/(r.height*.5),-1,1) : oscilacaoY;
+    const dt=limitar(agora-this._ultimoQuadro,0,40)/1000;
+    // Mola subamortecida: desacelera e passa discretamente do alvo ao parar,
+    // mas sem os solavancos de uma mudança de direção instantânea.
+    const rigidez=82, amortecimento=13.5;
+    this._velocidadeX+=((x-this._parallaxX)*rigidez-this._velocidadeX*amortecimento)*dt;
+    this._velocidadeY+=((y-this._parallaxY)*rigidez-this._velocidadeY*amortecimento)*dt;
+    this._parallaxX+=this._velocidadeX*dt;
+    this._parallaxY+=this._velocidadeY*dt;
+    const px=limitar(this._parallaxX,-1.08,1.08);
+    const py=limitar(this._parallaxY,-1.08,1.08);
+    const fase=agora/Math.max(1,this.respiracaoPeriodo)*Math.PI*2;
+    const onda=Math.sin(fase)*.79+Math.sin(fase*.57+1.15)*.21;
     const escala=1+onda*this.respiracao;
+    const bob=Math.sin(fase-.6)*.9;
+    const giro=px*.52+(!rastrear?Math.sin(t*.42)*.24:0);
     const base=this._estilo.transform==='none' ? '' : (this._estilo.transform || '');
-    this.canvas.style.transform=`${base} perspective(700px) translate3d(${(px*this.parallax).toFixed(3)}px,${(py*this.parallax).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) scale(${escala.toFixed(5)})`;
+    this.canvas.style.transform=`${base} perspective(800px) translate3d(${(px*this.parallax).toFixed(3)}px,${(py*this.parallax+bob).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) rotateZ(${giro.toFixed(3)}deg) scale(${escala.toFixed(5)})`;
   }
 
   // Rosto provisório para testar a lógica antes de ter as imagens
@@ -626,9 +705,9 @@ const avatar = new AvatarInterativo(document.getElementById('avatar'), {
   bravoVelMin: 1.8,
   bravoApos: 600,
   bravoMudancas: 3,
-  parallax: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 6,
-  inclinacao: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 3,
-  respiracao: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .01,
+  parallax: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 8,
+  inclinacao: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 3.4,
+  respiracao: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .008,
   onPose: p => { hud.textContent = nomes[p] || 'Estou acompanhando você.'; }
 });
 avatar.carregar();
