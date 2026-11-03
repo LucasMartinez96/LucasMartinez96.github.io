@@ -62,6 +62,7 @@ class AvatarInterativo {
     this._ponteiro = null; this._dentro = false; this._pressionado = null;
     this._parallaxX = 0; this._parallaxY = 0;
     this._velocidadeX = 0; this._velocidadeY = 0;
+    this._expressaoMovimento = 0;
     this._olharX = 0; this._olharY = 0; this._olharPose = 'rest';
     this._olharCandidato = null; this._olharCandidatoDesde = 0;
     this._visivel = true; this._duplaPiscada = false; this._segundaPiscada = false;
@@ -303,6 +304,7 @@ class AvatarInterativo {
     if (agora >= this._proximaEmocao) {
       const podeSorrir = !this.reduzir && !this._pressionado &&
         !this._manual && agora-this.ultimoInput > 8500 &&
+        this.dir==='rest' && this._idleFase==='pausa' &&
         agora>=this._bravoAte && agora>=this._carinhoAte;
       if (podeSorrir && Math.random() < .62) {
         this._autoSorrisoAte = agora+rand(1500,2100);
@@ -517,6 +519,7 @@ class AvatarInterativo {
     this._olharX=this._olharY=0; this._olharPose='rest';
     this._olharCandidato=null; this._olharTempo=agora;
     this._velocidadeX=this._velocidadeY=0;
+    this._expressaoMovimento=0;
     this._parallaxX=this._parallaxY=0;
     this._duplaPiscada=this._segundaPiscada=false;
     this.ultimoInput=this._quietoDesde=this._ultimoQuadro=agora;
@@ -647,9 +650,17 @@ class AvatarInterativo {
     const onda=Math.sin(fase)*.79+Math.sin(fase*.57+1.15)*.21;
     const escala=1+onda*this.respiracao;
     const bob=Math.sin(fase-.6)*1.1;
-    const giro=px*.48+(!rastrear?Math.sin(t*.36)*.21:0);
+    // Micro-reação do busto nas emoções (como a referência): o rosto inteiro
+    // se inclina de forma suave, sem deformação facial nem mistura dos 14 sprites.
+    const alvoExpressao=this.emocao==='grin' ? .9 : this.emocao==='hearts' ? 1.2 :
+      this.emocao==='angry' ? -.65 : 0;
+    this._expressaoMovimento+=(alvoExpressao-this._expressaoMovimento)*
+      (1-Math.exp(-dt*3.8));
+    const alegria=this._expressaoMovimento;
+    const giro=px*.48+(!rastrear?Math.sin(t*.36)*.21:0)+alegria*.38;
+    const escalaExpressiva=escala+alegria*.004;
     const base=this._estilo.transform==='none' ? '' : (this._estilo.transform || '');
-    this.canvas.style.transform=`${base} perspective(800px) translate3d(${(px*this.parallax).toFixed(3)}px,${(py*this.parallax+bob).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) rotateZ(${giro.toFixed(3)}deg) scale(${escala.toFixed(5)})`;
+    this.canvas.style.transform=`${base} perspective(800px) translate3d(${(px*this.parallax).toFixed(3)}px,${(py*this.parallax+bob-alegria*2.1).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) rotateZ(${giro.toFixed(3)}deg) scale(${escalaExpressiva.toFixed(5)})`;
   }
 
   // Rosto provisório para testar a lógica antes de ter as imagens
@@ -690,6 +701,12 @@ const avatar=new AvatarInterativo(canvas,{
   inclinacao: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 3.4,
   respiracao: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .008,
   onPose:pose=>{
+    // O ambiente reage sutilmente às emoções, como nos portfólios animados.
+    if (pose!=='half' && pose!=='closed') {
+      const stage=canvas.closest('.avatar-emotions-stage');
+      if (stage) stage.dataset.emotion=
+        ['grin','hearts','angry'].includes(pose)?pose:'rest';
+    }
     const el=document.getElementById('avatar-live-label');
     if (!el) return;
     const captions={
