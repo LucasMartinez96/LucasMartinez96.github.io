@@ -29,8 +29,8 @@ class AvatarInterativo {
       entradaDuracao: 1200, entradaIntervalo: 0,
       fixoApos: 2000, limiarParado: .008, saidaRetorno: 1000,
       amostraMin: 16, amostraMax: 160, ruidoMovimento: .002,
-      idleApos: 4000, idleIntervalo: [1650,3250],
-      piscadaIntervalo: [2300,5900], piscadaFixaIntervalo: [4400,7700],
+      idleApos: 2800, idleIntervalo: [1200,2700],
+      piscadaIntervalo: [2100,5100], piscadaFixaIntervalo: [2600,5500],
       piscadaDuracoes: [65,100,65], piscadaFixaDuracoes: [105,155,105],
 
       // Movimento natural: cabeça flutua de leve; sem deformar rosto/olhos.
@@ -65,6 +65,7 @@ class AvatarInterativo {
     this._olharX = 0; this._olharY = 0; this._olharPose = 'rest';
     this._olharCandidato = null; this._olharCandidatoDesde = 0;
     this._visivel = true; this._duplaPiscada = false; this._segundaPiscada = false;
+    this._idleAtivo=false; this._idleFase='pausa'; this._ultimoIdleOlhar='rest';
     this._saidaEm = null; this._sorrisoAte = 0; this._carinhoAte = 0; this._bravoAte = 0;
     this._manual = null; this._ultimaEntrada = -Infinity;
     this._ignorarCliqueAte = 0; this._ultimoToque = null;
@@ -74,8 +75,8 @@ class AvatarInterativo {
     this.ultimoInput = agora; this._quietoDesde = agora; this._ultimoQuadro = agora;
     this._olharTempo = agora;
     this._proximaPiscada = agora + rand(...this.piscadaIntervalo);
-    this._proximoIdle = agora + this.idleApos;
-    this._proximaEmocao = agora + rand(6200,9600);
+    this._proximoIdle = agora + this.idleApos + rand(450,1050);
+    this._proximaEmocao = agora + rand(7800,13000);
     this._autoSorrisoAte = 0;
     this._limparGesto();
     this._medir();
@@ -297,16 +298,16 @@ class AvatarInterativo {
       this._carinhoAte=0;
       if (agora-this.ultimoInput>=this.carinhoTolerancia) this._repousoGesto=true;
     }
-    // O sorriso espontâneo acontece raramente, sem roubar a reação ao toque.
-    // Uma única linha do tempo em requestAnimationFrame, sem temporizadores.
+    // Expressões autônomas raras, somente após alguns segundos sem movimento.
+    // Não roubam a prioridade do carinho, do clique ou de outras emoções.
     if (agora >= this._proximaEmocao) {
-      const podeSorrir = !this.reduzir && !this._dentro &&
-        !this._manual && agora-this.ultimoInput > 3000 &&
+      const podeSorrir = !this.reduzir && !this._pressionado &&
+        !this._manual && agora-this.ultimoInput > 3700 &&
         agora>=this._bravoAte && agora>=this._carinhoAte;
       if (podeSorrir && Math.random() < .76) {
-        this._autoSorrisoAte = agora+rand(850,1550);
+        this._autoSorrisoAte = agora+rand(850,1400);
       }
-      this._proximaEmocao = agora+rand(6800,11500);
+      this._proximaEmocao = agora+rand(8500,13500);
     }
     // Ação explícita (clique/teclado) > bravo > carinho > cumprimento > sorriso espontâneo.
     this.emocao = this._manual?.nome || (agora<this._bravoAte ? 'angry' :
@@ -314,23 +315,46 @@ class AvatarInterativo {
       agora<this._sorrisoAte || agora<this._autoSorrisoAte ? 'grin' : null);
 
     const foraVenceu = this._saidaEm !== null && agora-this._saidaEm >= this.saidaRetorno;
-    const ocioso = !this._dentro && agora-this.ultimoInput >= this.idleApos;
+    // Ocioso também quando o cursor ficou parado sobre o rosto.
+    const ocioso = !this._pressionado && agora-this.ultimoInput >= this.idleApos;
     if (ocioso && !this.reduzir && !this.emocao) {
-      if (agora>=this._proximoIdle) {
-        // Curiosidade natural: pequenas olhadas com pausas em repouso.
-        const chance=Math.random();
-        const destinos=chance<.36 ? ['rest'] :
-          chance<.78 ? ['left','right','up','upleft','upright'] :
-          ['downleft','downright','down'];
-        this.dir=destinos[Math.floor(Math.random()*destinos.length)];
-        this._proximoIdle=agora+rand(...this.idleIntervalo);
+      if (!this._idleAtivo) {
+        this._idleAtivo=true;
+        this._idleFase='pausa';
+        this._proximoIdle=agora+rand(350,850);
       }
-    } else if (this._repousoGesto || foraVenceu || !this._ponteiro || (ocioso && this.reduzir)) {
-      this.dir='rest';
-    } else if (this.fixo) {
-      this.dir=this._direcaoFixa;
+      if (agora>=this._proximoIdle) {
+        if (this._idleFase==='olhando') {
+          // Pequena pausa no centro, como alguém observando o ambiente.
+          this.dir='rest';
+          this._idleFase='pausa';
+          this._proximoIdle=agora+rand(750,1900);
+        } else {
+          const direcoes=['left','right','upleft','upright','up','downleft','downright','down'];
+          const possiveis=direcoes.filter(p=>p!==this._ultimoIdleOlhar);
+          // Preferência por olhar para os lados; sem padrão repetitivo.
+          const favoritas=possiveis.filter(p=>['left','right','upleft','upright'].includes(p));
+          const conjunto=Math.random()<.72 && favoritas.length?favoritas:possiveis;
+          const destino=conjunto[Math.floor(Math.random()*conjunto.length)];
+          this._ultimoIdleOlhar=destino;
+          this.dir=destino;
+          this._idleFase='olhando';
+          this._proximoIdle=agora+rand(1150,2350);
+        }
+      }
     } else {
-      this.dir=this._direcaoNatural(this._ponteiro.x,this._ponteiro.y,agora);
+      if (this._idleAtivo) {
+        this._idleAtivo=false;
+        this._idleFase='pausa';
+        this._proximoIdle=agora+this.idleApos+rand(350,850);
+      }
+      if (this._repousoGesto || foraVenceu || !this._ponteiro || (ocioso && this.reduzir)) {
+        this.dir='rest';
+      } else if (this.fixo) {
+        this.dir=this._direcaoFixa;
+      } else {
+        this.dir=this._direcaoNatural(this._ponteiro.x,this._ponteiro.y,agora);
+      }
     }
     this._piscar(agora);
   }
@@ -348,7 +372,7 @@ class AvatarInterativo {
       const fator=this._segundaPiscada ? rand(.73,.95) : rand(.82,1.2);
       this._piscarTempos=(this.fixo ? this.piscadaFixaDuracoes : this.piscadaDuracoes)
         .map(d=>Math.round(d*fator));
-      if (!this._segundaPiscada) this._duplaPiscada=Math.random()<.11;
+      if (!this._segundaPiscada) this._duplaPiscada=Math.random()<.14;
     }
     if (this._piscarInicio===null) { this.piscada=null; return; }
     const t=agora-this._piscarInicio, [a,b,c]=this._piscarTempos;
@@ -497,9 +521,10 @@ class AvatarInterativo {
     this._duplaPiscada=this._segundaPiscada=false;
     this.ultimoInput=this._quietoDesde=this._ultimoQuadro=agora;
     this._proximaPiscada=agora+rand(...this.piscadaIntervalo);
-    this._proximoIdle=agora+this.idleApos;
-    this._proximaEmocao=agora+rand(6200,9600);
+    this._proximoIdle=agora+this.idleApos+rand(350,850);
+    this._proximaEmocao=agora+rand(7800,13000);
     this._autoSorrisoAte=0;
+    this._idleAtivo=false; this._idleFase='pausa'; this._ultimoIdleOlhar='rest';
     this._limparGesto();
   }
 
@@ -600,14 +625,18 @@ class AvatarInterativo {
     // Alvos continuam vinculados ao dedo/cursor. Em repouso, só uma
     // micro-oscilação lenta movimenta a cabeça inteira (sem física facial).
     const t=agora*.001;
-    const oscilacaoX=Math.sin(t*.81)*.054+Math.sin(t*.39+1.4)*.035;
-    const oscilacaoY=Math.sin(t*.67+1)*.044+Math.sin(t*.31)*.023;
-    const x=rastrear ? limitar((this._ponteiro.x-r.left-r.width*this.centroX)/(r.width*.5),-1,1) : oscilacaoX;
-    const y=rastrear ? limitar((this._ponteiro.y-r.top-r.height*this.centroY)/(r.height*.5),-1,1) : oscilacaoY;
+    const oscilacaoX=Math.sin(t*.75)*.058+Math.sin(t*.37+1.4)*.027;
+    const oscilacaoY=Math.sin(t*.62+1)*.047+Math.sin(t*.29)*.023;
+    // O olhar automático guia discretamente o pescoço/cabeça com inércia.
+    // Não deforma o rosto nem mistura os sprites completos (sem efeito fantasma).
+    const [olharX,olharY]=this._idleAtivo ? (VETOR[this.dir]||[0,0]) : [0,0];
+    const x=rastrear ? limitar((this._ponteiro.x-r.left-r.width*this.centroX)/(r.width*.5),-1,1)
+      : oscilacaoX+olharX*.31;
+    const y=rastrear ? limitar((this._ponteiro.y-r.top-r.height*this.centroY)/(r.height*.5),-1,1)
+      : oscilacaoY+olharY*.22;
     const dt=limitar(agora-this._ultimoQuadro,0,40)/1000;
-    // Mola subamortecida: desacelera e passa discretamente do alvo ao parar,
-    // mas sem os solavancos de uma mudança de direção instantânea.
-    const rigidez=82, amortecimento=13.5;
+    // Mola quase criticamente amortecida: fluidez sem solavancos perceptíveis.
+    const rigidez=62, amortecimento=15.6;
     this._velocidadeX+=((x-this._parallaxX)*rigidez-this._velocidadeX*amortecimento)*dt;
     this._velocidadeY+=((y-this._parallaxY)*rigidez-this._velocidadeY*amortecimento)*dt;
     this._parallaxX+=this._velocidadeX*dt;
@@ -617,8 +646,8 @@ class AvatarInterativo {
     const fase=agora/Math.max(1,this.respiracaoPeriodo)*Math.PI*2;
     const onda=Math.sin(fase)*.79+Math.sin(fase*.57+1.15)*.21;
     const escala=1+onda*this.respiracao;
-    const bob=Math.sin(fase-.6)*.9;
-    const giro=px*.52+(!rastrear?Math.sin(t*.42)*.24:0);
+    const bob=Math.sin(fase-.6)*1.5;
+    const giro=px*.48+(!rastrear?Math.sin(t*.36)*.21:0);
     const base=this._estilo.transform==='none' ? '' : (this._estilo.transform || '');
     this.canvas.style.transform=`${base} perspective(800px) translate3d(${(px*this.parallax).toFixed(3)}px,${(py*this.parallax+bob).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) rotateZ(${giro.toFixed(3)}deg) scale(${escala.toFixed(5)})`;
   }
