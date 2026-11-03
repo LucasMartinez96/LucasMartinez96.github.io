@@ -28,7 +28,10 @@ html.embed .stage{border:0;background:transparent;min-height:0;height:100vh;bord
 html.embed #face{width:min(100%,380px);height:calc(100vh - 28px);max-height:420px}
 html.embed .status{font-size:11px;padding:0;margin:0;position:absolute;bottom:9px}
 html.embed .halo{opacity:.3}
-</style></head><body><script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embed');</script><nav><div class="logo">LUCAS MARTINEZ <small> / PORTFÓLIO</small></div><small>PRÉVIA V10</small></nav>
+.exit-preview{display:inline-flex;align-items:center;gap:8px;color:#e6f4ff;background:#142b4d;border:1px solid #40678c;padding:9px 13px;border-radius:12px;text-decoration:none;font-size:13px}
+.exit-preview:hover{background:#234b75}
+html.embed .exit-preview{display:none!important}
+</style></head><body><script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embed');</script><nav><div class="logo">LUCAS MARTINEZ <small> / PORTFÓLIO</small></div><a class="exit-preview" href="./#sobre">✕ Voltar ao portfólio</a></nav>
 <main><div class="layout"><section class="copy"><span class="pill">EXPERIÊNCIA INTERATIVA · 20 NOVAS EXPRESSÕES</span>
 <p class="kicker">Sobre mim / avatar experience</p><h1>Um avatar que<br>reage a você.</h1>
 <p>Prévia experimental das novas expressões. Experimente passar o mouse, tocar ou deslizar o dedo sobre o rosto. Ele pisca, sorri, observa e reage de maneira sutil.</p>
