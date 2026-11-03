@@ -1,4 +1,4 @@
-/* V6: carrega motor do avatar só quando Sobre Mim se aproxima da tela. */
+/* V7: carrega motor do avatar só quando Sobre Mim se aproxima da tela. */
 (()=>{
   const canvas=document.getElementById('portfolio-avatar-canvas');
   if(!canvas)return;
@@ -7,7 +7,7 @@
     if(iniciado)return;
     iniciado=true;
     const script=document.createElement('script');
-    script.src='avatar-portfolio.js?v=6';
+    script.src='avatar-portfolio.js?v=7';
     script.async=true;
     script.onerror=()=>{canvas.setAttribute('aria-label','Avatar temporariamente indisponível');};
     document.body.appendChild(script);
