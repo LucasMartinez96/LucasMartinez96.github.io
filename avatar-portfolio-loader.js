@@ -7,7 +7,7 @@
     if(iniciado)return;
     iniciado=true;
     const script=document.createElement('script');
-    script.src='avatar-portfolio.js?v=8';
+    script.src='avatar-portfolio.js?v=9';
     script.async=true;
     script.onerror=()=>{canvas.setAttribute('aria-label','Avatar temporariamente indisponível');};
     document.body.appendChild(script);
