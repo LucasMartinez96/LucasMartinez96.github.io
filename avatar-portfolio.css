@@ -157,3 +157,12 @@
 @media(prefers-reduced-motion:reduce) {
   .about .avatar-feature-stage .avatar-feature-halo {transition:none}
 }
+
+/* V10 — a prévia com novas expressões ocupa exatamente o lugar do avatar. */
+.avatar-feature-stage .avatar-v10-embed{
+  position:relative;z-index:2;display:block;width:100%;height:clamp(300px,36vw,430px);
+  border:0;background:transparent;overflow:hidden;
+}
+@media(max-width:720px){
+  .avatar-feature-stage .avatar-v10-embed{height:340px;}
+}
