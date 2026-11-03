@@ -18,17 +18,17 @@ class AvatarInterativo {
       raioRostoX: .32, raioRostoY: .36,
 
       // Carinho: movimento lento, contínuo e dentro da elipse do rosto.
-      carinhoVelMin: .03, carinhoVelMax: .85,
-      carinhoApos: 800, carinhoTolerancia: 160, carinhoRetorno: 1000,
+      carinhoVelMin: .018, carinhoVelMax: .68,
+      carinhoApos: 720, carinhoTolerancia: 250, carinhoRetorno: 1250,
 
       // Bravo exige tempo em alta velocidade E mudanças de direção.
       bravoVelMin: 1.8, bravoApos: 600, bravoJanela: 950,
       bravoMudancas: 3, bravoAngulo: 75, bravoRetorno: 650,
       intervaloMudancas: 80,
 
-      entradaDuracao: 1500, entradaIntervalo: 2100,
+      entradaDuracao: 1150, entradaIntervalo: 2400,
       fixoApos: 2500, limiarParado: .008, saidaRetorno: 1100,
-      amostraMin: 16, amostraMax: 160, ruidoMovimento: .002,
+      amostraMin: 14, amostraMax: 240, ruidoMovimento: .0013,
       idleApos: 4900, idleIntervalo: [2400,4500],
       piscadaIntervalo: [3300,6700], piscadaFixaIntervalo: [3900,7400],
       piscadaDuracoes: [65,100,65], piscadaFixaDuracoes: [105,155,105],
@@ -56,13 +56,14 @@ class AvatarInterativo {
       touchAction: canvas.style.touchAction,
       willChange: canvas.style.willChange
     };
-    canvas.style.touchAction = 'none'; // Somente o canvas; a página continua rolando.
+    canvas.style.touchAction = 'pan-y'; // Rolagem vertical preservada; toque horizontal continua interativo.
     this._media = matchMedia('(prefers-reduced-motion: reduce)');
     this.reduzir = this._media.matches;
     this._ponteiro = null; this._dentro = false; this._pressionado = null;
     this._parallaxX = 0; this._parallaxY = 0;
     this._velocidadeX = 0; this._velocidadeY = 0;
     this._expressaoMovimento = 0;
+    this._toqueEnergia=0; this._toqueDesvioX=0; this._toqueDesvioY=0;
     this._olharX = 0; this._olharY = 0; this._olharPose = 'rest';
     this._olharCandidato = null; this._olharCandidatoDesde = 0;
     this._visivel = true; this._duplaPiscada = false; this._segundaPiscada = false;
@@ -164,7 +165,7 @@ class AvatarInterativo {
     const cx=r.left+r.width*this.centroX, cy=r.top+r.height*this.centroY;
     const dt=limitar(agora-this._olharTempo,0,64);
     this._olharTempo=agora;
-    const fator=1-Math.exp(-dt/165);
+    const fator=1-Math.exp(-dt/210);
     this._olharX+=(x-cx-this._olharX)*fator;
     this._olharY+=(y-cy-this._olharY)*fator;
     const candidata=this._direcaoPara(cx+this._olharX,cy+this._olharY);
@@ -175,7 +176,7 @@ class AvatarInterativo {
     if (candidata!==this._olharCandidato) {
       this._olharCandidato=candidata;
       this._olharCandidatoDesde=agora;
-    } else if (agora-this._olharCandidatoDesde>=95) {
+    } else if (agora-this._olharCandidatoDesde>=125) {
       this._olharPose=candidata;
       this._olharCandidato=null;
     }
@@ -201,6 +202,10 @@ class AvatarInterativo {
     this._quietoDesde = agora; this.ultimoInput = agora;
     this._ancoraQuieta = { x,y }; this._limparGesto();
     this._amostra = { x,y,t:agora };
+    // Reação leve do busto, sem deformar o rosto.
+    if (this._pressionado && ['touch','pen'].includes(this._pressionado.tipo)) {
+      this._toqueEnergia=limitar(this._toqueEnergia+.55,0,1);
+    }
     if (agora - this._ultimaEntrada >= this.entradaIntervalo) {
       this._sorrisoAte = agora + this.entradaDuracao;
       this._ultimaEntrada = agora;
@@ -254,6 +259,12 @@ class AvatarInterativo {
     if (d < this.ruidoMovimento) return;
     this._amostra = {x,y,t:agora};
     const velocidade = d * 1000 / dt;
+    if (this._pressionado && ['touch','pen'].includes(this._pressionado.tipo)
+        && velocidade <= this.carinhoVelMax) {
+      this._toqueEnergia=limitar(this._toqueEnergia+.025,0,1);
+      this._toqueDesvioX=limitar(this._toqueDesvioX+dx/this._rect.width*.65,-.23,.23);
+      this._toqueDesvioY=limitar(this._toqueDesvioY+dy/this._rect.height*.45,-.18,.18);
+    }
     if (velocidade >= this.carinhoVelMin && velocidade <= this.carinhoVelMax) {
       if (agora-this._ultimoCarinho > this.carinhoTolerancia) this._carinhoTempo = 0;
       this._carinhoTempo += dt;
@@ -261,6 +272,7 @@ class AvatarInterativo {
       if (this._carinhoTempo >= this.carinhoApos) {
         this._carinhoAte = agora + this.carinhoRetorno;
         this._sorrisoAte = 0;
+        this._toqueEnergia=limitar(this._toqueEnergia+.06,0,1);
       }
     } else if (velocidade > this.carinhoVelMax || agora-this._ultimoCarinho > this.carinhoTolerancia) {
       this._carinhoTempo = 0;
@@ -367,6 +379,13 @@ class AvatarInterativo {
       this.piscada=null; this._piscarInicio=null;
       this._duplaPiscada=false; this._segundaPiscada=false;
       if (this._proximaPiscada<=agora) this._proximaPiscada=agora+rand(...intervalo);
+      return;
+    }
+    // Sprites closed/half são frontais. Piscar apenas centralizado impede
+    // uma transição brusca de rosto lateral -> frontal -> lateral.
+    if (this._piscarInicio===null && this.dir!=='rest' && !this.emocao) {
+      this.piscada=null;
+      if (this._proximaPiscada<=agora) this._proximaPiscada=agora+rand(550,900);
       return;
     }
     if (this._piscarInicio===null && agora>=this._proximaPiscada) {
@@ -520,6 +539,7 @@ class AvatarInterativo {
     this._olharCandidato=null; this._olharTempo=agora;
     this._velocidadeX=this._velocidadeY=0;
     this._expressaoMovimento=0;
+    this._toqueEnergia=this._toqueDesvioX=this._toqueDesvioY=0;
     this._parallaxX=this._parallaxY=0;
     this._duplaPiscada=this._segundaPiscada=false;
     this.ultimoInput=this._quietoDesde=this._ultimoQuadro=agora;
@@ -657,10 +677,16 @@ class AvatarInterativo {
     this._expressaoMovimento+=(alvoExpressao-this._expressaoMovimento)*
       (1-Math.exp(-dt*3.8));
     const alegria=this._expressaoMovimento;
-    const giro=px*.48+(!rastrear?Math.sin(t*.36)*.21:0)+alegria*.38;
-    const escalaExpressiva=escala+alegria*.004;
+    // A energia de contato desaparece gradualmente; não modifica a imagem facial.
+    this._toqueEnergia*=Math.exp(-dt*3.0);
+    this._toqueDesvioX*=Math.exp(-dt*4.1);
+    this._toqueDesvioY*=Math.exp(-dt*4.1);
+    const impulso=this._toqueEnergia;
+    const giro=px*.48+(!rastrear?Math.sin(t*.36)*.21:0)+alegria*.38
+      +this._toqueDesvioX*.95;
+    const escalaExpressiva=escala+alegria*.004+impulso*.002;
     const base=this._estilo.transform==='none' ? '' : (this._estilo.transform || '');
-    this.canvas.style.transform=`${base} perspective(800px) translate3d(${(px*this.parallax).toFixed(3)}px,${(py*this.parallax+bob-alegria*2.1).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) rotateZ(${giro.toFixed(3)}deg) scale(${escalaExpressiva.toFixed(5)})`;
+    this.canvas.style.transform=`${base} perspective(800px) translate3d(${(px*this.parallax+this._toqueDesvioX*2.0).toFixed(3)}px,${(py*this.parallax+bob-alegria*2.1-impulso*.85+this._toqueDesvioY*1.6).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) rotateZ(${giro.toFixed(3)}deg) scale(${escalaExpressiva.toFixed(5)})`;
   }
 
   // Rosto provisório para testar a lógica antes de ter as imagens
