@@ -708,6 +708,8 @@ const avatar = new AvatarInterativo(document.getElementById('avatar'), {
   parallax: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 8,
   inclinacao: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 3.4,
   respiracao: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .008,
+  // Troca imediata da expressão: evita duas faces sobrepostas.
+  crossfade: 0,
   onPose: p => { hud.textContent = nomes[p] || 'Estou acompanhando você.'; }
 });
 avatar.carregar();
