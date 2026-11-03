@@ -26,11 +26,11 @@ class AvatarInterativo {
       bravoMudancas: 3, bravoAngulo: 75, bravoRetorno: 650,
       intervaloMudancas: 80,
 
-      entradaDuracao: 1200, entradaIntervalo: 0,
-      fixoApos: 2000, limiarParado: .008, saidaRetorno: 1000,
+      entradaDuracao: 1500, entradaIntervalo: 2100,
+      fixoApos: 2500, limiarParado: .008, saidaRetorno: 1100,
       amostraMin: 16, amostraMax: 160, ruidoMovimento: .002,
-      idleApos: 2800, idleIntervalo: [1200,2700],
-      piscadaIntervalo: [2100,5100], piscadaFixaIntervalo: [2600,5500],
+      idleApos: 4900, idleIntervalo: [2400,4500],
+      piscadaIntervalo: [3300,6700], piscadaFixaIntervalo: [3900,7400],
       piscadaDuracoes: [65,100,65], piscadaFixaDuracoes: [105,155,105],
 
       // Movimento natural: cabeça flutua de leve; sem deformar rosto/olhos.
@@ -75,8 +75,8 @@ class AvatarInterativo {
     this.ultimoInput = agora; this._quietoDesde = agora; this._ultimoQuadro = agora;
     this._olharTempo = agora;
     this._proximaPiscada = agora + rand(...this.piscadaIntervalo);
-    this._proximoIdle = agora + this.idleApos + rand(450,1050);
-    this._proximaEmocao = agora + rand(7800,13000);
+    this._proximoIdle = agora + this.idleApos + rand(1300,2200);
+    this._proximaEmocao = agora + rand(16000,24000);
     this._autoSorrisoAte = 0;
     this._limparGesto();
     this._medir();
@@ -302,12 +302,12 @@ class AvatarInterativo {
     // Não roubam a prioridade do carinho, do clique ou de outras emoções.
     if (agora >= this._proximaEmocao) {
       const podeSorrir = !this.reduzir && !this._pressionado &&
-        !this._manual && agora-this.ultimoInput > 3700 &&
+        !this._manual && agora-this.ultimoInput > 8500 &&
         agora>=this._bravoAte && agora>=this._carinhoAte;
-      if (podeSorrir && Math.random() < .76) {
-        this._autoSorrisoAte = agora+rand(850,1400);
+      if (podeSorrir && Math.random() < .62) {
+        this._autoSorrisoAte = agora+rand(1500,2100);
       }
-      this._proximaEmocao = agora+rand(8500,13500);
+      this._proximaEmocao = agora+rand(16000,24000);
     }
     // Ação explícita (clique/teclado) > bravo > carinho > cumprimento > sorriso espontâneo.
     this.emocao = this._manual?.nome || (agora<this._bravoAte ? 'angry' :
@@ -321,14 +321,14 @@ class AvatarInterativo {
       if (!this._idleAtivo) {
         this._idleAtivo=true;
         this._idleFase='pausa';
-        this._proximoIdle=agora+rand(350,850);
+        this._proximoIdle=agora+rand(1000,1900);
       }
       if (agora>=this._proximoIdle) {
         if (this._idleFase==='olhando') {
           // Pequena pausa no centro, como alguém observando o ambiente.
           this.dir='rest';
           this._idleFase='pausa';
-          this._proximoIdle=agora+rand(750,1900);
+          this._proximoIdle=agora+rand(1800,3400);
         } else {
           const direcoes=['left','right','upleft','upright','up','downleft','downright','down'];
           const possiveis=direcoes.filter(p=>p!==this._ultimoIdleOlhar);
@@ -339,14 +339,14 @@ class AvatarInterativo {
           this._ultimoIdleOlhar=destino;
           this.dir=destino;
           this._idleFase='olhando';
-          this._proximoIdle=agora+rand(1150,2350);
+          this._proximoIdle=agora+rand(2600,4300);
         }
       }
     } else {
       if (this._idleAtivo) {
         this._idleAtivo=false;
         this._idleFase='pausa';
-        this._proximoIdle=agora+this.idleApos+rand(350,850);
+        this._proximoIdle=agora+this.idleApos+rand(1000,1900);
       }
       if (this._repousoGesto || foraVenceu || !this._ponteiro || (ocioso && this.reduzir)) {
         this.dir='rest';
@@ -521,8 +521,8 @@ class AvatarInterativo {
     this._duplaPiscada=this._segundaPiscada=false;
     this.ultimoInput=this._quietoDesde=this._ultimoQuadro=agora;
     this._proximaPiscada=agora+rand(...this.piscadaIntervalo);
-    this._proximoIdle=agora+this.idleApos+rand(350,850);
-    this._proximaEmocao=agora+rand(7800,13000);
+    this._proximoIdle=agora+this.idleApos+rand(1000,1900);
+    this._proximaEmocao=agora+rand(16000,24000);
     this._autoSorrisoAte=0;
     this._idleAtivo=false; this._idleFase='pausa'; this._ultimoIdleOlhar='rest';
     this._limparGesto();
@@ -631,12 +631,12 @@ class AvatarInterativo {
     // Não deforma o rosto nem mistura os sprites completos (sem efeito fantasma).
     const [olharX,olharY]=this._idleAtivo ? (VETOR[this.dir]||[0,0]) : [0,0];
     const x=rastrear ? limitar((this._ponteiro.x-r.left-r.width*this.centroX)/(r.width*.5),-1,1)
-      : oscilacaoX+olharX*.31;
+      : oscilacaoX+olharX*.24;
     const y=rastrear ? limitar((this._ponteiro.y-r.top-r.height*this.centroY)/(r.height*.5),-1,1)
-      : oscilacaoY+olharY*.22;
+      : oscilacaoY+olharY*.16;
     const dt=limitar(agora-this._ultimoQuadro,0,40)/1000;
     // Mola quase criticamente amortecida: fluidez sem solavancos perceptíveis.
-    const rigidez=62, amortecimento=15.6;
+    const rigidez=32, amortecimento=11.8;
     this._velocidadeX+=((x-this._parallaxX)*rigidez-this._velocidadeX*amortecimento)*dt;
     this._velocidadeY+=((y-this._parallaxY)*rigidez-this._velocidadeY*amortecimento)*dt;
     this._parallaxX+=this._velocidadeX*dt;
@@ -646,7 +646,7 @@ class AvatarInterativo {
     const fase=agora/Math.max(1,this.respiracaoPeriodo)*Math.PI*2;
     const onda=Math.sin(fase)*.79+Math.sin(fase*.57+1.15)*.21;
     const escala=1+onda*this.respiracao;
-    const bob=Math.sin(fase-.6)*1.5;
+    const bob=Math.sin(fase-.6)*1.1;
     const giro=px*.48+(!rastrear?Math.sin(t*.36)*.21:0);
     const base=this._estilo.transform==='none' ? '' : (this._estilo.transform || '');
     this.canvas.style.transform=`${base} perspective(800px) translate3d(${(px*this.parallax).toFixed(3)}px,${(py*this.parallax+bob).toFixed(3)}px,0) rotateX(${(-py*this.inclinacao).toFixed(3)}deg) rotateY(${(px*this.inclinacao).toFixed(3)}deg) rotateZ(${giro.toFixed(3)}deg) scale(${escala.toFixed(5)})`;
@@ -701,11 +701,14 @@ const avatar=new AvatarInterativo(canvas,{
       downleft:'OBSERVANDO O AMBIENTE',downright:'OBSERVANDO O AMBIENTE',
       rest:'OLHAR CURIOSO'
     };
+    // A sequência half/closed/half dura frações de segundo.
+    // Evita piscar o texto junto com os olhos.
+    if(pose==='half'||pose==='closed')return;
     el.textContent=captions[pose]||'OBSERVANDO O AMBIENTE';
   }
 });
 avatar.carregar().then(()=>{
-  if (!avatar.destruido && !avatar.reduzir) avatar.emote('grin',1150);
+  if (!avatar.destruido && !avatar.reduzir) avatar.emote('grin',1550);
 });
 window.addEventListener('pagehide',()=>avatar.destroy(),{once:true});
 })();
