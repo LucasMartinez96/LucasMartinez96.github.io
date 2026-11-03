@@ -724,6 +724,7 @@ const avatar=new AvatarInterativo(canvas,{
     el.textContent=captions[pose]||'OBSERVANDO O AMBIENTE';
   }
 });
+window.__avatarLucasOriginal=avatar;
 avatar.carregar().then(()=>{
   if (!avatar.destruido && !avatar.reduzir) avatar.emote('grin',1550);
 });
