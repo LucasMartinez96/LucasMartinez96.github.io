@@ -19,7 +19,16 @@ h1{font-size:clamp(30px,5vw,57px);letter-spacing:-.05em;line-height:1.08;margin:
 .foot{font-size:12px;color:#7286a8;margin-top:24px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 @media(max-width:760px){main{padding:40px 17px}.layout{grid-template-columns:1fr;gap:28px}.stage{min-height:360px}#face{height:315px}}
 @media(prefers-reduced-motion:reduce){#face{transition:none!important;animation:none!important}}
-</style></head><body><nav><div class="logo">LUCAS MARTINEZ <small> / PORTFÓLIO</small></div><small>PRÉVIA V10</small></nav>
+html.embed,html.embed body{background:transparent!important;overflow:hidden}
+html.embed nav,html.embed .copy,html.embed .foot,html.embed .controls,html.embed .actions,html.embed .kicker{display:none!important}
+html.embed main{padding:0;max-width:none;margin:0}
+html.embed .layout{display:block}
+html.embed .layout>section:last-child{width:100%}
+html.embed .stage{border:0;background:transparent;min-height:0;height:100vh;border-radius:0}
+html.embed #face{width:min(100%,380px);height:calc(100vh - 28px);max-height:420px}
+html.embed .status{font-size:11px;padding:0;margin:0;position:absolute;bottom:9px}
+html.embed .halo{opacity:.3}
+</style></head><body><script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embed');</script><nav><div class="logo">LUCAS MARTINEZ <small> / PORTFÓLIO</small></div><small>PRÉVIA V10</small></nav>
 <main><div class="layout"><section class="copy"><span class="pill">EXPERIÊNCIA INTERATIVA · 20 NOVAS EXPRESSÕES</span>
 <p class="kicker">Sobre mim / avatar experience</p><h1>Um avatar que<br>reage a você.</h1>
 <p>Prévia experimental das novas expressões. Experimente passar o mouse, tocar ou deslizar o dedo sobre o rosto. Ele pisca, sorri, observa e reage de maneira sutil.</p>
