@@ -360,6 +360,9 @@ class AvatarInterativo {
       this._carinhoTempo = 0;
     }
 
+    // Dedo/caneta não dispara bravo: um deslize rápido costuma ser navegação
+    // ou tentativa de carinho, nunca intenção de provocar o personagem.
+    if (this._pressionado && ['touch','pen'].includes(this._pressionado.tipo)) return;
     const corte = agora-this.bravoJanela;
     this._rapidos = this._rapidos.filter(s=>s.fim>corte);
     this._viradas = this._viradas.filter(t=>t>corte);
