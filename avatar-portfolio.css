@@ -139,3 +139,21 @@
   .about .avatar-feature-stage .avatar-feature-halo,
   .about .avatar-feature-stage .avatar-portfolio-canvas {animation:none!important;transition:none!important;}
 }
+
+/* V8 — halo reage suavemente às expressões, sem animações invasivas. */
+.about .avatar-feature-stage .avatar-feature-halo {
+  opacity:.75;
+  transition:opacity .75s ease,filter .75s ease;
+}
+.about .avatar-feature-stage[data-emotion="grin"] .avatar-feature-halo {
+  opacity:1;filter:brightness(1.35) saturate(1.15);
+}
+.about .avatar-feature-stage[data-emotion="hearts"] .avatar-feature-halo {
+  opacity:1;filter:brightness(1.6) saturate(1.18);
+}
+.about .avatar-feature-stage[data-emotion="angry"] .avatar-feature-halo {
+  opacity:.62;filter:brightness(.85);
+}
+@media(prefers-reduced-motion:reduce) {
+  .about .avatar-feature-stage .avatar-feature-halo {transition:none}
+}
