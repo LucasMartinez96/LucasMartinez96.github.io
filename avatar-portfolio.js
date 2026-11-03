@@ -75,6 +75,8 @@ class AvatarInterativo {
     this._olharTempo = agora;
     this._proximaPiscada = agora + rand(...this.piscadaIntervalo);
     this._proximoIdle = agora + this.idleApos;
+    this._proximaEmocao = agora + rand(6200,9600);
+    this._autoSorrisoAte = 0;
     this._limparGesto();
     this._medir();
     this.ligarEventos();
@@ -295,9 +297,21 @@ class AvatarInterativo {
       this._carinhoAte=0;
       if (agora-this.ultimoInput>=this.carinhoTolerancia) this._repousoGesto=true;
     }
-    // Ação explícita (clique/teclado) > bravo > carinho > cumprimento.
+    // O sorriso espontâneo acontece raramente, sem roubar a reação ao toque.
+    // Uma única linha do tempo em requestAnimationFrame, sem temporizadores.
+    if (agora >= this._proximaEmocao) {
+      const podeSorrir = !this.reduzir && !this._dentro &&
+        !this._manual && agora-this.ultimoInput > 3000 &&
+        agora>=this._bravoAte && agora>=this._carinhoAte;
+      if (podeSorrir && Math.random() < .76) {
+        this._autoSorrisoAte = agora+rand(850,1550);
+      }
+      this._proximaEmocao = agora+rand(6800,11500);
+    }
+    // Ação explícita (clique/teclado) > bravo > carinho > cumprimento > sorriso espontâneo.
     this.emocao = this._manual?.nome || (agora<this._bravoAte ? 'angry' :
-      agora<this._carinhoAte ? 'hearts' : agora<this._sorrisoAte ? 'grin' : null);
+      agora<this._carinhoAte ? 'hearts' :
+      agora<this._sorrisoAte || agora<this._autoSorrisoAte ? 'grin' : null);
 
     const foraVenceu = this._saidaEm !== null && agora-this._saidaEm >= this.saidaRetorno;
     const ocioso = !this._dentro && agora-this.ultimoInput >= this.idleApos;
@@ -484,6 +498,8 @@ class AvatarInterativo {
     this.ultimoInput=this._quietoDesde=this._ultimoQuadro=agora;
     this._proximaPiscada=agora+rand(...this.piscadaIntervalo);
     this._proximoIdle=agora+this.idleApos;
+    this._proximaEmocao=agora+rand(6200,9600);
+    this._autoSorrisoAte=0;
     this._limparGesto();
   }
 
@@ -643,8 +659,21 @@ const avatar=new AvatarInterativo(canvas,{
   crossfade: 0,
   parallax: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 8,
   inclinacao: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 3.4,
-  respiracao: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .008
+  respiracao: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .008,
+  onPose:pose=>{
+    const el=document.getElementById('avatar-live-label');
+    if (!el) return;
+    const captions={
+      grin:'SORRISO ATIVADO',hearts:'REAGINDO AO CARINHO',
+      angry:'VOCÊ ME SURPREENDEU',up:'OLHANDO PARA CIMA',
+      down:'OLHANDO PARA BAIXO',left:'OLHANDO AO REDOR',
+      right:'OLHANDO AO REDOR',rest:'OLHAR CURIOSO'
+    };
+    el.textContent=captions[pose]||'OBSERVANDO O MOVIMENTO';
+  }
 });
-avatar.carregar();
+avatar.carregar().then(()=>{
+  if (!avatar.destruido && !avatar.reduzir) avatar.emote('grin',1150);
+});
 window.addEventListener('pagehide',()=>avatar.destroy(),{once:true});
 })();
